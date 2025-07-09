@@ -4,4 +4,4 @@
 - [ ] lessen beter maken
 - [ ] meer lessen maken
 - [ ] logo maken
-- [ ] nieuwe/betere html
+- [ ] nieuwe/betere HTML
