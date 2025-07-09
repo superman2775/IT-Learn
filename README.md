@@ -3,5 +3,5 @@
 # To Do lijst:
 - [ ] lessen beter maken
 - [ ] meer lessen maken
-- [ ] logo maken
+- [X] logo maken
 - [ ] nieuwe/betere HTML
