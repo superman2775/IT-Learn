@@ -1,4 +1,7 @@
 # IT-Learn
 
 # To Do lijst:
-- [ ] Lessen beter maken
+- [ ] lessen beter maken
+- [ ] meer lessen maken
+- [ ] logo maken
+- [ ] nieuwe/betere html
