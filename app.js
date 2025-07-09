@@ -97,8 +97,6 @@ function updateProgressUI() {
 }
 
 function updateMissionsUI() {
-  // Voorbeeld missions:
-  // finish 10 lessons, get 100 XP, 3 dagen streak
   const totalLessonsDone = Object.values(progress).reduce((acc, modObj) => acc + Object.keys(modObj).length, 0);
   const currentLevel = getLevel();
 
@@ -159,7 +157,6 @@ function showLesson(moduleId, lessonIndex) {
     quizSection.classList.remove("hidden");
     submitQuizBtn.style.display = "inline-block";
     if(moduleId === "fouten-oefenen") {
-      // Dynamisch quiz met alleen fouten
       buildMistakesQuiz();
     } else {
       buildQuiz(lesson.quiz);
@@ -248,9 +245,7 @@ function buildMistakesQuiz() {
 submitQuizBtn.addEventListener("click", () => {
   if (!currentModule) return;
 
-  // Check of in fouten oefenmodus
   if(currentModule.id === "fouten-oefenen") {
-    // Resultaat beoordelen en fouten verwijderen als goed
     let allCorrect = true;
     let mistakesToRemove = [];
 
@@ -278,7 +273,6 @@ submitQuizBtn.addEventListener("click", () => {
     if(allCorrect) {
       quizFeedback.textContent = "Top! Je hebt alle fouten goed beantwoord. Goed bezig!";
       correctSound.play();
-      // Verwijder alle fouten
       mistakes = [];
       saveProgress();
       updateProgressUI();
@@ -308,10 +302,8 @@ submitQuizBtn.addEventListener("click", () => {
         answeredCount++;
         if (parseInt(radio.value) === quiz[i].correct) {
           correctCount++;
-          // Foutvraag verwijderen als het er was
           removeMistake(currentModule.id, lesson.id, i);
         } else {
-          // Foutvraag toevoegen
           addMistake(currentModule.id, lesson.id, i);
         }
       }
@@ -405,7 +397,6 @@ function randomMascotMessage() {
   showMascotMessage(msg);
 }
 
-// Bij start, update UI en toon een mascotte bericht
 updateProgressUI();
 updateStreak();
 showModules();
