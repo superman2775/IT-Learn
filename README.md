@@ -1,4 +1,4 @@
 # IT-Learn
 
 # To Do lijst:
-- [ ] Lessen beter maken
+- [X] Lessen beter maken
