@@ -135,7 +135,7 @@ main {
 #mascot-container {
   position: fixed;
   bottom: 10px;
-  left: 10px;
+  right: 10px;
   display: flex;
   align-items: flex-end;
   max-width: 300px;
@@ -189,5 +189,22 @@ legend {
 }
 
 #mascot-image:hover {
+  transform: scale(1.1);
+}
+.discord-button {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.discord-button img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  transition: transform 0.2s ease;
+}
+
+.discord-button img:hover {
   transform: scale(1.1);
 }
