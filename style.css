@@ -4,7 +4,7 @@ body {
 }
 
 header {
-  background-color: #ff6f00;
+  background-color: #c236e8;
   color: white;
   padding: 1rem;
   text-align: center;
@@ -33,7 +33,7 @@ main {
   width: 100%;
   padding: 0.7rem 1rem;
   font-size: 1.1rem;
-  background: #ffa726;
+  background: #c620df;
   border: none;
   color: white;
   border-radius: 6px;
@@ -42,7 +42,7 @@ main {
 }
 
 #modules-list button:hover {
-  background: #fb8c00;
+  background: #000dfb;
 }
 
 .hidden {
@@ -121,7 +121,7 @@ main {
 
 #progress-bar {
   height: 100%;
-  background: #42a5f5;
+  background: #063358;
   width: 0%;
   transition: width 0.4s ease;
 }
@@ -149,7 +149,7 @@ main {
 }
 
 #mascot-bubble {
-  background: #ff6f00;
+  background: #d319baab;
   color: white;
   border-radius: 20px;
   padding: 0.7rem 1rem;
