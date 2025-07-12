@@ -18,6 +18,7 @@ const missionsInfo = document.getElementById("missions-info");
 const mascotBubble = document.getElementById("mascot-bubble");
 const correctSound = document.getElementById("audio-correct");
 const wrongSound = document.getElementById("audio-wrong");
+const toggleButton = document.getElementById("darkmode-toggle");
 
 let currentModule = null;
 let currentLessonIndex = 0;
@@ -36,6 +37,12 @@ let streak = parseInt(localStorage.getItem("streak")) || 0;
 let lastActive = localStorage.getItem("lastActive") || null;
 let missions = JSON.parse(localStorage.getItem("missions")) || {};
 let mistakes = JSON.parse(localStorage.getItem("mistakes")) || [];
+
+// darkmode button
+
+toggleButton.addEventListener('click',() => {
+  document.body.classList.toggle('dark-mode');
+});
 
 // --- Helper functies ---
 
