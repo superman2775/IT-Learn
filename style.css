@@ -277,7 +277,7 @@ body.dark-mode #progress-section {
 
 body.dark-mode #mascot-bubble {
   background-color: #d319baab;
-  background-image: linear-gradient(115deg, #e211c6ab, #7407f9e5);
+  background-image: linear-gradient(115deg, #951083ab, #4f0aa3e5);
   color: white;
   border-radius: 20px;
   padding: 0.7rem 1rem;
@@ -293,5 +293,5 @@ body.dark-mode #darkmode-toggle {
 }
 
 body.dark-mode #progress-bar {
-  background: #6ec1e4;
+  background: #c231ea;
 }
