@@ -12,7 +12,7 @@
 - [ ] tablet
 ---------------
 - [ ] landing page met uitleg over de website
-- [ ] keuze tussen dark en light mode
+- [X] keuze tussen dark en light mode
 - [ ] syntax highlighten als user zelf moet schrijven
 - [X] links vanonder url naar discord (zoals smpp)
 - [ ] css lessen over pading, margings, ...
