@@ -1,13 +1,12 @@
 # IT-Learn
 
 # To Do lijst:
-- [ ] darkmode standaard maken
 - [ ] lessen beter maken
 - [ ] meer lessen maken
 - [X] logo maken
 - [X] nieuwe/betere css
 ---------------      
-- [ ] zorgen dat website op laptop, gsm, tablet, ... werkt
+--- zorgen dat website op laptop, gsm, tablet, ... werkt
 - [X] laptop
 - [ ] gsm
 - [ ] tablet
