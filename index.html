@@ -10,19 +10,26 @@
 <header>
   <h1>IT Learn</h1>
   <img src="icons/IT-Learn.jpg" alt="IT-Learn" id="mascot-image" />
-  <p>Leer stap voor stap programmeren met populaire programmeertalen!</p>
+  <p id="uitleg">Leer stap voor stap programmeren met populaire programmeertalen!</p>
+<div id="language-selector">
+  <button id="current-language">NL ▾</button>
+  <ul id="language-options" class="hidden">
+    <li data-lang="nl">Nederlands</li>
+    <li data-lang="en">English</li>
+  </ul>
+</div>
   <button id="darkmode-toggle">🌙</button>
 </header>
 
 <main>
   <section id="modules-list">
-    <h2>Kies een programmeertaal</h2>
+    <h2 id="keuzeProgrammeertaal">Kies een programmeertaal</h2>
     <ul id="module-buttons"></ul>
   </section>
 
-  <section id="lesson-section" class="hidden">
+  <section id="lesson-section">
     <button id="back-to-modules">&larr; Terug naar alle programmeertalen</button>
-    <h2 id="lesson-title"></h2>
+    <h2 id="lesson-title">Belangrijke HTML-tags</h2>
     <article id="lesson-content"></article>
 
     <div id="quiz-section" class="hidden">
@@ -41,7 +48,7 @@
   </a>
   
   <section id="progress-section">
-    <h2>Voortgang</h2>
+    <h2 id="voortgang">Voortgang</h2>
     <div id="progress-info"></div>
     <div id="progress-bar-container">
       <div id="progress-bar"></div>
