@@ -37,11 +37,11 @@
 
 # 🌍 Website structure
 
-- [ ]Landing page with explanation about the platform
+- [ ] Landing page with explanation about the platform
 
-- [ ]Login system
+- [ ] Login system
 
-- [ ]Save progress per account
+- [ ] Save progress per account
 
 # 🪲 Bugs
 --- iOS
