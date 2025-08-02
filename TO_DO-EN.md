@@ -25,15 +25,15 @@
 
 - [X] Footer with a link to Discord (like SMPP)
 
-- [X]CSS: Creating gradients
+- [X] CSS: Creating gradients
 
 # 🌐 Responsiveness (works on all devices)
 
 - [X] Laptop
 
-- [ ]Mobile phone
+- [ ] Mobile phone
 
-- [ ]Tablet
+- [ ] Tablet
 
 # 🌍 Website structure
 
