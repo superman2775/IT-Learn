@@ -13,7 +13,7 @@
 
  - [ ] Leaderboard + badges voor het voltooien van lessen
 
- - [ ] Meertalige ondersteuning (NL & ENG – Joren werkt hieraan)
+ - [ ] Meertalige ondersteuning
 
 # 🎨 Design & UI
  - [X] Logo ontwerpen
