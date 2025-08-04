@@ -15,8 +15,6 @@ With IT Learn, you can explore and practice programming languages like: HTML, CS
 
 🌐 Fully responsive: works on laptop, tablet, and mobile
 
-🌍 Multilingual support: Dutch (NL) and English (EN)
-
 🔐 Account system to track your progress
 
 🛠️ Work in Progress
