@@ -468,9 +468,27 @@ function showMascotMessage(message) {
     e.preventDefault();
   });
 
+// Random mascotte bericht
+function randomMascotMessage() {
+  const msg = mascotMessages[Math.floor(Math.random() * mascotMessages.length)];
+  showMascotMessage(msg);
+}
+const mascotMessages = [
+  "Hoi! Klaar om iets te leren vandaag?",
+  "Goed bezig, hou vol!",
+  "Vergeet niet pauzes te nemen.",
+  "Elke dag een beetje beter!",
+  "Leer vandaag iets nieuws!",
+  "Super! Ga zo door!",
+  "Heb je vragen? Stel ze gerust.",
+  "Fouten maken mag, daarvan leer je!",
+  "Top dat je terug bent!",
+  "Blijf nieuwsgierig!"
+];
 
 // Init
 updateProgressUI();
 updateStreak();
 showModules();
 randomMascotMessage();
+
