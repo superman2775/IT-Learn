@@ -431,14 +431,6 @@ backToModulesBtn.addEventListener("click", () => {
   showModules();
 });
 
-// Toon mascotte bericht
-function showMascotMessage(message) {
-  mascotBubble.textContent = message;
-  mascotBubble.classList.add("visible");
-  setTimeout(() => {
-    mascotBubble.classList.remove("visible");
-  }, 5000);
-}
 
 // Blokkeer ontwikkelaarstools
   document.addEventListener('keydown', function (e) {
@@ -468,11 +460,8 @@ function showMascotMessage(message) {
     e.preventDefault();
   });
 
-// Random mascotte bericht
-function randomMascotMessage() {
-  const msg = mascotMessages[Math.floor(Math.random() * mascotMessages.length)];
-  showMascotMessage(msg);
-}
+// Mascotte berichten
+
 const mascotMessages = [
   "Hoi! Klaar om iets te leren vandaag?",
   "Goed bezig, hou vol!",
@@ -485,6 +474,16 @@ const mascotMessages = [
   "Top dat je terug bent!",
   "Blijf nieuwsgierig!"
 ];
+
+function showMascotMessage(message) {
+  mascotBubble.textContent = message;
+}
+
+function randomMascotMessage() {
+  const msg = mascotMessages[Math.floor(Math.random() * mascotMessages.length)];
+  showMascotMessage(msg);
+}
+
 
 // Init
 updateProgressUI();
