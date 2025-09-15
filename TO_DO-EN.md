@@ -29,6 +29,8 @@
 
 - [ ] make favicon.ico round
 
+- [ ] make the navbar more visible compared to the rest of the page
+
 # 🌐 Responsiveness (works on all devices)
 
 - [X] Laptop
