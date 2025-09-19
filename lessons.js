@@ -1,36 +1,44 @@
-const modulesData = [
+const modulesData =
+
   // ================= HTML =================
+   [
   {
     id: "html",
     title: "HTML",
     lessons: [
       {
-        id: "html-intro",
-        title: "Wat is HTML?",
+        id: "html_headings",
+        title: "Headings",
         content: `
-          <h2>Wat is HTML?</h2>
-          <p>HTML is de taal om webpagina's te maken. Het bepaalt de structuur en inhoud van een pagina met tags.</p>
-          <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;&lt;title&gt;Titel&lt;/title&gt;&lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Hallo wereld!&lt;/h1&gt;
-    &lt;p&gt;Dit is een paragraaf.&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-        `,
-        quiz: [
-          {
-            question: "Wat doet HTML?",
-            options: [
-              "Bepaalt structuur van pagina",
-              "Bepaalt kleuren van pagina",
-              "Maakt pagina interactief"
-            ],
-            correct: 0
-          }
-        ]
-      },
+          <div class="lesson-layout">
+            <!-- Uitleg links -->
+            <div class="lesson-explanation">
+              <h2>HTML Headings</h2>
+              <p>
+                Met HTML headings maak je titels en subtitels in een webpagina.
+                Er zijn 6 niveaus: <code>&lt;h1&gt;</code> tot <code>&lt;h6&gt;</code>.
+              </p>
+              <pre><code>&lt;h1&gt;Dit is een heading&lt;/h1&gt;</code></pre>
+            </div>
+
+            <!-- Editor in het midden -->
+            <div class="lesson-editor">
+              <textarea id="code-editor-html-headings">
+<h1>Mijn eerste heading</h1>
+<p>Dit is een paragraaf.</p>
+              </textarea>
+              <button onclick="runCode('html-headings')">▶ Run</button>
+            </div>
+
+            <!-- Output rechts -->
+            <div class="lesson-output">
+              <iframe id="output-frame-html-headings"></iframe>
+            </div>
+          </div>
+        `
+    }
+  ,
+
       {
         id: "html-tags",
         title: "Belangrijke HTML-tags",
