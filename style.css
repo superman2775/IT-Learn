@@ -164,6 +164,30 @@ body{
 }
 
 /* ========== MODULES / LESSONS ========== */
+#lesson-section button {
+  margin: 1rem 0;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  background: #42a5f5;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#lesson-section button:hover {
+  background: #1e88e5;
+}
+
+#lesson-content {
+  margin-top: 1rem;
+  background: #cba76e6c;
+  padding: 1rem;
+  border-radius: 8px;
+  line-height: 1.5;
+}
+
 #modules-list{ margin-top: 0; display: block; }
 #modules-list h2{
   margin: 0 0 0.75rem 0;
@@ -368,3 +392,4 @@ button:focus, a:focus { outline: 2px solid rgba(147,197,253,0.12); outline-offse
     left: 18px;
   }
 }
+
