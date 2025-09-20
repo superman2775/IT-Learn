@@ -1,4 +1,106 @@
-/* roadmap.css — works with the provided HTML */
+/* ================== Page-load animations (FIXED) ================== */
+/* fade + lift keyframe */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px) scale(0.995); }
+  to   { opacity: 1; transform: translateY(0) scale(1); } /* expliciet opacity:1 */
+}
+
+/* tiny pop for header title (slight scale) — 100% now ensures opacity:1 */
+@keyframes pop {
+  0%   { transform: translateY(6px) scale(.98); opacity: 0; }
+  60%  { transform: translateY(-3px) scale(1.03); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 1; } /* <- essentieel */
+}
+
+/* apply animations on load to header + the three roadmap cards */
+header {
+  opacity: 0; /* start hidden */
+  transform: translateY(8px);
+  animation-name: pop;
+  animation-duration: 520ms;
+  animation-timing-function: cubic-bezier(.16,.8,.36,1);
+  animation-fill-mode: both; /* keep final state */
+  animation-delay: 0.12s;
+}
+
+/* sections: initial hidden, then fadeUp with staggered delays */
+.roadmap-do,
+.roadmap-later,
+.roadmap-wont {
+  opacity: 0;
+  transform: translateY(12px);
+  animation-name: fadeUp;
+  animation-duration: 560ms;
+  animation-timing-function: cubic-bezier(.16,.8,.36,1);
+  animation-fill-mode: both;
+}
+
+/* stagger the three main cards so they appear one after another */
+.roadmap-do   { animation-delay: 0.28s; }
+.roadmap-later{ animation-delay: 0.44s; }
+.roadmap-wont { animation-delay: 0.60s; }
+
+/* subtle entrance for each list item with small stagger (up to 8 items) */
+.roadmap-do ul li,
+.roadmap-later ul li,
+.roadmap-wont ul li {
+  opacity: 0;
+  transform: translateY(8px);
+  animation-name: fadeUp;
+  animation-duration: 420ms;
+  animation-timing-function: cubic-bezier(.16,.8,.36,1);
+  animation-fill-mode: both;
+}
+
+/* per-child delays (so items inside a card appear one after another) */
+.roadmap-do ul li:nth-child(1),
+.roadmap-later ul li:nth-child(1),
+.roadmap-wont ul li:nth-child(1) { animation-delay: 0.42s; }
+.roadmap-do ul li:nth-child(2),
+.roadmap-later ul li:nth-child(2),
+.roadmap-wont ul li:nth-child(2) { animation-delay: 0.52s; }
+.roadmap-do ul li:nth-child(3),
+.roadmap-later ul li:nth-child(3),
+.roadmap-wont ul li:nth-child(3) { animation-delay: 0.62s; }
+.roadmap-do ul li:nth-child(4),
+.roadmap-later ul li:nth-child(4),
+.roadmap-wont ul li:nth-child(4) { animation-delay: 0.72s; }
+.roadmap-do ul li:nth-child(5),
+.roadmap-later ul li:nth-child(5),
+.roadmap-wont ul li:nth-child(5) { animation-delay: 0.82s; }
+.roadmap-do ul li:nth-child(6),
+.roadmap-later ul li:nth-child(6),
+.roadmap-wont ul li:nth-child(6) { animation-delay: 0.92s; }
+.roadmap-do ul li:nth-child(7),
+.roadmap-later ul li:nth-child(7),
+.roadmap-wont ul li:nth-child(7) { animation-delay: 1.02s; }
+.roadmap-do ul li:nth-child(8),
+.roadmap-later ul li:nth-child(8),
+.roadmap-wont ul li:nth-child(8) { animation-delay: 1.12s; }
+
+/* Keep hover lift intact */
+.roadmap-do:hover,
+.roadmap-later:hover,
+.roadmap-wont:hover {
+  transform: translateY(-6px);
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  header,
+  .roadmap-do,
+  .roadmap-later,
+  .roadmap-wont,
+  .roadmap-do ul li,
+  .roadmap-later ul li,
+  .roadmap-wont ul li {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
 
 /* Roadmap — centered, polished, same colour palette */
 :root{
@@ -350,3 +452,4 @@ a:focus, button:focus { outline: 2px solid rgba(147,197,253,0.12); outline-offse
   cursor: pointer;
   transition: background 0.2s ease, transform 0.2s ease;
 }
+
