@@ -1,3 +1,5 @@
+/* CSS Van Learn Page */
+
 /* ========== Variables ========== */
 :root{
   --bg: #0f172a;
@@ -393,3 +395,88 @@ button:focus, a:focus { outline: 2px solid rgba(147,197,253,0.12); outline-offse
   }
 }
 
+/* --- Gmail-achtige Mail view styling met reply-knop --- */
+.mail-view {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  max-width: 760px;
+  margin: 12px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  font-family: Arial, sans-serif;
+  color: #202124;
+}
+
+.mail-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  background: #f1f3f4;
+}
+
+.mail-toolbar button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #5f6368;
+  font-weight: bold;
+  padding: 4px 8px;
+  margin-left: 4px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.mail-toolbar button:hover {
+  background: rgba(95,99,104,0.1);
+}
+
+.mail-headers {
+  font-size: 13px;
+  color: #5f6368;
+  padding: 12px 16px 8px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  background: #f8f9fa;
+}
+
+.mail-headers div {
+  margin-bottom: 4px;
+}
+
+.mail-subject {
+  font-weight: 600;
+  font-size: 16px;
+  margin: 6px 0;
+  color: #202124;
+}
+
+.mail-body {
+  padding: 16px;
+  line-height: 1.5;
+  color: #202124;
+  background: #ffffff;
+  border-radius: 0 0 8px 8px;
+}
+
+.mail-element {
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 0 2px;
+  transition: background 0.12s, outline 0.12s;
+}
+
+.mail-element.selected {
+  outline: 2px dashed #fbbc04;
+  background: rgba(251,188,4,0.15);
+}
+
+.mail-element.correct {
+  background: rgba(52,168,83,0.15);
+  outline: 2px solid rgba(52,168,83,0.25);
+}
+
+.mail-element.incorrect {
+  background: rgba(234,67,53,0.12);
+  outline: 2px solid rgba(234,67,53,0.2);
+}
