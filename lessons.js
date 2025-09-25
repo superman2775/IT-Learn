@@ -15,17 +15,17 @@ const modulesData =
             <div class="lesson-explanation">
               <h2>HTML Headings</h2>
               <p>
-                Met HTML headings maak je titels en subtitels in een webpagina.
-                Er zijn 6 niveaus: <code>&lt;h1&gt;</code> tot <code>&lt;h6&gt;</code>.
+                HTML headings allow you to create titles and subtitles on a webpage.
+                There are six levels: <code>&lt;h1&gt;</code> tot <code>&lt;h6&gt;</code>.
               </p>
-              <pre><code>&lt;h1&gt;Dit is een heading&lt;/h1&gt;</code></pre>
+              <pre><code>&lt;h1&gt;This is a heading&lt;/h1&gt;</code></pre>
             </div>
 
             <!-- Editor in het midden -->
             <div class="lesson-editor">
               <textarea id="code-editor-html-headings">
-<h1>Mijn eerste heading</h1>
-<p>Dit is een paragraaf.</p>
+<h1>My first heading</h1>
+<p>This is a paragraph.</p>
               </textarea>
               <button onclick="runCode('html-headings')">▶ Run</button>
             </div>
@@ -41,21 +41,21 @@ const modulesData =
 
         {
           id: "html-tags",
-          title: "Belangrijke HTML-tags",
+          title: "Important HTML tags",
           content: `
-          <h2>Veelgebruikte HTML-tags</h2>
+          <h2>Commonly used HTML tags</h2>
           <ul>
             <li>&lt;h1&gt; t/m &lt;h6&gt;: Kopteksten</li>
-            <li>&lt;p&gt;: Paragraaf</li>
+            <li>&lt;p&gt;: Paragraph</li>
             <li>&lt;a href=\"url\"&gt;: Link</li>
-            <li>&lt;img src=\"afbeelding.jpg\" alt=\"beschrijving\"&gt;: Afbeelding</li>
-            <li>&lt;ul&gt; en &lt;ol&gt;: Lijsten</li>
-            <li>&lt;form&gt;: Formulier</li>
+            <li>&lt;img src=\"afbeelding.jpg\" alt=\"description\"&gt;: picture</li>
+            <li>&lt;ul&gt; en &lt;ol&gt;: Lists</li>
+            <li>&lt;form&gt;: Form</li>
           </ul>
         `,
           quiz: [
             {
-              question: "Welke tag is voor een hyperlink?",
+              question: "Which tag is for a hyperlink?",
               options: ["&lt;a&gt;", "&lt;img&gt;", "&lt;div&gt;"],
               correct: 0
             }
@@ -63,20 +63,20 @@ const modulesData =
         },
         {
           id: "html-attributes",
-          title: "HTML attributen",
+          title: "HTML attributes",
           content: `
-          <h2>Wat zijn attributen?</h2>
-          <p>Attributen geven extra informatie aan tags, zoals <code>href</code> bij links of <code>alt</code> bij afbeeldingen.</p>
-          <pre><code>&lt;a href="https://example.com"&gt;Bezoek site&lt;/a&gt;
-&lt;img src="foto.jpg" alt="Mijn foto"&gt;</code></pre>
+          <h2>What are attributes?</h2>
+          <p>Attributes provide additional information to tags, such as<code>href</code> at URL's or <code>alt</code> at pictures.</p>
+          <pre><code>&lt;a href="https://example.com"&gt;Visit site&lt;/a&gt;
+          &lt;img src="foto.jpg" alt="My picture"&gt;</code></pre>
         `,
           quiz: [
             {
-              question: "Wat doet het 'alt' attribuut bij een afbeelding?",
+              question: "What does the 'alt' attribute do on an image?",
               options: [
-                "Geeft een alternatieve tekst voor schermlezers",
-                "Verandert de afbeelding",
-                "Voegt een link toe"
+                "Provides alternative text for screen readers",
+                "Changes the image",
+                "Adds a link",
               ],
               correct: 0
             }
@@ -84,10 +84,10 @@ const modulesData =
         },
         {
           id: "html-links",
-          title: "Links maken",
+          title: "Hyperlinks",
           content: `
           <h2>Hyperlinks</h2>
-          <p>Met de <code>&lt;a&gt;</code> tag maak je links naar andere pagina's of websites.</p>
+          <p>With the<code>&lt;a&gt;</code> tag you create links to other pages or websites.</p>
           <pre><code>&lt;a href="https://google.com"&gt;Google&lt;/a&gt;</code></pre>
         `,
           quiz: [
@@ -1062,8 +1062,8 @@ p.groet()</code></pre>
                 { id: "link11", selector: '[data-id="link11"]', correct: true, explain: "Vague appeal to click with urgency — typical phishing tactic." },
                 { id: "link12", selector: '[data-id="link12"]', correct: true, explain: "Vague appeal to click with urgency — typical phishing tactic." },
                 { id: "link13", selector: '[data-id="link13"]', correct: true, explain: "The URL is not the official apple.com domain." },
-                { id: "link14", selector: '[data-id="link14"]', correct: true, explain: "The URL is not the official apple.com domain."},
-                                
+                { id: "link14", selector: '[data-id="link14"]', correct: true, explain: "The URL is not the official apple.com domain." },
+
               ]
             }
           ]
