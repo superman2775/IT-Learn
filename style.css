@@ -106,8 +106,12 @@ body{
   transform: translateY(-1px);
 }
 
-/* Auth button (logout/login) */
-#auth-btn{
+#auth-btn {
+  display: flex; 
+  justify-content: center; /* horizontaal centreren */
+  align-items: center;     /* verticaal centreren */
+  text-align: center;      /* fallback */
+  
   margin-top: auto;
   background: linear-gradient(90deg,var(--accent-600), #8b5cf6);
   color: white;
@@ -119,6 +123,8 @@ body{
   box-shadow: 0 6px 18px rgba(79,70,229,0.12);
   transition: transform .12s ease, opacity .12s;
 }
+
+
 
 #auth-btn:hover{ transform: translateY(-2px) }
 
