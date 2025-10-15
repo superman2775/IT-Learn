@@ -182,18 +182,28 @@ authBtn.addEventListener("click", async () => {
 });
 
 // ---------------------------- Streak & Level ----------------------------
+// ---------------------------- Streak & Level ----------------------------
 function updateStreak() {
-    const today = new Date().toDateString();
-    if (!lastActive) lastActive = today;
+    const today = new Date().toISOString().split("T")[0];
+
+    if (!lastActive) {
+        lastActive = today;
+        saveProgressToAPI();
+        return;
+    }
 
     if (lastActive !== today) {
-        const yesterday = new Date(Date.now() - 864e5).toDateString();
-        streak = lastActive === yesterday ? streak + 1 : 1;
+        const yesterday = new Date(Date.now() - 86400000).toISOString().split("T")[0];
+        if (lastActive === yesterday) {
+            streak += 1;
+        } else {
+            streak = 1;
+        }
         lastActive = today;
+        console.log(`Streak updated → ${streak} (last active: ${lastActive})`);
         saveProgressToAPI();
     }
 }
-
 function getLevel() {
     return Math.floor(xp / 50) + 1;
 }
@@ -572,4 +582,5 @@ function checkFix(lessonId, exerciseIndex) {
     feedback.innerHTML = `<p class="incorrect">❌ Not quite right.<br>${exercise.hint}</p>`;
   }
 }
+
 
