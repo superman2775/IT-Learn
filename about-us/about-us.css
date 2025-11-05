@@ -93,6 +93,7 @@ body {
     box-shadow: 0 0 15px var(--accent-600);
     transition: all 0.25s ease;
     z-index: 1000;
+    text-decoration: none;
 }
 
 .escape:hover {
