@@ -218,6 +218,7 @@ body {
   border-radius: 50%;
   cursor: pointer;
   transition: background 0.2s ease, transform 0.2s ease;
+  text-decoration: none;
 }
 
 .escape:hover {

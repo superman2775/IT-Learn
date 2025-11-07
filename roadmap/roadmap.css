@@ -448,6 +448,7 @@ a:focus, button:focus { outline: 2px solid rgba(147,197,253,0.12); outline-offse
   box-shadow: 0 4px 14px rgba(2,6,23,0.4);
   transition: all 0.18s ease;
   z-index: 999; /* altijd boven andere content */
+  text-decoration: none;
 }
 
 .escape:hover {
