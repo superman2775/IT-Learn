@@ -7,42 +7,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>IT Learn | Login</title>
   <link rel="stylesheet" href="login.css" />
+  <script src="/translations.js"></script>
 </head>
 
 <body>
   <button class="escape" onclick="window.location.href='index.html'">X</button>
   <div class="container">
     <div class="form-box">
-      <h1>Login</h1>
+      <h1 data-translate="login-form">Login</h1>
       <form id="login-form">
         <div class="input-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" placeholder="Enter your email" required />
+          <label for="email" data-translate="email">Email</label>
+          <input type="email" id="email" placeholder="Enter your email" data-translate="enterEmail" />
         </div>
         <div class="input-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" placeholder="Enter your password" required />
+          <label for="password" data-translate="password">Password</label>
+          <input type="password" id="password" placeholder="Enter your password" data-translate="enterPassword" />
         </div>
-        <button type="submit" class="btn">Login</button>
+        <button type="submit" class="btn" data-translate="login">Login</button>
       </form>
 
-      <div class="or-divider"><span>OR</span></div>
+      <div class="or-divider"><span data-translate="or">OR</span></div>
 
-      <button type="button" class="btn-google" id="google-login">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/480px-Google_%22G%22_logo.svg.png"
-          alt="Google Logo" />
-        Continue with Google
-      </button>
+      <button type="button" class="btn-google" id="google-login" data-translate="continueGoogle">
+        Continue with Google</button>
 
-      <p class="redirect-text">
-        Don't have an account? <a href="signup.html">Sign Up</a>
+      <p class="redirect-text" data-translate="dontHaveAccount">
+        Don't have an account? <a href="signup.html" data-translate="signup">Sign Up</a>
       </p>
     </div>
   </div>
 
   <!-- Login via live Flask API -->
 <script>
+// Initialize language on page load
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.setAttribute('data-page', 'login');
+    const storedLang = localStorage.getItem('language') || 'en';
+    updatePageLanguage(storedLang);
+    if (window.feather) {
+        feather.replace();
+    }
+    // Update input placeholders after language change
+    updateInputPlaceholders(storedLang);
+});
+
+function updateInputPlaceholders(lang) {
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    if (emailInput) emailInput.placeholder = translations[lang]['enterEmail'] || 'Enter your email';
+    if (passwordInput) passwordInput.placeholder = translations[lang]['enterPassword'] || 'Enter your password';
+}
+
+// Also update placeholders when language changes
+const originalUpdatePageLanguage = window.updatePageLanguage;
+window.updatePageLanguage = function(lang) {
+    originalUpdatePageLanguage(lang);
+    updateInputPlaceholders(lang);
+};
+
 document.getElementById("login-form").addEventListener("submit", async (e) => {
     e.preventDefault();
 
