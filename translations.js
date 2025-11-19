@@ -70,6 +70,13 @@ const translations = {
         wonth2: "❌ Things we won't do",
         roadmapwont1: "Unrelated topics outside IT",
         roadmapwont2: "Ads or invasive tracking",
+        'roadmap-title': '🚀 IT Learn Roadmap',
+        doh2: "✅ Things we're going to do",
+        laterh2: "🕒 Things for later",
+        wonth2: "❌ Things we won't do",
+        roadmapdo9: "Regularly updated content",
+        roadmapdo10: "Multi-language support",
+        copyright: "© 2025 IT Learn | Roadmap is updated regularly",
 
 
         // Login/Signup
@@ -178,6 +185,13 @@ const translations = {
         wonth2: "❌ Dingen die we niet gaan doen",
         roadmapwont1: "Onderwerpen buiten IT",
         roadmapwont2: "Advertenties of opdringerige tracking",
+        'roadmap-title': '🚀 IT Learn Roadmap',
+        doh2: "✅ Dingen die we gaan doen",
+        laterh2: "🕒 Dingen voor later",
+        wonth2: "❌ Dingen die we niet gaan doen",
+        roadmapdo9: "Regelmatig bijgewerkte inhoud",
+        roadmapdo10: "Ondersteuning voor meerdere talen",
+        copyright: "© 2025 IT Learn | Roadmap wordt regelmatig bijgewerkt",
 
 
         // Login/Signup
