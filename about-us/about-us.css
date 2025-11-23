@@ -1,4 +1,4 @@
-/* ---------- Variables ---------- */
+/* Variables */
 :root {
     --bg: #0f172a;
     --panel: #0b1220;
@@ -14,7 +14,7 @@
     --container: 1100px;
 }
 
-/* ---------- Base ---------- */
+/* Base */
 body {
     font-family: 'Poppins', sans-serif;
     background: radial-gradient(circle at top left, #0b1120, #0f172a 60%);
@@ -25,7 +25,7 @@ body {
     overflow-x: hidden;
 }
 
-/* ---------- Smooth Fade ---------- */
+/* Smooth Fade */
 .fade-in {
     opacity: 0;
     transform: translateY(30px);
@@ -46,7 +46,7 @@ body {
     }
 }
 
-/* ---------- Header ---------- */
+/* Header */
 .header {
     text-align: center;
     padding: 80px 20px 60px;
@@ -56,7 +56,6 @@ body {
     position: relative;
 }
 
-/* 🔥 Verwijderd: de ronddraaiende glow (geen ::after meer) */
 
 .header h1 {
     font-size: 3.2rem;
@@ -72,7 +71,7 @@ body {
     margin-top: 10px;
 }
 
-/* ---------- Escape Button ---------- */
+/* Escape Button */
 .escape {
     position: fixed;
     top: 1rem;
@@ -102,7 +101,7 @@ body {
     box-shadow: 0 0 25px var(--accent-500);
 }
 
-/* ---------- Timeline ---------- */
+/* Timeline */
 .content {
     position: relative;
     max-width: var(--container);
@@ -123,7 +122,7 @@ body {
     filter: drop-shadow(0 0 6px var(--accent-600));
 }
 
-/* ---------- Story Cards ---------- */
+/* Story Cards */
 .story {
     position: relative;
     width: 45%;
@@ -142,7 +141,6 @@ body {
     box-shadow: 0 10px 35px rgba(99,102,241,0.4);
 }
 
-/* Alternate Sides */
 .story:nth-child(odd) { left: 0; }
 .story:nth-child(even) { left: 55%; }
 
@@ -186,7 +184,7 @@ body {
     box-shadow: 0 0 8px rgba(99,102,241,0.2);
 }
 
-/* ---------- Responsive ---------- */
+/* Responsive */
 @media (max-width: 768px) {
     .content::before {
         left: 8px;

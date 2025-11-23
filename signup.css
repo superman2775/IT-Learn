@@ -1,4 +1,4 @@
-/* ========== Reset & Base ========== */
+/* Reset & Base */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -16,14 +16,14 @@ body {
   overflow: hidden;
 }
 
-/* ========== Container ========== */
+/* Container */
 .container {
   width: 100%;
   max-width: 400px;
   padding: 1.5rem;
 }
 
-/* ========== Form Box ========== */
+/* Form Box */
 .form-box {
   position: relative;
   background: rgba(15, 23, 42, 0.95);
@@ -48,7 +48,7 @@ body {
   100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* ========== Input Group ========== */
+/* Input Group */
 .input-group {
   margin-bottom: 1rem;
   text-align: left;
@@ -82,7 +82,7 @@ body {
   background: rgba(255, 255, 255, 0.08);
 }
 
-/* Animate signup heading and inputs (same behavior as login.css) */
+
 #email,
 #password {
   animation: inputPop 700ms cubic-bezier(.2,.9,.3,1) both;
@@ -97,21 +97,20 @@ body {
   animation-delay: 450ms;
 }
 
-/* small pop animation for inputs and Google button */
+
 @keyframes inputPop {
   0%   { opacity: 0; transform: translateY(10px) scale(.995); }
   60%  { opacity: 1; transform: translateY(-4px) scale(1.01); }
   100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* Animate the primary form button (Create account) with the same pop effect as inputs */
 .form-box .btn {
   animation: inputPop 700ms cubic-bezier(.2,.9,.3,1) both;
-  animation-delay: 600ms; /* stagger after email/password/google */
+  animation-delay: 600ms; 
   transform-origin: center;
 }
 
-/* ========== Buttons ========== */
+/* Buttons */
 .btn, .btn-google {
   width: 100%;
   padding: 0.75rem 1rem;
@@ -127,7 +126,6 @@ body {
   transition: transform 0.15s ease, background 0.2s ease;
 }
 
-/* Normal login/signup button */
 .btn {
   background: linear-gradient(90deg, #4f46e5, #8b5cf6);
   color: #fff;
@@ -138,7 +136,6 @@ body {
   transform: translateY(-2px);
 }
 
-/* Google button */
 .btn-google {
   background: #fff;
   color: #000;
@@ -155,7 +152,6 @@ body {
   transform: translateY(-2px);
 }
 
-/* ========== OR Divider ========== */
 .or-divider {
   margin: 1.2rem 0;
   text-align: center;
@@ -182,7 +178,7 @@ body {
   z-index: 0;
 }
 
-/* ========== Redirect Text ========== */
+/* Redirect Text */
 .redirect-text {
   margin-top: 1rem;
   font-size: 0.9rem;
@@ -199,7 +195,7 @@ body {
   text-decoration: underline;
 }
 
-/* ========== Escape Button ========== */
+/* Escape Button */
 .escape {
   position: absolute;
   top: 25px;
@@ -245,7 +241,6 @@ body {
   display: inline-block;
 }
 
-/* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   .form-box h1,
   #email, #password, #google-login, .form-box .btn {
@@ -255,7 +250,7 @@ body {
   .splash { transition: none; transform: none; }
 }
 
-/* ========== Responsive ========== */
+/* Responsive */
 @media (max-width: 450px) {
   .form-box {
     padding: 1.5rem;

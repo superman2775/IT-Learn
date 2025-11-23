@@ -84,7 +84,12 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             credentials: "include",
-            body: JSON.stringify({ email, password, captchaToken })
+            body: JSON.stringify({
+                email,
+                password,
+                captcha_token: captchaToken
+              })
+
         });
 
         const data = await res.json();

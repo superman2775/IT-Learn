@@ -1,8 +1,4 @@
-/* ================================  
-   CSS – Learn Page (VOLLEDIG GECORRIGEERD)
-================================== */
-
-/* ========== Variables ========== */
+/* Variables */
 :root {
   --bg: #0f172a;
   --panel: #0b1220;
@@ -25,7 +21,7 @@
   --shadow-2: 0 16px 40px rgba(2,6,23,0.6);
 }
 
-/* ========== Reset / Base ========== */
+/* Reset / Base */
 * { box-sizing: border-box; }
 
 html, body {
@@ -47,7 +43,7 @@ body {
   font-feature-settings: "kern" 1;
 }
 
-/* ========== Utility container ========== */
+/* Utility container */
 .container {
   display: flex;
   flex: 1;
@@ -58,7 +54,7 @@ body {
   align-items: stretch;
 }
 
-/* ========== SIDEBAR ========== */
+/* SIDEBAR */
 .sidebar {
   width: 260px;
   min-width: 200px;
@@ -106,7 +102,6 @@ body {
   transform: translateY(-1px);
 }
 
-/* Auth Button */
 #auth-btn {
   margin-top: auto;
   background: linear-gradient(90deg, var(--accent-600), #8b5cf6);
@@ -122,7 +117,7 @@ body {
 
 #auth-btn:hover { transform: translateY(-2px); }
 
-/* ========== MAIN CONTENT ========== */
+/* MAIN CONTENT */
 .main-content {
   flex: 1;
   display: flex;
@@ -162,9 +157,8 @@ body {
   box-shadow: var(--shadow-2);
 }
 
-/* ========== MODULES ========== */
+/* MODULES */
 
-/* LES BUTTONS */
 .lesson-buttons {
     display: flex;
     flex-direction: column;
@@ -195,7 +189,6 @@ body {
     transform: scale(0.98);
 }
 
-/* Optioneel icon rechts */
 .lesson-button span {
     float: right;
     opacity: 0.7;
@@ -233,7 +226,7 @@ body {
   line-height: 1.5;
 }
 
-/* ========== MODULE BUTTONS ========== */
+/* MODULE BUTTONS */
 #modules-list h2 {
   margin: 0 0 0.75rem;
   color: var(--muted-2);
@@ -281,7 +274,7 @@ body {
   transform: translateY(-2px);
 }
 
-/* ========== LESSON SECTION ========== */
+/* LESSON SECTION */
 #lesson-section { margin-top: 1rem; }
 
 #back-to-modules {

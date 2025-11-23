@@ -1,9 +1,9 @@
-/* ========== Base / Variables ========== */
+/* Base / Variables */
 :root{
   --bg: #0f172a;
   --panel: #0b1220;
-  --muted: #94a3b8; /* text-slate-300-ish */
-  --muted-2: #c7d2fe; /* text-indigo-200 */
+  --muted: #94a3b8;
+  --muted-2: #c7d2fe;
   --accent-500: #6366f1;
   --accent-600: #4f46e5;
   --accent-700: #4338ca;
@@ -31,7 +31,7 @@ body{
   line-height:1.45;
 }
 
-/* ========== Utility Containers ========== */
+/* Utility Containers */
 .container{
   width: calc(100% - 2rem);
   max-width: var(--container);
@@ -44,7 +44,7 @@ body{
   .container{width:1280px}
 }
 
-/* ========== NAVBAR ========== */
+/* navbar */
 .navbar{
   position: fixed;
   top:0;
@@ -89,7 +89,7 @@ body{
   font-weight:700;
   letter-spacing:0.2px;
   color:#fff;
-  display:none; /* hide textual brand to match compact nav, reveal on larger screens */
+  display:none;
 }
 
 .nav-links{
@@ -149,7 +149,7 @@ body{
 
 .btn-lg{ padding: 14px 22px; border-radius: 12px; font-size:1rem }
 
-/* Hamburger (mobile) */
+/* mobile */
 .hamburger{
   display:none;
   background:transparent;
@@ -160,9 +160,9 @@ body{
   border-radius:8px;
 }
 
-/* ========== HERO ========== */
+/* HERO */
 .hero{
-  padding-top: 96px; /* ensure nav space */
+  padding-top: 96px;
   min-height: 88vh;
   display:flex;
   align-items:center;
@@ -198,7 +198,7 @@ body{
 }
 
 .highlight{
-  color: #93c5fd; /* soft indigo */
+  color: #93c5fd;
   background: linear-gradient(90deg, rgba(99,102,241,0.14), rgba(139,92,246,0.08));
   padding:0.05rem 0.18rem;
   border-radius:6px;
@@ -221,7 +221,7 @@ body{
 /* hero visual */
 .hero-character{ width: 350px; max-width: 40vw; display:block }
 
-/* ========== COURSES ========== */
+/* COURSES */
 .section{ padding: 4.5rem 0; }
 .section-header{ text-align:center; margin-bottom:2.25rem }
 .section-title{ font-size:1.75rem; margin:0; font-weight:700 }
@@ -265,7 +265,6 @@ body{
   align-items: center;
   justify-content: center;
   padding: 0.75rem;
-  /* vaste hoogte zodat iconen uniform passen in het kader */
   height: 120px;
 }
 
@@ -278,7 +277,6 @@ body{
   object-fit: contain;
 }
 
-/* kleinere iconen op smalle schermen */
 @media (max-width: 450px) {
   .course-media { height: 90px; }
   .course-media .course-img { max-width: 100px; }
@@ -308,7 +306,7 @@ body{
 .more-courses{ text-align:center; margin-top:1.2rem }
 .more-link{ color: #93c5fd; text-decoration:none; font-weight:600; display:inline-flex; gap:8px; align-items:center }
 
-/* ========== FEATURES / PRACTICE / COMMUNITY ========== */
+/* FEATURES / PRACTICE / COMMUNITY */
 .features-grid, .practice-grid, .community-grid{
   display:grid;
   gap:2rem;
@@ -333,7 +331,7 @@ body{
 .project-avatar{ width:64px; height:64px; border-radius:50%; object-fit:cover }
 
 
-/* ========== OUR TEAM ========== */
+/* OUR TEAM */
 .team-grid {
   display: grid;
   gap: 1rem;
@@ -355,7 +353,7 @@ body{
 .testimonial-head{ display:flex; gap:12px; align-items:center; margin-bottom:10px }
 .avatar{ width:56px; height:56px; border-radius:50%; object-fit:cover }
 
-/* ========== STATS ========== */
+/* STATS */
 .stats-grid{
   width: 100%;
   display: grid;
@@ -396,12 +394,12 @@ body{
   color: var(--muted);
 }
 
-/* ========== CTA ========== */
+/* CTA */
 .cta-inner{ display:flex; gap:2rem; align-items:center; justify-content:space-between; padding:2rem 0 }
 @media (max-width:900px){ .cta-inner{ flex-direction:column; text-align:center } }
 .cta-img{ width: 280px; max-width: 80vw; display:block; margin: 0 auto; }
 
-/* ========== FOOTER ========== */
+/* FOOTER */
 .footer {
   background: #0b1220;
   padding: 3rem 1rem 1.5rem;
@@ -412,12 +410,12 @@ body{
 .footer-grid {
   display: grid;
   gap: 2rem;
-  grid-template-columns: 1fr; /* fallback mobile */
+  grid-template-columns: 1fr;
 }
 
 @media (min-width: 900px) {
   .footer-grid {
-    grid-template-columns: repeat(4, 1fr); /* desktop 4 kolommen */
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -451,7 +449,7 @@ body{
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.03);
   display: flex;
-  flex-direction: column; /* mobile fallback */
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   gap: 0.6rem;
@@ -481,7 +479,7 @@ body{
   color: #93c5fd;
 }
 
-/* Brand footer inside footer-col */
+/* Brand Footer */
 .brand-footer {
   display: flex;
   gap: 0.6rem;
@@ -522,7 +520,7 @@ body{
 /* Mobile adjustments */
 @media (max-width: 900px) {
   .footer-grid {
-    grid-template-columns: 1fr; /* alles onder elkaar op mobiel */
+    grid-template-columns: 1fr;
   }
 
   .footer-bottom {
@@ -541,7 +539,7 @@ body{
 .socials a{ color:var(--muted); text-decoration:none; margin-right:10px }
 .socials a:hover{ color:#93c5fd }
 
-/* ========== SMALLER SCREENS ========== */
+/* SMALLER SCREENS */
 @media (max-width:900px){
   .nav-links{ display:none; position:fixed; top:64px; left:0; right:0; background: linear-gradient(180deg, rgba(15,23,42,0.96), rgba(8,12,20,0.96)); padding:1rem; flex-direction:column; gap:0.5rem; border-bottom: 1px solid rgba(255,255,255,0.02) }
   .nav-links.open{ display:flex }
@@ -561,7 +559,6 @@ body{
   .footer-bottom{ flex-direction:column; align-items:flex-start; gap:0.6rem }
 }
 
-/* ========== Small niceties ========== */
 a{ color:inherit }
 small{ font-size:0.85rem; color:var(--muted) }
 

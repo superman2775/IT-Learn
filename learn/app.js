@@ -182,7 +182,6 @@ authBtn.addEventListener("click", async () => {
 });
 
 // ---------------------------- Streak & Level ----------------------------
-// ---------------------------- Streak & Level ----------------------------
 function updateStreak() {
     const today = new Date().toISOString().split("T")[0];
 
@@ -295,11 +294,11 @@ function showModules() {
 function showLessonsList(moduleId) {
     currentModule = modulesData.find(m => m.id === moduleId);
     if (!currentModule) return;
-if (quizSection) quizSection.classList.add("hidden");
-if (submitQuizBtn) submitQuizBtn.style.display = "none";
-if (quizFeedback) quizFeedback.textContent = "";
-if (nextLessonBtn) nextLessonBtn.classList.add("hidden");
-if (backToModulesBtn) backToModulesBtn.style.display = "inline-block";
+    if (quizSection) quizSection.classList.add("hidden");
+    if (submitQuizBtn) submitQuizBtn.style.display = "none";
+    if (quizFeedback) quizFeedback.textContent = "";
+    if (nextLessonBtn) nextLessonBtn.classList.add("hidden");
+    if (backToModulesBtn) backToModulesBtn.style.display = "inline-block";
 
 
     lessonTitle.textContent = `Lessen in ${currentModule.title}`;
@@ -332,8 +331,7 @@ function showLesson(moduleId, lessonIndex) {
 
     lessonTitle.textContent = lesson.title;
     lessonContent.innerHTML = lesson.content || "";
-
-    // Quiz of code editor
+ 
 if (lesson.quiz && lesson.quiz.length) {
     quizSection.classList.remove("hidden");
     submitQuizBtn.style.display = "inline-block";
@@ -388,7 +386,6 @@ function buildQuiz(quizArray) {
 
                         target.classList.add(el.correct ? "correct" : "incorrect");
 
-                        // Toon uitleg subtiel onder de mail
                         const p = document.createElement("p");
                         p.className = el.correct ? "correct-text" : "incorrect-text";
                         p.textContent = el.explain;
@@ -446,7 +443,6 @@ submitQuizBtn.addEventListener("click", () => {
 
             if (allCorrectClicked) correctCount++;
         } else {
-            // Standaard multiple-choice vragen
             const radios = document.getElementsByName(`question-${i}`);
             let answered = false;
 
@@ -469,7 +465,6 @@ submitQuizBtn.addEventListener("click", () => {
         }
     }
 
-    // Resultaat tonen
     if (correctCount === quiz.length) {
         quizFeedback.textContent = "Well done! All answers are correct.";
         if (!isLessonCompleted(currentModule.id, lesson.id)) {
@@ -519,9 +514,7 @@ backToAllBtn.addEventListener("click", () => {
     window.location.href = "/learn/learn.html";
 });
 }
-// ---------------------------- Security ----------------------------
-document.addEventListener('keydown', e => { if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['i','j'].includes(e.key.toLowerCase())) || (e.ctrlKey && e.key.toLowerCase() === 'u')) e.preventDefault(); });
-document.addEventListener('contextmenu', e => e.preventDefault());
+
 
 // ---------------------------- Code Editor ----------------------------
 function runCode(id, expectedOutput = "") {
@@ -559,7 +552,6 @@ function runCode(id, expectedOutput = "") {
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-    // Active session
     try {
         const res = await fetch(`${HOST}/api/session`, { credentials: "include" });
         const data = await res.json();
@@ -573,7 +565,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.error("Session check failed:", err);
     }
 
-    // Dynamic lessons per page
     const lessonsListSection = document.getElementById("lessons-list");
     const lessonButtonsContainer = document.getElementById("lesson-buttons");
     if (!lessonButtonsContainer || !lessonsListSection) return;
@@ -591,7 +582,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         lessonButtonsContainer.appendChild(btn);
     });
 
-    // Toon juiste sectie
     lessonsListSection.classList.remove("hidden");
     const modulesListEl = document.getElementById("modules-list");
     if (modulesListEl) modulesListEl.classList.add("hidden");
@@ -636,7 +626,6 @@ if (!lesson) return;
   if (userCode.replace(/\s+/g, '') === exercise.expectedFix.replace(/\s+/g, '')) {
     feedback.innerHTML = `<p class="correct">✅ Correct! Nicely done.</p>`;
     
-    // Voeg XP toe en markeer de les als voltooid
     if (!isLessonCompleted(htmlModule.id, lesson.id)) {
         xp += 10;
         markLessonCompleted(htmlModule.id, lesson.id);
