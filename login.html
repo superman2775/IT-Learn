@@ -66,6 +66,32 @@ s0.parentNode.insertBefore(s1,s0);
 
 <!-- Login via live Flask API -->
 <script>
+// Initialize language on page load
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.setAttribute('data-page', 'login');
+    const storedLang = localStorage.getItem('language') || 'en';
+    updatePageLanguage(storedLang);
+    if (window.feather) {
+        feather.replace();
+    }
+    // Update input placeholders after language change
+    updateInputPlaceholders(storedLang);
+});
+
+function updateInputPlaceholders(lang) {
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    if (emailInput) emailInput.placeholder = translations[lang]['enterEmail'] || 'Enter your email';
+    if (passwordInput) passwordInput.placeholder = translations[lang]['enterPassword'] || 'Enter your password';
+}
+
+// Also update placeholders when language changes
+const originalUpdatePageLanguage = window.updatePageLanguage;
+window.updatePageLanguage = function(lang) {
+    originalUpdatePageLanguage(lang);
+    updateInputPlaceholders(lang);
+};
+
 document.getElementById("login-form").addEventListener("submit", async (e) => {
     e.preventDefault();
 
