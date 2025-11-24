@@ -755,11 +755,12 @@ i[data-feather] svg {
 
 body[data-page="index"] .language-selector,
 body[data-page="learn"] .language-selector {
-    display: block;
-    position: fixed;
-    top: 0.7rem;
-    right: 22rem;
-    z-index: 1000;
+  display: flex;
+  position: relative;
+  top: auto;
+  right: auto;
+  z-index: 1002;
+  align-items: center;
 }
 
 .lang-btn {
@@ -782,7 +783,7 @@ body[data-page="learn"] .language-selector {
 .lang-dropdown {
     position: absolute;
     top: 100%;
-    right: 0;
+  left: 0;
     margin-top: 0.5rem;
     background: #1a1a1a;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -791,7 +792,7 @@ body[data-page="learn"] .language-selector {
     display: none;
     flex-direction: column;
     min-width: 120px;
-    z-index: 1001;
+  z-index: 1003;
 }
 
 .lang-dropdown.show {
