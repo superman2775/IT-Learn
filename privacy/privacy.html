@@ -13,13 +13,13 @@
     </header>
 
     <main>
-        <div class="meta">Last updated: <strong id="last-updated">2025-09-14</strong></div>
+        <div class="meta">Last updated: <strong id="last-updated">2025-11-23</strong></div>
 
         <div class="scroll" role="region" aria-label="Privacy statement content">
             <section>
                 <p><strong>Privacy Statement | IT-Learn</strong></p>
-                <p><strong>Effective date:</strong> 2025-09-14<br/>
-                <strong>Last updated:</strong> 2025-09-14<br/>
+                <p><strong>Effective date:</strong> 2025-11-23<br/>
+                <strong>Last updated:</strong> 2025-11-23<br/>
                 <strong>Controller:</strong> IT-Learn | contact email: contact.itlearn@gmail.com</p>
             </section>
 
@@ -133,11 +133,9 @@
     </main>
 
     <script>
-        // print
         const printBtn = document.getElementById('printBtn');
         if (printBtn) printBtn.addEventListener('click', ()=> window.print());
 
-        // download
         const downloadBtn = document.getElementById('downloadBtn');
         if (downloadBtn) {
           downloadBtn.addEventListener('click', (e)=>{
@@ -148,7 +146,6 @@
           });
         }
 
-        // last-updated fallback (keeps placeholder if filled manually)
         const updatedEl = document.getElementById('last-updated');
         if(!updatedEl.textContent.trim()) updatedEl.textContent = new Date().toISOString().slice(0,10);
     </script>

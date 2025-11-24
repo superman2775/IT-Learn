@@ -182,7 +182,6 @@ authBtn.addEventListener("click", async () => {
 });
 
 // ---------------------------- Streak & Level ----------------------------
-// ---------------------------- Streak & Level ----------------------------
 function updateStreak() {
     const today = new Date().toISOString().split("T")[0];
 
@@ -274,13 +273,14 @@ function isModuleUnlocked(moduleId) {
 
 function showModules() {
     lessonSection.classList.add("hidden");
+    const header = document.querySelector("header");
+    if (header) header.style.display = "grid";
     document.getElementById("modules-list").classList.remove("hidden");
     quizSection.classList.add("hidden");
     quizFeedback.textContent = "";
     nextLessonBtn.classList.add("hidden");
     backToModulesBtn.style.display = "none";
     showMascotMessage("Choose a module to get started!");
-    renderModuleButtons();
 
     const sidebar = document.querySelector("nav.sidebar");
     if (sidebar) sidebar.style.display = "flex";
@@ -291,31 +291,15 @@ function showModules() {
     updateProgressUI();
 }
 
-
-function renderModuleButtons() {
-    moduleButtons.innerHTML = "";
-    modulesData.forEach(mod => {
-        const li = document.createElement("li");
-        const btn = document.createElement("button");
-        btn.textContent = mod.title;
-        btn.disabled = !isModuleUnlocked(mod.id);
-        btn.addEventListener("click", () => showLessonsList(mod.id));
-        li.appendChild(btn);
-        moduleButtons.appendChild(li);
-    });
-}
-
 function showLessonsList(moduleId) {
     currentModule = modulesData.find(m => m.id === moduleId);
     if (!currentModule) return;
+    if (quizSection) quizSection.classList.add("hidden");
+    if (submitQuizBtn) submitQuizBtn.style.display = "none";
+    if (quizFeedback) quizFeedback.textContent = "";
+    if (nextLessonBtn) nextLessonBtn.classList.add("hidden");
+    if (backToModulesBtn) backToModulesBtn.style.display = "inline-block";
 
-    document.getElementById("modules-list").classList.add("hidden");
-    quizSection.classList.add("hidden");
-    lessonSection.classList.remove("hidden");
-    submitQuizBtn.style.display = "none";
-    quizFeedback.textContent = "";
-    nextLessonBtn.classList.add("hidden");
-    backToModulesBtn.style.display = "inline-block";
 
     lessonTitle.textContent = `Lessen in ${currentModule.title}`;
     lessonContent.innerHTML = "";
@@ -337,20 +321,35 @@ function showLesson(moduleId, lessonIndex) {
     currentLessonIndex = lessonIndex;
     const lesson = currentModule.lessons[lessonIndex];
 
+    const lessonsListSection = document.getElementById("lessons-list");
+    const lessonSection = document.getElementById("lesson-section");
+    const lessonTitle = document.getElementById("lesson-title");
+    const lessonContent = document.getElementById("lesson-content");
+
+    lessonsListSection.classList.add("hidden");
+    lessonSection.classList.remove("hidden");
+
     lessonTitle.textContent = lesson.title;
     lessonContent.innerHTML = lesson.content || "";
-    quizFeedback.textContent = "";
+ 
+if (lesson.quiz && lesson.quiz.length) {
+    quizSection.classList.remove("hidden");
+    submitQuizBtn.style.display = "inline-block";
+    buildQuiz(lesson.quiz);
+} else {
     quizSection.classList.add("hidden");
     submitQuizBtn.style.display = "none";
-    nextLessonBtn.classList.add("hidden");
-    backToModulesBtn.style.display = "inline-block";
-    document.getElementById("modules-list").classList.add("hidden");
-    lessonSection.classList.remove("hidden");
+}
+
 
     const sidebar = document.querySelector("nav.sidebar");
     if (sidebar) sidebar.style.display = "none";
-
     
+    document.querySelector("header").style.display = "none";
+
+    const progressBarContainer = document.querySelector("#progress-section");
+    if (progressBarContainer) progressBarContainer.style.display = "none";
+
     const discordBtn = document.querySelector(".discord-button");
     if (discordBtn) discordBtn.style.left = "12px";
 
@@ -387,7 +386,6 @@ function buildQuiz(quizArray) {
 
                         target.classList.add(el.correct ? "correct" : "incorrect");
 
-                        // Toon uitleg subtiel onder de mail
                         const p = document.createElement("p");
                         p.className = el.correct ? "correct-text" : "incorrect-text";
                         p.textContent = el.explain;
@@ -445,7 +443,6 @@ submitQuizBtn.addEventListener("click", () => {
 
             if (allCorrectClicked) correctCount++;
         } else {
-            // Standaard multiple-choice vragen
             const radios = document.getElementsByName(`question-${i}`);
             let answered = false;
 
@@ -468,7 +465,6 @@ submitQuizBtn.addEventListener("click", () => {
         }
     }
 
-    // Resultaat tonen
     if (correctCount === quiz.length) {
         quizFeedback.textContent = "Well done! All answers are correct.";
         if (!isLessonCompleted(currentModule.id, lesson.id)) {
@@ -501,16 +497,24 @@ function removeMistake(moduleId, lessonId, questionIndex) {
 }
 
 // ---------------------------- Knoppen ----------------------------
-nextLessonBtn.addEventListener("click", () => {
-    if (!currentModule) return;
-    if (currentLessonIndex + 1 < currentModule.lessons.length) showLesson(currentModule.id, currentLessonIndex + 1);
-    else showModules();
-});
-backToModulesBtn.addEventListener("click", () => showModules());
+if (nextLessonBtn) {
+    nextLessonBtn.addEventListener("click", () => {
+        if (!currentModule) return;
+        if (currentLessonIndex + 1 < currentModule.lessons.length) {
+            showLesson(currentModule.id, currentLessonIndex + 1);
+        } else {
+            showModules();
+        }
+    });
+}
 
-// ---------------------------- Security ----------------------------
-document.addEventListener('keydown', e => { if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['i','j'].includes(e.key.toLowerCase())) || (e.ctrlKey && e.key.toLowerCase() === 'u')) e.preventDefault(); });
-document.addEventListener('contextmenu', e => e.preventDefault());
+if (backToModulesBtn) {
+const backToAllBtn = document.getElementById("back-to-all-languages");
+backToAllBtn.addEventListener("click", () => {
+    window.location.href = "/learn/learn.html";
+});
+}
+
 
 // ---------------------------- Code Editor ----------------------------
 function runCode(id, expectedOutput = "") {
@@ -546,8 +550,8 @@ function runCode(id, expectedOutput = "") {
 }
 
 
-// ---------------------------- Init ----------------------------
-async function initApp() {
+document.addEventListener("DOMContentLoaded", async () => {
+
     try {
         const res = await fetch(`${HOST}/api/session`, { credentials: "include" });
         const data = await res.json();
@@ -557,20 +561,63 @@ async function initApp() {
             updateProgressUI();
             updateStreak();
         }
-    } catch (err) { 
-        console.error("Session check failed:", err); 
+    } catch (err) {
+        console.error("Session check failed:", err);
     }
-    showModules();
+
+    const lessonsListSection = document.getElementById("lessons-list");
+    const lessonButtonsContainer = document.getElementById("lesson-buttons");
+    if (!lessonButtonsContainer || !lessonsListSection) return;
+
+    const moduleId = window.location.pathname.split("/").pop().replace(".html","");
+    currentModule = modulesData.find(m => m.id === moduleId);
+    if (!currentModule) return;
+
+    lessonButtonsContainer.innerHTML = "";
+    currentModule.lessons.forEach((lesson, index) => {
+        const btn = document.createElement("button");
+        btn.classList.add("lesson-button");
+        btn.textContent = lesson.title;
+        btn.addEventListener("click", () => showLesson(moduleId, index));
+        lessonButtonsContainer.appendChild(btn);
+    });
+
+    lessonsListSection.classList.remove("hidden");
+    const modulesListEl = document.getElementById("modules-list");
+    if (modulesListEl) modulesListEl.classList.add("hidden");
+    lessonSection.classList.add("hidden");
+});
+
+
+    // ------------------- Buttons -------------------
+const backToAllBtn = document.getElementById("back-to-all-languages");
+if (backToAllBtn) {
+    backToAllBtn.addEventListener("click", () => {
+        window.location.href = "/learn/learn.html";
+    });
 }
 
-initApp();
+
+    if (nextLessonBtn) {
+        nextLessonBtn.addEventListener("click", () => {
+            if (!currentModule) return;
+            if (currentLessonIndex + 1 < currentModule.lessons.length) {
+                showLesson(currentModule.id, currentLessonIndex + 1);
+            } else {
+                showModules();
+            }
+        });
+    }
+
+
 
 //-------------------------html debugger---------------------------
 function checkFix(lessonId, exerciseIndex) {
-  const lesson = modulesData
-    .find(m => m.id === "html")
-    .lessons.find(l => l.id === lessonId);
-  
+const htmlModule = modulesData.find(m => m.id === "html");
+if (!htmlModule) return;
+const lesson = htmlModule.lessons.find(l => l.id === lessonId);
+if (!lesson) return;
+
   const exercise = lesson.exercises[exerciseIndex - 1];
   const textarea = document.getElementById(`code-editor-html-debug-${exerciseIndex}`);
   const feedback = document.getElementById(`feedback-html-debug-${exerciseIndex}`);
@@ -578,9 +625,15 @@ function checkFix(lessonId, exerciseIndex) {
 
   if (userCode.replace(/\s+/g, '') === exercise.expectedFix.replace(/\s+/g, '')) {
     feedback.innerHTML = `<p class="correct">✅ Correct! Nicely done.</p>`;
+    
+    if (!isLessonCompleted(htmlModule.id, lesson.id)) {
+        xp += 10;
+        markLessonCompleted(htmlModule.id, lesson.id);
+        updateProgressUI();
+        saveProgressToAPI();
+        showMascotMessage("You completed the exercise and earned 10 XP!");
+    }
   } else {
     feedback.innerHTML = `<p class="incorrect">❌ Not quite right.<br>${exercise.hint}</p>`;
   }
 }
-
-

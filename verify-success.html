@@ -17,17 +17,6 @@
   </div>
 
   <script>
-    // Initialize language on page load
-    document.addEventListener('DOMContentLoaded', () => {
-        document.body.setAttribute('data-page', 'verify-success');
-        const storedLang = localStorage.getItem('language') || 'en';
-        updatePageLanguage(storedLang);
-        if (window.feather) {
-            feather.replace();
-        }
-    });
-
-    // Redirect countdown
     let countdown = 5;
     const countdownEl = document.getElementById("countdown");
     const interval = setInterval(() => {

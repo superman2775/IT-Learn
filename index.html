@@ -26,23 +26,37 @@
 
 <body>
 
-  <!-- NAV -->
-  <nav class="navbar">
-    <div class="container nav-inner">
-      <div class="nav-left">
-        <a class="brand" href="/learn/learn.html">
-          <img src="https://raw.githubusercontent.com/Broodje565/IT-Learn-Visuals/refs/heads/main/icons/IT_Learn.png"
-            alt="IT Learn" class="brand-logo">
-          <span class="brand-text">IT Learn</span>
-        </a>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/690b61d5727def194d09e47e/1j9a7caec';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
 
-        <div class="nav-links" id="nav-links">
-          <a href="login.html" class="nav-link" data-translate="learn">Learn</a>
-          <a href="login.html" class="nav-link" data-translate="practice">Practice</a>
-          <a href="login.html" class="nav-link" data-translate="build">Build</a>
-          <a href="https://discord.gg/rKgF9s32EV" class="nav-link" target="_blank" rel="noopener noreferrer" data-translate="discord">Discord</a>
-          <a href="roadmap/roadmap.html" class="nav-link" data-translate="roadmap">Roadmap</a>
-        </div>
+<!-- NAV -->
+<nav class="navbar">
+  <div class="container nav-inner">
+    <div class="nav-left">
+      <a class="brand" href="index.html">
+        <img src="https://raw.githubusercontent.com/Broodje565/IT-Learn-Visuals/refs/heads/main/icons/IT_Learn.png" alt="IT Learn" class="brand-logo">
+        <span class="brand-text">IT Learn</span>
+      </a>
+
+      <div class="nav-links" id="nav-links">
+        <a href="login.html" class="nav-link">Learn</a>
+        <a href="login.html" class="nav-link">Practice</a>
+        <a href="login.html" class="nav-link">Build</a>
+        <a href="https://discord.gg/rKgF9s32EV" class="nav-link" target="_blank" rel="noopener noreferrer">Discord</a>
+        <a href="roadmap/roadmap.html" class="nav-link">Roadmap</a>
+        <a href="/about-us/about-us.html" class="nav-link">About us</a>
+        <a href="https://itlearn.beehiiv.com/" class="nav-link">Newsletter</a></a>
       </div>
 
       <div class="nav-right">
@@ -102,6 +116,7 @@
         </div>
 
         <div class="course-grid" data-aos="fade-up" data-aos-delay="100">
+          
           <!-- Course card: Python -->
           <article class="course-card" data-aos="fade-up">
             <div class="course-media">
@@ -247,9 +262,9 @@
     <!-- STATS -->
     <section class="section stats" data-aos="fade-up">
       <div class="container stats-grid">
-        <div class="stat">
-          <div class="stat-num">2</div>
-          <div class="stat-label" data-translate="statslearners">Learners</div>
+      <div class="stat">
+          <div class="stat-num" id="learners-count">0</div>
+          <div class="stat-label">Learners</div>
         </div>
         <div class="stat">
           <div class="stat-num">100+</div>
@@ -294,18 +309,19 @@
       <div class="footer-col">
         <h4>COMPANY</h4>
         <ul class="footer-list">
-          <li><a href="#team" data-translate="landingfooterourteam">Our Team</a></li>
-          <li><a href="https://discord.gg/rKgF9s32EV" target="_blank" rel="noopener noreferrer" data-translate="discord">Discord</a></li>
-          <li><a href="https://discord.gg/rKgF9s32EV" target="_blank" rel="noopener noreferrer" data-translate="landinghelpcenter">Help Center</a></li>
-          <li><a href="/roadmap/roadmap.html" data-translate="roadmap">Roadmap</a></li>
+          <li><a href="/about-us/about-us.html">About us</a></li>
+          <li><a href="#team">Our Team</a></li>
+          <li><a href="https://discord.gg/rKgF9s32EV" target="_blank" rel="noopener noreferrer">Discord</a></li>
+          <li><a href="https://discord.gg/rKgF9s32EV" target="_blank" rel="noopener noreferrer">Help Center</a></li>
+          <li><a href="/roadmap/roadmap.html">Roadmap</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h4 data-translate="landingfooterpractice">PRACTICE</h4>
         <ul class="footer-list">
-          <li><a href="login.html" data-translate="landingfooterchallenges">Challenges</a></li>
-          <li><a href="#" data-translate="landingfooterprojects">Projects</a></li>
+          <li><a href="login.html">Challenges</a></li>
+          <li><a href="/about-us/about-us.html">Projects</a></li>
         </ul>
       </div>
 
@@ -321,24 +337,24 @@
       </div>
     </div>
 
-    <div class="footer-bottom">
-      <p>© 2025 IT Learn</p>
-      <div class="footer-links">
-        <a href="/terms/terms.html" target="_blank" data-translate="termsandconditions">Terms and conditions</a>
-        <a href="privacy/privacy.html" target="_blank" data-translate="privacypolicy">Privacy Policy</a>
-      </div>
-    </div>
+<div class="footer-bottom">
+  <p>© 2025 IT Learn | Report abuse: <a href="mailto:abuse-ithelp-be@googlegroups.com">abuse-ithelp-be@googlegroups.com</a></p>
+  <div class="footer-links">
+    <a href="/terms/terms.html" target="_blank">Terms</a>
+    <a href="privacy/privacy.html" target="_blank">Privacy Policy</a>
+  </div>
+</div>
+
+
   </footer>
 
   <!-- SCRIPTS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="translations.js"></script>
   <script>
-    // Init AOS & Feather
     AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
     feather.replace();
 
-    // Mobile nav toggle
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('nav-links');
     hamburger.addEventListener('click', () => {
@@ -346,7 +362,6 @@
       hamburger.classList.toggle('open');
     });
 
-    // Close mobile nav on resize bigger than mobile
     window.addEventListener('resize', () => {
       if (window.innerWidth > 900) {
         navLinks.classList.remove('open');
@@ -354,16 +369,13 @@
       }
     });
 
-    // ---- Added: check login before redirecting to learn ----
     document.getElementById('get-started').addEventListener('click', function (e) {
       e.preventDefault();
-      // Pas hier de key aan naar wat jouw login page zet (bijv. 'isLoggedIn' of 'authToken')
       const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true' || !!localStorage.getItem('authToken');
       const target = 'learn/index.html';
       if (isLoggedIn) {
         window.location.href = target;
       } else {
-        // stuur door naar login en meld waar we naartoe moeten terugkeren
         window.location.href = 'login.html?next=' + encodeURIComponent(target);
       }
     });
@@ -371,6 +383,44 @@
     // Set page data attribute for language selector visibility
     document.body.setAttribute('data-page', 'index');
   </script>
-</body>
 
+    <script>
+async function updateLearnersCount() {
+  try {
+    const res = await fetch('https://itlearn.pythonanywhere.com/api/user-count', {
+      credentials: 'include' 
+    });
+    const data = await res.json();
+    const total = data.totalUsers;
+
+    const counter = document.getElementById('learners-count');
+    const duration = 2000;
+    const startTime = performance.now();
+
+    function animate(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
+
+      const currentValue = Math.floor(easedProgress * total);
+      counter.innerText = currentValue;
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        counter.innerText = total;
+      }
+    }
+
+    requestAnimationFrame(animate);
+
+  } catch (error) {
+    console.error("Kon aantal learners niet ophalen:", error);
+  }
+}
+
+window.addEventListener('DOMContentLoaded', updateLearnersCount);
+
+    </script>
+</body>
 </html>
