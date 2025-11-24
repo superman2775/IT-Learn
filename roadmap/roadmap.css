@@ -1,18 +1,15 @@
-/* ================== Page-load animations ================== */
-/* fade + lift keyframe */
+/* Page-load animations */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(14px) scale(0.995); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* tiny pop for header title (slight scale) */
 @keyframes pop {
   0%   { transform: translateY(6px) scale(.98); opacity: 0; }
   60%  { transform: translateY(-3px) scale(1.03); opacity: 1; }
   100% { transform: translateY(0) scale(1); opacity: 1; }
 }
 
-/* apply animations on load to header + the three roadmap cards */
 header {
   opacity: 0;
   transform: translateY(8px);
@@ -23,7 +20,6 @@ header {
   animation-delay: 0.12s;
 }
 
-/* sections: initial hidden, then fadeUp with staggered delays */
 .roadmap-do,
 .roadmap-later,
 .roadmap-wont {
@@ -35,12 +31,10 @@ header {
   animation-fill-mode: both;
 }
 
-/* stagger the three main cards */
 .roadmap-do   { animation-delay: 0.28s; }
 .roadmap-later{ animation-delay: 0.44s; }
 .roadmap-wont { animation-delay: 0.60s; }
 
-/* subtle entrance for each list item */
 .roadmap-do ul li,
 .roadmap-later ul li,
 .roadmap-wont ul li {
@@ -52,7 +46,6 @@ header {
   animation-fill-mode: both;
 }
 
-/* per-child delays */
 .roadmap-do ul li:nth-child(1),
 .roadmap-later ul li:nth-child(1),
 .roadmap-wont ul li:nth-child(1) { animation-delay: 0.42s; }
@@ -78,14 +71,12 @@ header {
 .roadmap-later ul li:nth-child(8),
 .roadmap-wont ul li:nth-child(8) { animation-delay: 1.12s; }
 
-/* Hover lift for sections */
 .roadmap-do:hover,
 .roadmap-later:hover,
 .roadmap-wont:hover {
   transform: translateY(-6px);
 }
 
-/* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   header,
   .roadmap-do,
@@ -101,7 +92,7 @@ header {
   }
 }
 
-/* Root variables */
+
 :root{
   --bg: #0f172a;
   --panel: #0b1220;
@@ -121,7 +112,6 @@ header {
   --container: 1100px;
 }
 
-/* Page basics */
 *{box-sizing:border-box}
 html { scroll-behavior: smooth; background: var(--bg); color: #f8fafc; }
 body {
@@ -135,7 +125,6 @@ body {
   align-items: center;
 }
 
-/* Central container */
 .roadmap-container {
   width: calc(100% - 2rem);
   max-width: var(--container);
@@ -147,7 +136,6 @@ body {
   align-items: center;
 }
 
-/* Header */
 header {
   width: 100%;
   max-width: 920px;
@@ -172,7 +160,6 @@ header {
   font-size: 0.98rem;
 }
 
-/* Generic card */
 .roadmap-card {
   width: 100%;
   max-width: 920px;
@@ -190,7 +177,7 @@ header {
   box-shadow: 0 26px 48px rgba(2,6,23,0.72);
 }
 
-/* ---------------- DO SECTION ---------------- */
+/* DO SECTION */
 .roadmap-do {
   width: 100%;
   max-width: 920px;
@@ -254,7 +241,7 @@ header {
   font-weight: 600;
 }
 
-/* ---------------- LATER SECTION ---------------- */
+/* LATER SECTION */
 .roadmap-later {
   width: 100%;
   max-width: 920px;
@@ -318,7 +305,7 @@ header {
   font-weight: 600;
 }
 
-/* ---------------- WONT SECTION ---------------- */
+/* WONT SECTION */
 .roadmap-wont {
   width: 100%;
   max-width: 920px;
@@ -382,7 +369,6 @@ header {
   font-weight: 600;
 }
 
-/* footer */
 footer {
   width: 100%;
   max-width: 920px;
@@ -393,7 +379,6 @@ footer {
   background: transparent;
 }
 
-/* subtle page hint */
 .scroll-hint {
   display: inline-flex;
   align-items: center;
@@ -403,7 +388,6 @@ footer {
   margin-top: 0.6rem;
 }
 
-/* scrollbar styling */
 @media (pointer: fine) {
   ::-webkit-scrollbar { width: 10px; height: 10px; }
   ::-webkit-scrollbar-thumb {
@@ -414,26 +398,22 @@ footer {
   ::-webkit-scrollbar-track { background: transparent; }
 }
 
-/* utility tweaks */
 .kicker { display:inline-block; padding:6px 10px; border-radius:999px; background: rgba(99,102,241,0.08); color: var(--muted-2); font-weight:600; font-size:0.85rem; }
 .lead { color: var(--muted-2); font-size:1rem; margin-top:0.5rem; }
 
-/* focus */
 a:focus, button:focus { outline: 2px solid rgba(147,197,253,0.12); outline-offset:4px; border-radius:8px; }
 
-/* responsive */
 @media (max-width: 520px) {
   .title { font-size: 1.25rem; }
   .roadmap-do, .roadmap-later, .roadmap-wont { padding: 1rem; border-radius: 12px; }
   .roadmap-do ul li, .roadmap-later ul li, .roadmap-wont ul li { padding: 0.8rem; font-size: 0.9rem; }
 }
 
-/* Escape / Close button */
 .escape {
-  position: fixed; /* blijft bovenaan staan bij scrollen */
+  position: fixed; 
   top: 1rem;
   right: 1rem;
-  background: rgba(79,70,229,0.15); /* subtiele accentkleur */
+  background: rgba(79,70,229,0.15);
   color: #fff;
   border: none;
   border-radius: 50%;
@@ -447,7 +427,8 @@ a:focus, button:focus { outline: 2px solid rgba(147,197,253,0.12); outline-offse
   justify-content: center;
   box-shadow: 0 4px 14px rgba(2,6,23,0.4);
   transition: all 0.18s ease;
-  z-index: 999; /* altijd boven andere content */
+  z-index: 999;
+  text-decoration: none;
 }
 
 .escape:hover {

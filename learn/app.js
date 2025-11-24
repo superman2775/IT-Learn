@@ -156,17 +156,26 @@ async function signup(email, password) {
 
 // ---------------------------- Streak & Level ----------------------------
 function updateStreak() {
-    const today = new Date().toDateString();
-    if (!lastActive) lastActive = today;
+    const today = new Date().toISOString().split("T")[0];
+
+    if (!lastActive) {
+        lastActive = today;
+        saveProgressToAPI();
+        return;
+    }
 
     if (lastActive !== today) {
-        const yesterday = new Date(Date.now() - 864e5).toDateString();
-        streak = lastActive === yesterday ? streak + 1 : 1;
+        const yesterday = new Date(Date.now() - 86400000).toISOString().split("T")[0];
+        if (lastActive === yesterday) {
+            streak += 1;
+        } else {
+            streak = 1;
+        }
         lastActive = today;
+        console.log(`Streak updated → ${streak} (last active: ${lastActive})`);
         saveProgressToAPI();
     }
 }
-
 function getLevel() {
     return Math.floor(xp / 50) + 1;
 }
@@ -231,13 +240,14 @@ function markLessonCompleted(moduleId, lessonId) {
     saveProgressToAPI(); 
 }
 
-// Voor testen: alle modules altijd unlocked
 function isModuleUnlocked(moduleId) {
     return true;
 }
 
 function showModules() {
     lessonSection.classList.add("hidden");
+    const header = document.querySelector("header");
+    if (header) header.style.display = "grid";
     document.getElementById("modules-list").classList.remove("hidden");
     quizSection.classList.add("hidden");
     quizFeedback.textContent = "";
@@ -248,30 +258,24 @@ function showModules() {
     updateProgressUI();
 }
 
-function renderModuleButtons() {
-    moduleButtons.innerHTML = "";
-    modulesData.forEach(mod => {
-        const li = document.createElement("li");
-        const btn = document.createElement("button");
-        btn.textContent = mod.title;
-        btn.disabled = !isModuleUnlocked(mod.id);
-        btn.addEventListener("click", () => showLessonsList(mod.id));
-        li.appendChild(btn);
-        moduleButtons.appendChild(li);
-    });
+    const sidebar = document.querySelector("nav.sidebar");
+    if (sidebar) sidebar.style.display = "flex";
+
+    const discordBtn = document.querySelector(".discord-button");
+    if (discordBtn) discordBtn.style.left = "calc(260px + 1rem + 12px)";
+
+    updateProgressUI();
 }
 
 function showLessonsList(moduleId) {
     currentModule = modulesData.find(m => m.id === moduleId);
     if (!currentModule) return;
+    if (quizSection) quizSection.classList.add("hidden");
+    if (submitQuizBtn) submitQuizBtn.style.display = "none";
+    if (quizFeedback) quizFeedback.textContent = "";
+    if (nextLessonBtn) nextLessonBtn.classList.add("hidden");
+    if (backToModulesBtn) backToModulesBtn.style.display = "inline-block";
 
-    document.getElementById("modules-list").classList.add("hidden");
-    quizSection.classList.add("hidden");
-    lessonSection.classList.remove("hidden");
-    submitQuizBtn.style.display = "none";
-    quizFeedback.textContent = "";
-    nextLessonBtn.classList.add("hidden");
-    backToModulesBtn.style.display = "inline-block";
 
     lessonTitle.textContent = `Lessen in ${currentModule.title}`;
     lessonContent.innerHTML = "";
@@ -293,15 +297,37 @@ function showLesson(moduleId, lessonIndex) {
     currentLessonIndex = lessonIndex;
     const lesson = currentModule.lessons[lessonIndex];
 
+    const lessonsListSection = document.getElementById("lessons-list");
+    const lessonSection = document.getElementById("lesson-section");
+    const lessonTitle = document.getElementById("lesson-title");
+    const lessonContent = document.getElementById("lesson-content");
+
+    lessonsListSection.classList.add("hidden");
+    lessonSection.classList.remove("hidden");
+
     lessonTitle.textContent = lesson.title;
     lessonContent.innerHTML = lesson.content || "";
-    quizFeedback.textContent = "";
+ 
+if (lesson.quiz && lesson.quiz.length) {
+    quizSection.classList.remove("hidden");
+    submitQuizBtn.style.display = "inline-block";
+    buildQuiz(lesson.quiz);
+} else {
     quizSection.classList.add("hidden");
     submitQuizBtn.style.display = "none";
-    nextLessonBtn.classList.add("hidden");
-    backToModulesBtn.style.display = "inline-block";
-    document.getElementById("modules-list").classList.add("hidden");
-    lessonSection.classList.remove("hidden");
+}
+
+
+    const sidebar = document.querySelector("nav.sidebar");
+    if (sidebar) sidebar.style.display = "none";
+    
+    document.querySelector("header").style.display = "none";
+
+    const progressBarContainer = document.querySelector("#progress-section");
+    if (progressBarContainer) progressBarContainer.style.display = "none";
+
+    const discordBtn = document.querySelector(".discord-button");
+    if (discordBtn) discordBtn.style.left = "12px";
 
     if (lesson.quiz && lesson.quiz.length) {
         quizSection.classList.remove("hidden");
@@ -392,26 +418,61 @@ function removeMistake(moduleId, lessonId, questionIndex) {
 }
 
 // ---------------------------- Knoppen ----------------------------
-nextLessonBtn.addEventListener("click", () => {
-    if (!currentModule) return;
-    if (currentLessonIndex + 1 < currentModule.lessons.length) showLesson(currentModule.id, currentLessonIndex + 1);
-    else showModules();
-});
-backToModulesBtn.addEventListener("click", () => showModules());
-
-// ---------------------------- Security ----------------------------
-document.addEventListener('keydown', e => { if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['i','j'].includes(e.key.toLowerCase())) || (e.ctrlKey && e.key.toLowerCase() === 'u')) e.preventDefault(); });
-document.addEventListener('contextmenu', e => e.preventDefault());
-
-// ---------------------------- Code Editor ----------------------------
-function runCode(id) {
-    const code = document.getElementById(`code-editor-${id}`).value;
-    const iframe = document.getElementById(`output-frame-${id}`);
-    iframe.srcdoc = `<style>body{background:#0f172a;color:#fff;font-family:sans-serif;}</style>${code}`;
+if (nextLessonBtn) {
+    nextLessonBtn.addEventListener("click", () => {
+        if (!currentModule) return;
+        if (currentLessonIndex + 1 < currentModule.lessons.length) {
+            showLesson(currentModule.id, currentLessonIndex + 1);
+        } else {
+            showModules();
+        }
+    });
 }
 
-// ---------------------------- Init ----------------------------
-async function initApp() {
+if (backToModulesBtn) {
+const backToAllBtn = document.getElementById("back-to-all-languages");
+backToAllBtn.addEventListener("click", () => {
+    window.location.href = "/learn/learn.html";
+});
+}
+
+
+// ---------------------------- Code Editor ----------------------------
+function runCode(id, expectedOutput = "") {
+    const textarea = document.getElementById(`code-editor-${id}`);
+    const iframe = document.getElementById(`output-frame-${id}`);
+    if (!textarea || !iframe) return;
+
+    const code = textarea.value;
+    iframe.srcdoc = `<style>body{background:#0f172a;color:#fff;font-family:sans-serif;}</style>${code}`;
+
+    if (!expectedOutput) return;
+
+    setTimeout(() => {
+        const doc = iframe.contentDocument || iframe.contentWindow.document;
+        const outputText = (doc.body.innerText || "").trim();
+        const lesson = currentModule.lessons[currentLessonIndex];
+
+        if (outputText === expectedOutput) {
+            if (!isLessonCompleted(currentModule.id, lesson.id)) {
+                xp += 10;
+                markLessonCompleted(currentModule.id, lesson.id);
+                updateProgressUI();
+                saveProgressToAPI();
+            }
+            correctSound.play();
+            nextLessonBtn.classList.remove("hidden");
+            showMascotMessage("✅ Correct output! Lesson completed!");
+        } else {
+            wrongSound.play();
+            showMascotMessage("⚠️ Output incorrect, probeer opnieuw!");
+        }
+    }, 50);
+}
+
+
+document.addEventListener("DOMContentLoaded", async () => {
+
     try {
         const res = await fetch(`${HOST}/api/session`, { credentials: "include" });
         const data = await res.json();
@@ -421,10 +482,79 @@ async function initApp() {
             updateProgressUI();
             updateStreak();
         }
-    } catch (err) { 
-        console.error("Session check failed:", err); 
+    } catch (err) {
+        console.error("Session check failed:", err);
     }
-    showModules();
+
+    const lessonsListSection = document.getElementById("lessons-list");
+    const lessonButtonsContainer = document.getElementById("lesson-buttons");
+    if (!lessonButtonsContainer || !lessonsListSection) return;
+
+    const moduleId = window.location.pathname.split("/").pop().replace(".html","");
+    currentModule = modulesData.find(m => m.id === moduleId);
+    if (!currentModule) return;
+
+    lessonButtonsContainer.innerHTML = "";
+    currentModule.lessons.forEach((lesson, index) => {
+        const btn = document.createElement("button");
+        btn.classList.add("lesson-button");
+        btn.textContent = lesson.title;
+        btn.addEventListener("click", () => showLesson(moduleId, index));
+        lessonButtonsContainer.appendChild(btn);
+    });
+
+    lessonsListSection.classList.remove("hidden");
+    const modulesListEl = document.getElementById("modules-list");
+    if (modulesListEl) modulesListEl.classList.add("hidden");
+    lessonSection.classList.add("hidden");
+});
+
+
+    // ------------------- Buttons -------------------
+const backToAllBtn = document.getElementById("back-to-all-languages");
+if (backToAllBtn) {
+    backToAllBtn.addEventListener("click", () => {
+        window.location.href = "/learn/learn.html";
+    });
 }
 
-initApp();
+
+    if (nextLessonBtn) {
+        nextLessonBtn.addEventListener("click", () => {
+            if (!currentModule) return;
+            if (currentLessonIndex + 1 < currentModule.lessons.length) {
+                showLesson(currentModule.id, currentLessonIndex + 1);
+            } else {
+                showModules();
+            }
+        });
+    }
+
+
+
+//-------------------------html debugger---------------------------
+function checkFix(lessonId, exerciseIndex) {
+const htmlModule = modulesData.find(m => m.id === "html");
+if (!htmlModule) return;
+const lesson = htmlModule.lessons.find(l => l.id === lessonId);
+if (!lesson) return;
+
+  const exercise = lesson.exercises[exerciseIndex - 1];
+  const textarea = document.getElementById(`code-editor-html-debug-${exerciseIndex}`);
+  const feedback = document.getElementById(`feedback-html-debug-${exerciseIndex}`);
+  const userCode = textarea.value.trim();
+
+  if (userCode.replace(/\s+/g, '') === exercise.expectedFix.replace(/\s+/g, '')) {
+    feedback.innerHTML = `<p class="correct">✅ Correct! Nicely done.</p>`;
+    
+    if (!isLessonCompleted(htmlModule.id, lesson.id)) {
+        xp += 10;
+        markLessonCompleted(htmlModule.id, lesson.id);
+        updateProgressUI();
+        saveProgressToAPI();
+        showMascotMessage("You completed the exercise and earned 10 XP!");
+    }
+  } else {
+    feedback.innerHTML = `<p class="incorrect">❌ Not quite right.<br>${exercise.hint}</p>`;
+  }
+}

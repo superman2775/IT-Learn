@@ -170,7 +170,7 @@ footer{ margin-top:1rem; color: var(--muted, #94a3b8); font-size:.875rem; text-a
 /* small utility classes */
 .text-muted{ color:var(--muted, #94a3b8) !important; font-size:.875rem; }
 .center{ text-align:center; }
-/* voeg ruimte tussen opeenvolgende secties in privacy/terms pagina's */
 .scroll > section + section {
     margin-top: 0.75rem;
+
 }

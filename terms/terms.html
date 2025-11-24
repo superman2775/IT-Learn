@@ -73,7 +73,7 @@
 
             <section>
                 <h2>9. Contact</h2>
-                <p>If you have any questions about these Terms, please contact us at: contact.itlearn@gmail.com</p>
+                <p>If you have any questions about these Terms, please contact us at: <a href="mailto:abuse-ithelp-be@googlegroups.com">abuse-ithelp-be@googlegroups.com</a></p>
             </section>
 
             <hr />
@@ -93,7 +93,6 @@
     <script>
         document.getElementById('printBtn').addEventListener('click', () => window.print());
 
-        // download huidige HTML als bestand
         document.getElementById('downloadBtn').addEventListener('click', (e) => {
             const blob = new Blob([document.documentElement.outerHTML], { type: 'text/html' });
             const url = URL.createObjectURL(blob);
@@ -101,7 +100,6 @@
             setTimeout(() => URL.revokeObjectURL(url), 10000);
         });
 
-        // stel default datum in (kan geautomatiseerd worden)
         const updatedEl = document.getElementById('last-updated');
         if (!updatedEl.textContent.trim()) updatedEl.textContent = new Date().toISOString().slice(0, 10);
     </script>
