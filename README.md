@@ -1,6 +1,6 @@
 # ⌨️ IT Learn
 # Welcome to IT Learn!
-Our website is made for anyone, of any age who wants to learn how to code — whether you're just getting started or looking to improve your skills.
+Our website is made for anyone, of any age who wants to learn how to code, whether you're just getting started or looking to improve your skills.
 
 With IT Learn, you can explore and practice programming languages like: HTML, CSS, JavaScript & Python
 
