@@ -56,6 +56,7 @@ const translations = {
         privacypolicy: 'Privacy Policy',
 
         // About us
+        aboutUsTitle: 'Discover our journey from idea to reality.',
         timeline_idea_title: '🎉 June 2025 (Idea)',
         timeline_idea_text: '<span class="highlight">Broodje56</span> and <span class="highlight">Joren</span> started this project with a simple idea: to create a platform where people can <span class="highlight">learn and grow together</span> in IT.',
         timeline_planning_title: '📝 June 2025 (Planning)',
@@ -241,6 +242,7 @@ const translations = {
         privacypolicy: 'Privacybeleid',
 
         // About page
+        aboutUsTitle: 'Ontdek onze reis van idee naar realiteit.',
         timeline_idea_title: '🎉 Juni 2025 (Idee)',
         timeline_idea_text: '<span class="highlight">Broodje56</span> en <span class="highlight">Joren</span> begonnen dit project met een simpel idee: een platform maken waar mensen kunnen <span class="highlight">samen leren en groeien</span> in IT.',
         timeline_planning_title: '📝 Juni 2025 (Planning)',
@@ -458,6 +460,7 @@ const translations = {
         privacypolicy: 'Datenschutzerklärung',
 
         // About us
+        aboutUsTitle: 'Entdecke unsere Reise von der Idee zur Realität.',
         timeline_idea_title: '🎉 Juni 2025 (Idee)',
         timeline_idea_text: '<span class="highlight">Broodje56</span> und <span class="highlight">Joren</span> starteten mit einer einfachen Idee: eine Plattform zu machen, auf der Menschen in der IT <span class="highlight">zusammen lernen und wachsen</span> können.',
         timeline_planning_title: '📝 Juni 2025 (Planung)',
