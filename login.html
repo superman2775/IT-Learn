@@ -2,14 +2,14 @@
 <html lang="en">
 
 <head>
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IT Learn | Login</title>
-  <link rel="stylesheet" href="login.css" />
+   <link rel="icon" href="/favicon.ico" type="image/x-icon">
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>IT Learn | Login</title>
+   <link rel="stylesheet" href="login.css" />
 
-  <!-- Cloudflare script -->
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+   <!-- Cloudflare script -->
+   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script src="/translations.js"></script>
 </head>
 
@@ -45,7 +45,7 @@ s0.parentNode.insertBefore(s1,s0);
       </div>
 
       <!-- Cloudflare widget -->
-      <div class="cf-turnstile" id="loginCaptcha" data-sitekey="0x4AAAAAACDEaJSXddDZ6jRf"></div>
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAACDEaJSXddDZ6jRf"></div>
 
       <button type="submit" class="btn" data-translate="login">Login</button>
     </form>
@@ -67,57 +67,75 @@ s0.parentNode.insertBefore(s1,s0);
 
 <!-- Login via live Flask API -->
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-      document.body.setAttribute('data-page', 'login');
-      const storedLang = localStorage.getItem('language') || 'en';
-      updatePageLanguage(storedLang);
-      if (window.feather) feather.replace();
-      updateInputPlaceholders(storedLang);
-  
-      const form = document.getElementById("login-form");
-  
-      form.addEventListener("submit", async (e) => {
-          e.preventDefault();
-  
-          const email = document.getElementById("email").value;
-          const password = document.getElementById("password").value;
-  
-          if (!window.turnstile) {
-              alert("CAPTCHA is not ready. Please wait a moment and try again.");
-              return;
-          }
-  
-          const captchaToken = turnstile.getResponse();
-          if (!captchaToken) {
-              alert("Please complete the CAPTCHA.");
-              return;
-          }
-  
-          try {
-              const res = await fetch("https://itlearn.pythonanywhere.com/api/login", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  credentials: "include",
-                  body: JSON.stringify({ email, password, captcha_token: captchaToken })
-              });
-  
-              const data = await res.json();
-  
-              if (data.error) {
-                  alert("Error: " + data.error);
-                  turnstile.reset();
-              } else {
-                  alert("Login successful!");
-                  window.location.href = "/learn/learn.html";
-              }
-          } catch (err) {
-              console.error(err);
-              alert("An error occurred while logging in.");
-              turnstile.reset();
-          }
-      });
-  });
-  </script>
+// Initialize language on page load
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.setAttribute('data-page', 'login');
+    const storedLang = localStorage.getItem('language') || 'en';
+    updatePageLanguage(storedLang);
+    if (window.feather) {
+        feather.replace();
+    }
+    // Update input placeholders after language change
+    updateInputPlaceholders(storedLang);
+});
+
+function updateInputPlaceholders(lang) {
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    if (emailInput) emailInput.placeholder = translations[lang]['enterEmail'] || 'Enter your email';
+    if (passwordInput) passwordInput.placeholder = translations[lang]['enterPassword'] || 'Enter your password';
+}
+
+// Also update placeholders when language changes
+const originalUpdatePageLanguage = window.updatePageLanguage;
+window.updatePageLanguage = function(lang) {
+    originalUpdatePageLanguage(lang);
+    updateInputPlaceholders(lang);
+};
+
+document.getElementById("login-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    // Get Turnstile token
+      const captchaToken = turnstile.getResponse();
+      if (!captchaToken) {
+      alert("Please complete the CAPTCHA.");
+      return;
+}
+
+
+    try {
+        const res = await fetch("https://itlearn.pythonanywhere.com/api/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+            body: JSON.stringify({
+                email,
+                password,
+                captcha_token: captchaToken
+              })
+
+        });
+
+        const data = await res.json();
+
+        if (data.error) {
+            alert("Error: " + data.error);
+            turnstile.reset(); // reset CAPTCHA
+        } else {
+            alert("Login successful!");
+            window.location.href = "/learn/learn.html";
+        }
+    } catch (err) {
+        console.error(err);
+        alert("An error occurred while logging in.");
+        turnstile.reset();
+    }
+});
+</script>
 
 <!-- Random motivational splash -->
 <script>
