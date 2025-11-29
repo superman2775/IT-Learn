@@ -799,6 +799,8 @@ langDropdown.querySelectorAll('a').forEach(link => {
             currentLang.textContent = 'Nederlands';
         } else if (lang === 'de') {
             currentLang.textContent = 'Deutsch';
+        } else if (lang === 'fr') {
+            currentLang.textContent = 'Français';
         }
 
         langDropdown.classList.remove('show');
