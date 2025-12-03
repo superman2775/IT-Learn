@@ -97,6 +97,10 @@ body {
   animation-delay: 450ms;
 }
 
+#github-signup-btn {
+  animation: inputPop 700ms cubic-bezier(.2,.9,.3,1) both;
+  animation-delay: 550ms;
+}
 
 @keyframes inputPop {
   0%   { opacity: 0; transform: translateY(10px) scale(.995); }
@@ -111,7 +115,7 @@ body {
 }
 
 /* Buttons */
-.btn, .google-signup-btn {
+.btn, .google-signup-btn, .github-signup-btn {
   width: 100%;
   padding: 0.75rem 1rem;
   margin-top: 0.8rem;
@@ -148,6 +152,22 @@ body {
 }
 
 .google-signup-btn:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+.github-signup-btn {
+  background: #fff;
+  color: #000;
+  border: 1px solid #d1d5db;
+}
+
+.github-signup-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+.github-signup-btn:hover {
   background: #f0f0f0;
   transform: translateY(-2px);
 }

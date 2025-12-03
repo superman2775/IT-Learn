@@ -63,13 +63,21 @@ var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 
     <div class="or-divider"><span data-translate="or">OR</span></div>
 
-    <!-- Google OAuth button (signup) -->
-    <button type="button" class="google-signup-btn" id="google-signup-btn" data-translate="continueGoogle">
+    <!-- OAuth buttons (signup) -->
+    <button type="button" class="google-signup-btn" id="google-signup-btn">
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/480px-Google_%22G%22_logo.svg.png"
         alt="Google Logo"
       />
-      <span>Continue with Google</span>
+      <span data-translate="continueGoogle">Continue with Google</span>
+    </button>
+
+   <button type="button" class="github-signup-btn" id="github-signup-btn">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/1200px-Octicons-mark-github.svg.png"
+        alt="GitHub Logo"
+      />
+      <span data-translate="continueGitHub">Continue with GitHub</span>
     </button>
 
     <p class="redirect-text">

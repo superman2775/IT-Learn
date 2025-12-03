@@ -74,6 +74,11 @@ body {
   animation-delay: 450ms;
 }
 
+#github-login-btn {
+  animation: inputPop 700ms cubic-bezier(.2,.9,.3,1) both;
+  animation-delay: 550ms;
+}
+
 .form-box .btn {
   animation: inputPop 700ms cubic-bezier(.2,.9,.3,1) both;
   animation-delay: 600ms;
@@ -122,7 +127,7 @@ body {
 }
 
 /* Buttons */
-.btn, .google-login-btn {
+.btn, .google-login-btn, .github-login-btn {
   width: 100%;
   padding: 0.75rem 1rem;
   margin-top: 0.8rem;
@@ -161,6 +166,23 @@ body {
 }
 
 .google-login-btn:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+/* GitHub button */
+.github-login-btn {
+  background: #fff;
+  color: #000;
+  border: 1px solid #d1d5db;
+}
+
+.github-login-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+.github-login-btn:hover {
   background: #f0f0f0;
   transform: translateY(-2px);
 }
