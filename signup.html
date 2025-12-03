@@ -209,38 +209,22 @@ if (box) {
 }
 </script>
 
-<!-- Supabase + Google OAuth (same logic as login.html) -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  // TODO: same values as in login.html
-  const SUPABASE_URL = 'https://YOUR-PROJECT-REF.supabase.co';
-  const SUPABASE_ANON_KEY = 'YOUR_PUBLIC_ANON_KEY';
+  function startGoogleAuth(mode) {
+    // mode is either 'login' or 'signup'
+    const target = mode === 'signup' ? 'signup' : 'login';
+    window.location.href = `https://itlearn.pythonanywhere.com/api/auth/google?mode=${target}`;
+  }
 
-  if (window.supabase) {
-    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  const googleLoginBtn = document.getElementById('google-login-btn');
+  if (googleLoginBtn) {
+    googleLoginBtn.addEventListener('click', () => startGoogleAuth('login'));
+  }
 
-    const googleSignupBtn = document.getElementById('google-signup-btn');
-    if (googleSignupBtn) {
-      googleSignupBtn.addEventListener('click', async () => {
-        const { error } = await supabase.auth.signInWithOAuth({
-          provider: 'google',
-          options: {
-            // Same success page as login
-            redirectTo: window.location.origin + '/verify-success.html'
-          }
-        });
-
-        if (error) {
-          console.error('Google signup/login error:', error);
-          alert('Google sign-in failed. Please try again.');
-        }
-      });
-    }
-  } else {
-    console.error('Supabase script failed to load on signup page.');
+  const googleSignupBtn = document.getElementById('google-signup-btn');
+  if (googleSignupBtn) {
+    googleSignupBtn.addEventListener('click', () => startGoogleAuth('signup'));
   }
 </script>
-
 </body>
 </html>
->

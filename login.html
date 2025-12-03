@@ -185,37 +185,5 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
   }
 })();
 </script>
-
-<!-- Supabase + Google OAuth -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-  // TODO: vervang met je echte Supabase waarden
-  const SUPABASE_URL = 'https://YOUR-PROJECT-REF.supabase.co';
-  const SUPABASE_ANON_KEY = 'YOUR_PUBLIC_ANON_KEY';
-
-  if (window.supabase) {
-    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-    const googleBtn = document.getElementById('google-login-btn');
-    if (googleBtn) {
-      googleBtn.addEventListener('click', async () => {
-        const { error } = await supabase.auth.signInWithOAuth({
-          provider: 'google',
-          options: {
-            redirectTo: window.location.origin + '/verify-success.html'
-          }
-        });
-
-        if (error) {
-          console.error('Google login error:', error);
-          alert('Login with Google failed. Please try again.');
-        }
-      });
-    }
-  } else {
-    console.error('Supabase script failed to load.');
-  }
-</script>
-
 </body>
-</html>
+</html>>
