@@ -172,9 +172,9 @@ body {
 
 /* GitHub button */
 .github-login-btn {
-  background: #fff;
-  color: #000;
-  border: 1px solid #d1d5db;
+  background: #24292e;
+  color: white;
+  border: 1px solid #24292e;
 }
 
 .github-login-btn img {
@@ -183,7 +183,7 @@ body {
 }
 
 .github-login-btn:hover {
-  background: #f0f0f0;
+  background: #2c3136;
   transform: translateY(-2px);
 }
 

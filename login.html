@@ -63,7 +63,7 @@ var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 
 <button type="button" class="github-login-btn" id="github-login-btn">
       <img
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/1200px-Octicons-mark-github.svg.png"
+        src="https://upload.wikimedia.org/wikipedia/commons/2/24/Github_logo_svg.svg"
         alt="GitHub Logo"
       />
       <span data-translate="continueGitHub">Continue with GitHub</span>
@@ -211,7 +211,23 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
     googleSignupBtn.addEventListener('click', () => startGoogleAuth('signup'));
   }
 </script>
+<script>
+  function startGithubAuth(mode) {
+    // mode is either 'login' or 'signup'
+    const target = mode === 'signup' ? 'signup' : 'login';
+    window.location.href = `https://itlearn.pythonanywhere.com/api/auth/github?mode=${target}`;
+  }
 
+  const githubLoginBtn = document.getElementById('github-login-btn');
+  if (githubLoginBtn) {
+    githubLoginBtn.addEventListener('click', () => startGithubAuth('login'));
+  }
+
+  const githubSignupBtn = document.getElementById('github-signup-btn');
+  if (githubSignupBtn) {
+    githubSignupBtn.addEventListener('click', () => startGithubAuth('signup'));
+  }
+</script>
 </body>
 
 </html>
