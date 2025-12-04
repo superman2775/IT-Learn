@@ -102,6 +102,16 @@ body {
   animation-delay: 550ms;
 }
 
+#discord-signup-btn {
+  animation: inputPop 700ms cubic-bezier(.2,.9,.3,1) both;
+  animation-delay: 650ms;
+}
+
+#smartschool-signup-btn {
+  animation: inputPop 700ms cubic-bezier(.2,.9,.3,1) both;
+  animation-delay: 750ms;
+}
+
 @keyframes inputPop {
   0%   { opacity: 0; transform: translateY(10px) scale(.995); }
   60%  { opacity: 1; transform: translateY(-4px) scale(1.01); }
@@ -115,7 +125,7 @@ body {
 }
 
 /* Buttons */
-.btn, .google-signup-btn, .github-signup-btn {
+.btn, .google-signup-btn, .github-signup-btn, .discord-signup-btn, .smartschool-signup-btn {
   width: 100%;
   padding: 0.75rem 1rem;
   margin-top: 0.8rem;
@@ -185,6 +195,22 @@ body {
 
 .discord-signup-btn:hover {
   background: #4752c4;
+  transform: translateY(-2px);
+}
+
+.smartschool-signup-btn {
+  background: #FF520E; /* Smartschool orange */
+  color: white;
+  border: 1px solid #FF520E;
+}
+
+.smartschool-signup-btn img {
+  width: 12px;
+  height: 18px;
+}
+
+.smartschool-signup-btn:hover {
+  background: #e04a0d;
   transform: translateY(-2px);
 }
 

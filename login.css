@@ -84,6 +84,12 @@ body {
   animation-delay: 650ms;
 }
 
+#smartschool-login-btn {
+  animation: inputPop 700ms cubic-bezier(.2,.9,.3,1) both;
+  animation-delay: 750ms;
+}
+
+
 .form-box .btn {
   animation: inputPop 700ms cubic-bezier(.2,.9,.3,1) both;
   animation-delay: 600ms;
@@ -132,7 +138,7 @@ body {
 }
 
 /* Buttons */
-.btn, .google-login-btn, .github-login-btn, .discord-login-btn {
+.btn, .google-login-btn, .github-login-btn, .discord-login-btn, .smartschool-login-btn {
   width: 100%;
   padding: 0.75rem 1rem;
   margin-top: 0.8rem;
@@ -206,6 +212,23 @@ body {
 
 .discord-login-btn:hover {
   background: #4752c4;
+  transform: translateY(-2px);
+}
+
+/* Smartschool button */
+.smartschool-login-btn {
+  background: #FF520E; /* Smartschool orange */
+  color: white;
+  border: 1px solid #FF520E;
+}
+
+.smartschool-login-btn img {
+  width: 12px;
+  height: 18px;
+}
+
+.smartschool-login-btn:hover {
+  background: #e04a0d;
   transform: translateY(-2px);
 }
 
