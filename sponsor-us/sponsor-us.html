@@ -8,16 +8,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <a class="escape" href="/index.html">&#10006</a>
+    <a class="escape" href="/index.html" aria-label="Close">&times;</a>
 
     <header class="header fade-in">
         <h1 data-translate="sponsorUs">Sponsor Us</h1>
         <p data-translate="sponsorUsTitle">Help us on our mission to make people learn programming for free!</p>
     </header>
-<main>
-    <button class="sponsor-button fade-in" onclick="window.location.href='https://itlearn.be';"> 
-        <span data-translate="becomeASponsor">Become a sponsor</span>
-</main>
+    <main>
+        <div class="content-wrapper">
+            <section class="story fade-in fade-in-3">
+            <p class="sponsor-text" id="sponsor-description" data-translate="sponsorDescription">
+            By sponsoring us, you contribute to the development and maintenance of our free educational platform. Your support helps us provide high-quality programming tutorials and resources to learners worldwide. In return, we offer various sponsorship packages that include brand visibility, promotional opportunities, and more.
+            </p>
+        </section>
+
+            <button class="sponsor-button fade-in" onclick="window.location.href='https://itlearn.be'" aria-label="Become a sponsor">
+                <span data-translate="becomeASponsor">Become a Sponsor</span>
+            </button>
+        </div>
+    </main>
+
     <script src="../translations.js"></script>
 </body>
 </html>
