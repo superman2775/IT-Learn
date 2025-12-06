@@ -8,8 +8,7 @@
    <title>IT Learn | Login</title>
    <link rel="stylesheet" href="login.css" />
 
-   <!-- Cloudflare script -->
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
     <script src="/translations.js"></script>
 </head>
 
@@ -44,9 +43,20 @@ s0.parentNode.insertBefore(s1,s0);
         <input type="password" id="password" placeholder="Enter your password" data-translate="enterPassword" required />
       </div>
 
-      <!-- Cloudflare widget -->
-      <div class="cf-turnstile" data-sitekey="JOUW_SITEKEY"></div>
-      <input type="hidden" name="cf-turnstile-response" id="cf-turnstile-response">
+      <label
+        data-mcaptcha_url="@broodje56_should_fill_this_in"
+        for="mcaptcha__token"
+        id="mcaptcha__token-label"
+      >
+        mCaptcha authorization token.
+      <a
+        href="https://mcaptcha.org/docs/user-manual/how-to-mcaptcha-without-js/"
+        >Instructions</a
+      >.
+        <input type="text" name="mcaptcha__token" id="mcaptcha__token" />
+      </label>
+      <div id="mcaptcha__widget-container"></div>
+      <script src="https://unpkg.com/@mcaptcha/vanilla-glue@0.1.0-rc2/dist/index.js"></script>
 
       <button type="submit" class="btn" data-translate="login">Login</button>
     </form>
@@ -99,15 +109,12 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
 
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
+    const mcaptchaToken = document.getElementById("mcaptcha__token").value; // ← Correcte token
 
-    // Get Turnstile token
-      const captchaToken = turnstile.getResponse();
-      document.getElementById('cf-turnstile-response').value = captchaToken;
-      if (!captchaToken) {
-      alert("Please complete the CAPTCHA.");
-      return;
-}
-
+    if (!mcaptchaToken) {
+        alert("Please complete the mCaptcha.");
+        return;
+    }
 
     try {
         const res = await fetch("https://itlearn.pythonanywhere.com/api/login", {
@@ -117,24 +124,21 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
             body: JSON.stringify({
                 email,
                 password,
-                captcha_token: captchaToken
-              })
-
+                mcaptcha__token: mcaptchaToken  // ← Correcte veldnaam
+            })
         });
 
         const data = await res.json();
 
         if (data.error) {
             alert("Error: " + data.error);
-        } 
-          else {
+        } else {
             alert("Login successful!");
             window.location.href = "/learn/learn.html";
-          }
+        }
     } catch (err) {
         console.error(err);
         alert("An error occurred while logging in.");
-        turnstile.reset();
     }
 });
 </script>
