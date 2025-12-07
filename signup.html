@@ -248,41 +248,27 @@ if (googleLoginBtn) {
   googleLoginBtn.addEventListener('click', () => startGoogleAuth('login'));
 }
 </script>
-
-
 <script>
-  function startGithubAuth(mode) {
-    // mode is either 'login' or 'signup'
-    const target = mode === 'signup' ? 'signup' : 'login';
-    window.location.href = `https://itlearn.pythonanywhere.com/api/auth/github?mode=${target}`;
-  }
+function startGithubAuth(mode) {
+  const target = mode === 'signup' ? 'signup' : 'login';
+  window.location.href = `https://itlearn.be/auth/login/github.html?mode=${target}`;
+}
 
-  const githubLoginBtn = document.getElementById('github-login-btn');
-  if (githubLoginBtn) {
-    githubLoginBtn.addEventListener('click', () => startGithubAuth('login'));
-  }
-
-  const githubSignupBtn = document.getElementById('github-signup-btn');
-  if (githubSignupBtn) {
-    githubSignupBtn.addEventListener('click', () => startGithubAuth('signup'));
-  }
+const githubLoginBtn = document.getElementById('github-login-btn');
+if (githubLoginBtn) {
+  githubLoginBtn.addEventListener('click', () => startGithubAuth('login'));
+}
 </script>
 <script>
-  function startDiscordAuth(mode) {
-    // mode is either 'login' or 'signup'
-    const target = mode === 'signup' ? 'signup' : 'login';
-    window.location.href = `https://itlearn.pythonanywhere.com/api/auth/discord?mode=${target}`;
-  }
+function startDiscordAuth(mode) {
+  const target = mode === 'signup' ? 'signup' : 'login';
+  window.location.href = `https://itlearn.be/auth/login/discord.html?mode=${target}`;
+}
 
-  const discordLoginBtn = document.getElementById('discord-login-btn');
-  if (discordLoginBtn) {
-    discordLoginBtn.addEventListener('click', () => startDiscordAuth('login'));
-  }
-
-  const discordSignupBtn = document.getElementById('discord-signup-btn');
-  if (discordSignupBtn) {
-    discordSignupBtn.addEventListener('click', () => startDiscordAuth('signup'));
-  }
+const discordLoginBtn = document.getElementById('discord-login-btn');
+if (discordLoginBtn) {
+  discordLoginBtn.addEventListener('click', () => startDiscordAuth('login'));
+}
 </script>
 </body>
 </html>

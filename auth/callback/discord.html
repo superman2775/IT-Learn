@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head><title>Verifying...</title></head>
+<body>
+  <div>
+    <h2>Verifying Discord Login...</h2>
+    <p>Please wait while we log you in.</p>
+  </div>
+  <!-- Use locally-served UMD bundle to avoid tracking-prevention issues -->
+  <script src="/libs/supabase.min.js" defer></script>
+  <script>
+    (function verifySupabaseSession(){
+      const SUPABASE_URL = 'https://gokykzltmnsjbchynfqu.supabase.co';
+      const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdva3lremx0bW5zamJjaHluZnF1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ3MTcyNjUsImV4cCI6MjA4MDI5MzI2NX0.StKxTsjfkYcy2hWNr4bcXAFjFRCjHAvkz2idQjRF6OU';
+
+      function ready(){
+        return window.supabase && typeof window.supabase.createClient === 'function';
+      }
+
+      function bootstrap(){
+        if (!ready()) {
+          setTimeout(bootstrap, 50);
+          return;
+        }
+
+        try {
+          const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+            auth: { flowType: 'pkce', detectSessionInUrl: true }
+          });
+
+          supabase.auth.getSession().then(({ data, error }) => {
+            if (error || !data.session) {
+              window.location.href = '/login.html';
+              return;
+            }
+
+            // Send token to backend (your existing endpoint)
+            fetch('https://superman2775.pythonanywhere.com/api/session-from-supabase', {
+              method: 'POST',
+              credentials: 'include',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ access_token: data.session.access_token })
+            }).then(() => {
+              window.location.href = '/learn/learn.html';
+            }).catch(err => {
+              console.error('Failed to send token to backend:', err);
+              window.location.href = '/learn/learn.html';
+            });
+          }).catch(err => {
+            console.error('getSession failed:', err);
+            window.location.href = '/login.html';
+          });
+        } catch (err) {
+          console.error('Error initializing Supabase SDK:', err);
+          document.querySelector('p').textContent = 'Initialization failed. Check console for details.';
+        }
+      }
+
+      bootstrap();
+    })();
+  </script>
+</body>
+</html>
