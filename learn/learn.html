@@ -6,9 +6,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>IT Learn</title>
   <link rel="stylesheet" href="style.css" />
+  <meta property="og:title" content="IT Learn">
+  <meta property="og:description" content="Learn programming for free! - IT Learn">
+  <meta property="og:image" content="https://raw.githubusercontent.com/Broodje565/IT-Learn-Visuals/refs/heads/main/icons/IT_Learn.png">
+  <meta property="og:type" content="website">
+
 </head>
 <body>
-    <div class="container">
+  
+  <script>
+  async function checkSession() {
+      try {
+          const res = await fetch("https://itlearn.pythonanywhere.com/api/session", {
+              method: "GET",
+              credentials: "include"
+          });
+
+          const data = await res.json();
+
+          if (!data.logged_in) {
+              window.location.href = "/login.html";
+          }
+      } catch (err) {
+          console.error("Session check failed", err);
+          window.location.href = "/login.html";
+      }
+  }
+
+  document.addEventListener("DOMContentLoaded", checkSession);
+  </script>
+
+  <div class="container">
 
     <!-- Sidebar -->
     <nav class="sidebar">

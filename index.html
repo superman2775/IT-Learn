@@ -22,6 +22,11 @@
 
   <!-- Meta -->
   <meta name="theme-color" content="#0f172a">
+  <meta property="og:title" content="IT Learn">
+  <meta property="og:description" content="Learn programming for free! - IT Learn">
+  <meta property="og:image" content="https://raw.githubusercontent.com/Broodje565/IT-Learn-Visuals/refs/heads/main/icons/IT_Learn.png">
+  <meta property="og:type" content="website">
+
 </head>
 
 <body>
@@ -53,7 +58,7 @@
         <a href="login.html" class="nav-link" data-translate="headerLearn">Learn</a>
         <a href="login.html" class="nav-link" data-translate="headerPractice">Practice</a>
         <a href="login.html" class="nav-link" data-translate="headerBuild">Build</a>
-        <a href="https://discord.gg/rKgF9s32EV" class="nav-link" target="_blank" rel="noopener noreferrer">Discord</a>
+        <a href="https://discord.itlearn.be/" class="nav-link" target="_blank" rel="noopener noreferrer">Discord</a>
         <a href="roadmap/roadmap.html" class="nav-link">Roadmap</a>
         <a href="/about-us/about-us.html" class="nav-link" data-translate="headerAboutUs">About us</a>
         <a href="https://itlearn.beehiiv.com/" class="nav-link" data-translate="headerNewsletter">Newsletter</a></a>
@@ -69,6 +74,8 @@
         <div class="lang-dropdown" id="lang-dropdown">
           <a href="#" data-lang="en">English</a>
           <a href="#" data-lang="nl">Nederlands</a>
+          <a href="#" data-lang="de">Deutsch</a>
+          <a href="#" data-lang="fr">Français</a>
         </div>
       </div>
       <a href="login.html" class="btn btn-secondary" data-translate="login">Login</a>
@@ -88,7 +95,7 @@
         <p class="hero-sub" data-translate="hero-sub">Coding made easy by students for students.</p>
 
         <div class="hero-ctas" data-aos="fade-up" data-aos-delay="100">
-          <a id="get-started" href="login.html" class="btn btn-lg btn-primary">Get started</a>
+          <a id="get-started" href="login.html" class="btn btn-lg btn-primary" data-translate="getStarted">Get started</a>
         </div>
 
         <div class="hero-supported" data-aos="fade-up" data-aos-delay="200">
@@ -143,7 +150,7 @@
             </div>
             <div class="course-body">
               <div class="course-meta">
-                <span class="badge">BEGINNER</span>
+                <span class="badge" data-translate="badge">BEGINNER</span>
                 <span class="course-type" data-translate="course-type">Course</span>
               </div>
               <h3 class="course-title">HTML</h3>
@@ -202,6 +209,9 @@
           <h2 data-translate="landingmeetcoders">Meet fellow coders on your journey.</h2>
           <p class="muted" data-translate="landingbuildtogether">"It's better to build together than alone. Hop into our Discord to connect, collaborate, and
             support each other.</p>
+        </div>
+        <div id="discord-button">
+          <a href="https://discord.itlearn.be/" class="btn btn-primary" data-translate="joinOurDiscord" style="max-width: 200px;">Join our Discord!</a>
         </div>
       </div>
     </section>
@@ -264,7 +274,7 @@
       <div class="container stats-grid">
       <div class="stat">
           <div class="stat-num" id="learners-count">0</div>
-          <div class="stat-label">Learners</div>
+          <div class="stat-label" data-translate="statslearners">Learners</div>
         </div>
         <div class="stat">
           <div class="stat-num">100+</div>
@@ -307,12 +317,12 @@
       </div>
 
       <div class="footer-col">
-        <h4>COMPANY</h4>
+        <h4 data-translate="company">COMPANY</h4>
         <ul class="footer-list">
-          <li><a href="/about-us/about-us.html">About us</a></li>
-          <li><a href="#team">Our Team</a></li>
-          <li><a href="https://discord.gg/rKgF9s32EV" target="_blank" rel="noopener noreferrer">Discord</a></li>
-          <li><a href="https://discord.gg/rKgF9s32EV" target="_blank" rel="noopener noreferrer">Help Center</a></li>
+          <li><a href="/about-us/about-us.html" data-translate="footerAboutUs">About us</a></li>
+          <li><a href="#team" data-translate="footerOurTeam">Our Team</a></li>
+          <li><a href="https://discord.itlearn.be/" target="_blank" rel="noopener noreferrer">Discord</a></li>
+          <li><a href="https://discord.itlearn.be/" data-translate="helpCenter" target="_blank" rel="noopener noreferrer">Help Center</a></li>
           <li><a href="/roadmap/roadmap.html">Roadmap</a></li>
         </ul>
       </div>
@@ -320,13 +330,13 @@
       <div class="footer-col">
         <h4 data-translate="landingfooterpractice">PRACTICE</h4>
         <ul class="footer-list">
-          <li><a href="login.html">Challenges</a></li>
-          <li><a href="/about-us/about-us.html">Projects</a></li>
+          <li><a href="login.html" data-translate="challenges">Challenges</a></li>
+          <li><a href="/about-us/about-us.html" data-translate="projects">Projects</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
-        <h4>LEARN</h4>
+        <h4 data-translate="footerLearn">LEARN</h4>
         <ul class="footer-list">
           <li><a href="login.html" data-translate="allcourses">All Courses</a></li>
           <li><a href="login.html">Python</a></li>
@@ -423,4 +433,6 @@ window.addEventListener('DOMContentLoaded', updateLearnersCount);
 
     </script>
 </body>
+
 </html>
+
