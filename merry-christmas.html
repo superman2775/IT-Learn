@@ -50,6 +50,8 @@
     </div>
   </div>
 
+    <div id="cursor"></div>
+
   <script>
     const santa = document.getElementById('santa');
     const santaWrapper = document.getElementById('santaWrapper');
@@ -64,7 +66,56 @@
     // Start dancing automatically on page load
     window.addEventListener('load', startEndlessDance);
   </script>
-
+  <script>
+    const cursor = document.getElementById('cursor');
+    const trails = [];
+    let mouseX = 0, mouseY = 0;
+    let lastSantaTime = 0;
+    
+    // Update main cursor
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursor.style.left = mouseX + 'px';
+      cursor.style.top = mouseY + 'px';
+      
+      // Spawn Santa every 100ms max
+      const now = Date.now();
+      if (now - lastSantaTime > 100 && santas.length < 10) {
+        createSanta(mouseX, mouseY);
+        lastSantaTime = now;
+      }
+      
+      // Update existing santas
+      santas.forEach((trail, i) => {
+        trail.life -= 0.025;
+        trail.element.style.opacity = trail.life;
+        if (trail.life <= 0) {
+          trail.element.remove();
+          santas.splice(i, 1);
+        }
+      });
+    });
+    
+    function createSanta(x, y) {
+      const santa = document.createElement('div');
+      santa.className = 'santa';
+      santa.innerHTML = '🎅';
+      santa.style.left = x + 'px';
+      santa.style.top = y + 'px';
+      document.body.appendChild(santa);
+      
+      santas.push({
+        element: trail,
+        life: 1.0,
+        targetX: x,
+        targetY: y
+      });
+      
+      // Activate immediately
+      setTimeout(() => santa.classList.add('active'), 10);
+    }
+  </script>
   <!-- Snow Effect -->
   <script src="https://cdn.jsdelivr.net/gh/helpercode0/jsdeploy@main/snoweffect-react/1/1.2/js/script.js"></script>
 

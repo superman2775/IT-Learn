@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fixed Santa Cursor Trail</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      cursor: none; /* Hide default cursor */
+    }
+    
+    /* Main cursor - always visible */
+    #cursor {
+      position: fixed;
+      width: 20px; height: 20px;
+      background: radial-gradient(circle, #ff6b35 0%, transparent 70%);
+      border: 2px solid #fff;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      transition: transform 0.1s ease;
+      mix-blend-mode: difference;
+    }
+    
+    /* Santa trail */
+    .santa {
+      position: fixed;
+      pointer-events: none;
+      width: 32px; height: 32px;
+      z-index: 9999;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0);
+      transition: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+      font-size: 24px; /* Emoji size */
+    }
+    
+    .santa.active {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1) rotate(10deg);
+    }
+    
+    .content {
+      position: relative; z-index: 1;
+      color: white; text-align: center; padding: 100px 20px;
+    }
+    
+    h1 { font-size: 2.5em; margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <h1>🎅 Santa Trail Fixed!</h1>
+    <p>Move mouse slowly - you should see orange cursor + Santa emojis trailing</p>
+  </div>
+
+  <div id="cursor"></div>
+
+  <script>
+    const cursor = document.getElementById('cursor');
+    const santas = [];
+    let mouseX = 0, mouseY = 0;
+    let lastSantaTime = 0;
+    
+    // Update main cursor
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursor.style.left = mouseX + 'px';
+      cursor.style.top = mouseY + 'px';
+      
+      // Spawn Santa every 100ms max
+      const now = Date.now();
+      if (now - lastSantaTime > 100 && santas.length < 10) {
+        createSanta(mouseX, mouseY);
+        lastSantaTime = now;
+      }
+      
+      // Update existing santas
+      santas.forEach((santa, i) => {
+        santa.life -= 0.025;
+        santa.element.style.opacity = santa.life;
+        if (santa.life <= 0) {
+          santa.element.remove();
+          santas.splice(i, 1);
+        }
+      });
+    });
+    
+    function createSanta(x, y) {
+      const santa = document.createElement('div');
+      santa.className = 'santa';
+      santa.innerHTML = '🎅';
+      santa.style.left = x + 'px';
+      santa.style.top = y + 'px';
+      document.body.appendChild(santa);
+      
+      santas.push({
+        element: santa,
+        life: 1.0,
+        targetX: x,
+        targetY: y
+      });
+      
+      // Activate immediately
+      setTimeout(() => santa.classList.add('active'), 10);
+    }
+  </script>
+</body>
+</html>
