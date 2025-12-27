@@ -1,0 +1,159 @@
+🧩 Module 1 – Introductie
+
+Les 1: Wat is HTML?
+
+Wat betekent HTML?
+
+Wat doet HTML wel / niet?
+
+HTML vs CSS vs JavaScript
+
+Les 2: Benodigdheden
+
+Code editor (VS Code)
+
+Browser
+
+Eerste HTML-bestand maken
+
+🏗️ Module 2 – Basisstructuur
+
+Les 3: HTML documentstructuur
+
+<!DOCTYPE html>
+
+<html>, <head>, <body>
+
+Les 4: Head & meta
+
+<title>
+
+<meta charset>
+
+<meta viewport>
+
+🧱 Module 3 – Tekst & inhoud
+
+Les 5: Koppen
+
+<h1> t.e.m. <h6>
+
+Structuur & SEO
+
+Les 6: Paragrafen & tekst
+
+<p>
+
+<br>, <hr>
+
+<strong>, <em>
+
+🔗 Module 4 – Links & media
+
+Les 7: Links
+
+<a href="">
+
+Interne vs externe links
+
+target="_blank"
+
+Les 8: Afbeeldingen
+
+<img>
+
+src, alt
+
+Afbeeldingspaden
+
+📋 Module 5 – Lijsten & tabellen
+
+Les 9: Lijsten
+
+<ul>, <ol>, <li>
+
+Les 10: Tabellen
+
+<table>, <tr>, <td>, <th>
+
+Basis tabellen
+
+📦 Module 6 – Structuur & layout
+
+Les 11: Divs & spans
+
+<div> vs <span>
+
+Blok vs inline
+
+Les 12: Semantische HTML
+
+<header>, <nav>
+
+<main>, <section>, <article>, <footer>
+
+✍️ Module 7 – Formulieren
+
+Les 13: Form basics
+
+<form>
+
+<input>, <label>
+
+Les 14: Form inputs
+
+text, email, password
+
+checkbox, radio
+
+<textarea>, <select>
+
+⚙️ Module 8 – Attributen & best practices
+
+Les 15: Attributen
+
+id, class
+
+title, placeholder
+
+required, disabled
+
+Les 16: HTML best practices
+
+Proper inspringen
+
+Leesbare code
+
+Commentaar (<!-- -->)
+
+♿ Module 9 – Toegankelijkheid & SEO
+
+Les 17: Accessibility basics
+
+alt teksten
+
+Labels bij forms
+
+Semantiek
+
+Les 18: SEO basics
+
+Headings correct gebruiken
+
+Meta description
+
+Structuur
+
+🚀 Module 10 – Afronding
+
+Les 19: HTML + CSS
+
+<link rel="stylesheet">
+
+Wat doet CSS?
+
+Les 20: Mini-project
+
+Simpele website bouwen
+
+Homepage + contactpagina
