@@ -1,159 +1,90 @@
-🧩 Module 1 – Introductie
-
-Les 1: Wat is HTML?
-
-Wat betekent HTML?
-
-Wat doet HTML wel / niet?
-
+Lesson 1: What is HTML?
+What does HTML mean?
+What does HTML do or not do?
 HTML vs CSS vs JavaScript
 
-Les 2: Benodigdheden
-
+Lesson 2: Requirements
 Code editor (VS Code)
-
 Browser
+Create your first HTML file
 
-Eerste HTML-bestand maken
-
-🏗️ Module 2 – Basisstructuur
-
-Les 3: HTML documentstructuur
-
+Lesson 3: HTML Document Structure
 <!DOCTYPE html>
-
 <html>, <head>, <body>
 
-Les 4: Head & meta
-
+Lesson 4: Head & Meta
 <title>
-
 <meta charset>
-
 <meta viewport>
 
-🧱 Module 3 – Tekst & inhoud
+Lesson 5: Headings
+<h1> to <h6>
+Structure & SEO
 
-Les 5: Koppen
-
-<h1> t.e.m. <h6>
-
-Structuur & SEO
-
-Les 6: Paragrafen & tekst
-
+Lesson 6: Paragraphs & Text
 <p>
-
 <br>, <hr>
-
 <strong>, <em>
 
-🔗 Module 4 – Links & media
-
-Les 7: Links
-
+Lesson 7: Links
 <a href="">
-
-Interne vs externe links
-
+Internal vs external links
 target="_blank"
 
-Les 8: Afbeeldingen
-
+Lesson 8: Images
 <img>
-
 src, alt
+Image paths
 
-Afbeeldingspaden
-
-📋 Module 5 – Lijsten & tabellen
-
-Les 9: Lijsten
-
+Lesson 9: Lists
 <ul>, <ol>, <li>
 
-Les 10: Tabellen
-
+Lesson 10: Tables
 <table>, <tr>, <td>, <th>
+Basic tables
 
-Basis tabellen
-
-📦 Module 6 – Structuur & layout
-
-Les 11: Divs & spans
-
+Lesson 11: Divs & Spans
 <div> vs <span>
+Block vs inline
 
-Blok vs inline
-
-Les 12: Semantische HTML
-
+Lesson 12: Semantic HTML
 <header>, <nav>
-
 <main>, <section>, <article>, <footer>
 
-✍️ Module 7 – Formulieren
-
-Les 13: Form basics
-
+Lesson 13: Form Basics
 <form>
-
 <input>, <label>
 
-Les 14: Form inputs
-
+Lesson 14: Form Inputs
 text, email, password
-
 checkbox, radio
-
 <textarea>, <select>
 
-⚙️ Module 8 – Attributen & best practices
-
-Les 15: Attributen
-
+Lesson 15: Attributes
 id, class
-
 title, placeholder
-
 required, disabled
 
-Les 16: HTML best practices
+Lesson 16: HTML Best Practices
+Proper indentation
+Readable code
+Comments (<!-- -->)
 
-Proper inspringen
+Lesson 17: Accessibility Basics
+Alt text
+Form labels
+Semantics
 
-Leesbare code
-
-Commentaar (<!-- -->)
-
-♿ Module 9 – Toegankelijkheid & SEO
-
-Les 17: Accessibility basics
-
-alt teksten
-
-Labels bij forms
-
-Semantiek
-
-Les 18: SEO basics
-
-Headings correct gebruiken
-
+Lesson 18: SEO Basics
+Use headings correctly
 Meta description
+Structure
 
-Structuur
-
-🚀 Module 10 – Afronding
-
-Les 19: HTML + CSS
-
+Lesson 19: HTML + CSS
 <link rel="stylesheet">
+What does CSS do?
 
-Wat doet CSS?
+Lesson 20: Why are JavaScript and CSS so important?
+How to connect them
+Backend vs Frontend recap
 
-Les 20: Mini-project
-
-Simpele website bouwen
-
-Homepage + contactpagina
