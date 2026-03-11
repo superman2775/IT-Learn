@@ -1,0 +1,152 @@
+{
+  "chapterId": "chapter_8",
+  "kind": "assessment",
+  "title": "Chapter 8 - Errors and Rate Limits",
+  "description": "Quick concept check on errors and limits.",
+  "questions": [
+    {
+      "id": "q1-400",
+      "type": "single-choice",
+      "prompt": "What does a 400 status code usually mean?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Bad request from the client",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "Server is down",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "Resource created",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "Not authorized",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "400 means the request was not valid.",
+        "byOptionId": {
+          "a": "Correct. The client sent a bad request.",
+          "b": "Not quite. Server down is often 500.",
+          "c": "Not quite. Created is 201.",
+          "d": "Not quite. Not authorized is 401."
+        }
+      }
+    },
+    {
+      "id": "q2-429",
+      "type": "single-choice",
+      "prompt": "Which status code shows you hit a rate limit?",
+      "options": [
+        {
+          "id": "a",
+          "label": "200",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "label": "401",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "429",
+          "isCorrect": true
+        },
+        {
+          "id": "d",
+          "label": "503",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "429 Too Many Requests means you hit a rate limit.",
+        "byOptionId": {
+          "a": "Not quite. 200 means success.",
+          "b": "Not quite. 401 is unauthorized.",
+          "c": "Correct. 429 is too many requests.",
+          "d": "Not quite. 503 is service unavailable."
+        }
+      }
+    },
+    {
+      "id": "q3-error-body",
+      "type": "single-choice",
+      "prompt": "A good error response usually includes:",
+      "options": [
+        {
+          "id": "a",
+          "label": "A clear message",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "Only emojis",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "No status code",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "A photo",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "Clear messages help you fix requests faster.",
+        "byOptionId": {
+          "a": "Correct. Errors should explain what went wrong.",
+          "b": "Not quite. Emojis are not useful here.",
+          "c": "Not quite. Status codes are always part of HTTP.",
+          "d": "Not quite. Photos are unrelated."
+        }
+      }
+    },
+    {
+      "id": "q4-wait",
+      "type": "single-choice",
+      "prompt": "If you get a 429, you should:",
+      "options": [
+        {
+          "id": "a",
+          "label": "Wait and try again later",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "Send more requests faster",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "Delete your code",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "Change the HTTP method",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "Rate limits require you to slow down and retry later.",
+        "byOptionId": {
+          "a": "Correct. Waiting helps you avoid more 429 errors.",
+          "b": "Not quite. That makes the problem worse.",
+          "c": "Not quite. Deleting code does not help.",
+          "d": "Not quite. Methods do not fix rate limits."
+        }
+      }
+    }
+  ]
+}

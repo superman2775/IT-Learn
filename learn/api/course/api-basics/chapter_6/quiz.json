@@ -1,0 +1,152 @@
+{
+  "chapterId": "chapter_6",
+  "kind": "assessment",
+  "title": "Chapter 6 - Authentication and Authorization",
+  "description": "Quick concept check on API auth.",
+  "questions": [
+    {
+      "id": "q1-auth-header",
+      "type": "single-choice",
+      "prompt": "Where is a bearer token usually sent?",
+      "options": [
+        {
+          "id": "a",
+          "label": "In the URL path",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "label": "In the Authorization header",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "label": "In a cookie named theme",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "In the HTML title",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "Bearer tokens are sent in the Authorization header.",
+        "byOptionId": {
+          "a": "Not quite. Tokens should not be in the URL path.",
+          "b": "Correct. The Authorization header is standard.",
+          "c": "Not quite. A theme cookie is unrelated.",
+          "d": "Not quite. The HTML title is not part of a request."
+        }
+      }
+    },
+    {
+      "id": "q2-api-key",
+      "type": "single-choice",
+      "prompt": "What is the safest place to store an API key?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Hard-coded in the source file",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "label": "Environment variables",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "label": "In a public README",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "Inside a URL query string",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "Environment variables keep secrets out of code.",
+        "byOptionId": {
+          "a": "Not quite. Hard-coding secrets is unsafe.",
+          "b": "Correct. Use environment variables.",
+          "c": "Not quite. Public docs should never contain keys.",
+          "d": "Not quite. Query strings can leak in logs."
+        }
+      }
+    },
+    {
+      "id": "q3-auth-vs-authz",
+      "type": "single-choice",
+      "prompt": "Authentication is about:",
+      "options": [
+        {
+          "id": "a",
+          "label": "Who you are",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "What color the page is",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "How fast the internet is",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "Which browser you use",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "Authentication checks identity.",
+        "byOptionId": {
+          "a": "Correct. It verifies who you are.",
+          "b": "Not quite. That is UI.",
+          "c": "Not quite. That is network speed.",
+          "d": "Not quite. Browser choice is unrelated."
+        }
+      }
+    },
+    {
+      "id": "q4-oauth",
+      "type": "single-choice",
+      "prompt": "OAuth is mainly used for:",
+      "options": [
+        {
+          "id": "a",
+          "label": "Login with another service",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "Drawing graphics",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "Writing CSS",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "Creating files",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "OAuth lets you log in with another service safely.",
+        "byOptionId": {
+          "a": "Correct. OAuth powers social login.",
+          "b": "Not quite. Graphics are unrelated.",
+          "c": "Not quite. CSS is unrelated.",
+          "d": "Not quite. Files are unrelated."
+        }
+      }
+    }
+  ]
+}

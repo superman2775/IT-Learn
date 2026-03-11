@@ -1,0 +1,152 @@
+{
+  "chapterId": "chapter_4",
+  "kind": "assessment",
+  "title": "Chapter 4 - Endpoints, Paths, and Parameters",
+  "description": "Quick concept check on endpoints and parameters.",
+  "questions": [
+    {
+      "id": "q1-path-param",
+      "type": "single-choice",
+      "prompt": "In /users/42, what is 42?",
+      "options": [
+        {
+          "id": "a",
+          "label": "A query parameter",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "label": "A path parameter",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "label": "A header",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "A method",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "The 42 is part of the path, so it is a path parameter.",
+        "byOptionId": {
+          "a": "Not quite. Query params come after a question mark.",
+          "b": "Correct. 42 is a path parameter.",
+          "c": "Not quite. Headers are separate from the URL.",
+          "d": "Not quite. Methods are GET, POST, and so on."
+        }
+      }
+    },
+    {
+      "id": "q2-query-param",
+      "type": "single-choice",
+      "prompt": "Which URL includes query parameters?",
+      "options": [
+        {
+          "id": "a",
+          "label": "GET /users/7",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "label": "GET /users?role=admin",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "label": "GET /users",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "GET /users/{id}",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "Query parameters are added after a question mark.",
+        "byOptionId": {
+          "a": "Not quite. That is a path parameter.",
+          "b": "Correct. ?role=admin is a query parameter.",
+          "c": "Not quite. This has no query parameters.",
+          "d": "Not quite. This is a template, not a query param."
+        }
+      }
+    },
+    {
+      "id": "q3-endpoint",
+      "type": "single-choice",
+      "prompt": "What is an endpoint?",
+      "options": [
+        {
+          "id": "a",
+          "label": "A URL path for a specific API action",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "A password",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "A database table",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "A browser tab",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "An endpoint is a path you call on an API.",
+        "byOptionId": {
+          "a": "Correct. It is a URL path.",
+          "b": "Not quite. Passwords are separate.",
+          "c": "Not quite. Endpoints are not tables.",
+          "d": "Not quite. Browser tabs are unrelated."
+        }
+      }
+    },
+    {
+      "id": "q4-query-purpose",
+      "type": "single-choice",
+      "prompt": "Why use query parameters?",
+      "options": [
+        {
+          "id": "a",
+          "label": "To filter or change the results",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "To change the HTTP method",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "To hide the response",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "To replace the base URL",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "Query params help filter or shape results.",
+        "byOptionId": {
+          "a": "Correct. They filter or change results.",
+          "b": "Not quite. Methods are separate.",
+          "c": "Not quite. Responses are still sent.",
+          "d": "Not quite. The base URL stays the same."
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "chapterId": "chapter_2",
+  "kind": "assessment",
+  "title": "Chapter 2 - Most Used Kinds of APIs",
+  "description": "Quick concept check on common API types.",
+  "questions": [
+    {
+      "id": "q1-rest-common",
+      "type": "single-choice",
+      "prompt": "Which API style is most common on the web?",
+      "options": [
+        {
+          "id": "a",
+          "label": "REST",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "SOAP",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "gRPC",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "WebSocket",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "REST is the most common on the web.",
+        "byOptionId": {
+          "a": "Correct. REST is the most used.",
+          "b": "Not quite. SOAP is older and less common.",
+          "c": "Not quite. gRPC is common between services.",
+          "d": "Not quite. WebSocket is for live connections."
+        }
+      }
+    },
+    {
+      "id": "q2-graphql",
+      "type": "single-choice",
+      "prompt": "What is special about GraphQL?",
+      "options": [
+        {
+          "id": "a",
+          "label": "It always returns XML",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "label": "You ask for exactly the fields you want",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "label": "It only works over WebSocket",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "It never uses HTTP",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "GraphQL lets clients request only the fields they need.",
+        "byOptionId": {
+          "a": "Not quite. GraphQL is usually JSON, not XML.",
+          "b": "Correct. You pick the fields you need.",
+          "c": "Not quite. GraphQL often runs over HTTP.",
+          "d": "Not quite. GraphQL usually uses HTTP."
+        }
+      }
+    },
+    {
+      "id": "q3-webhook",
+      "type": "single-choice",
+      "prompt": "What does a webhook do?",
+      "options": [
+        {
+          "id": "a",
+          "label": "The server calls you when something happens",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "It stores images",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "It replaces a database",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "It only works offline",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "Webhooks send a message to your server when an event happens.",
+        "byOptionId": {
+          "a": "Correct. The server pushes events to you.",
+          "b": "Not quite. Webhooks are not storage.",
+          "c": "Not quite. Webhooks do not replace databases.",
+          "d": "Not quite. Webhooks require a network."
+        }
+      }
+    },
+    {
+      "id": "q4-websocket",
+      "type": "single-choice",
+      "prompt": "What is WebSocket best for?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Real-time updates",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "Printing documents",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "Sending emails",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "Changing file names",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "WebSocket keeps a live connection for fast updates.",
+        "byOptionId": {
+          "a": "Correct. It is for real-time data.",
+          "b": "Not quite. Printing is unrelated.",
+          "c": "Not quite. Email is separate.",
+          "d": "Not quite. File names are unrelated."
+        }
+      }
+    }
+  ]
+}

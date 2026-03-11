@@ -1,0 +1,152 @@
+{
+  "chapterId": "chapter_10",
+  "kind": "assessment",
+  "title": "Chapter 10 - Simple API Examples (GET and POST)",
+  "description": "Quick concept check on basic API calls.",
+  "questions": [
+    {
+      "id": "q1-get-request",
+      "type": "single-choice",
+      "prompt": "In a GET request, you usually:",
+      "options": [
+        {
+          "id": "a",
+          "label": "Read data from the server",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "Send new data to create a resource",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "Delete a resource",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "Update part of a resource",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "GET is used to read data.",
+        "byOptionId": {
+          "a": "Correct. GET reads data.",
+          "b": "Not quite. Creating is usually POST.",
+          "c": "Not quite. Delete is for DELETE.",
+          "d": "Not quite. Update is PATCH or PUT."
+        }
+      }
+    },
+    {
+      "id": "q2-post-body",
+      "type": "single-choice",
+      "prompt": "Why do you add a JSON body in a POST request?",
+      "options": [
+        {
+          "id": "a",
+          "label": "To send the data you want to create",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "To change the URL",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "To hide the status code",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "To speed up DNS",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "POST bodies carry the data to create or process.",
+        "byOptionId": {
+          "a": "Correct. The body sends new data.",
+          "b": "Not quite. The URL is separate.",
+          "c": "Not quite. Status codes are always returned.",
+          "d": "Not quite. DNS is unrelated."
+        }
+      }
+    },
+    {
+      "id": "q3-content-type",
+      "type": "single-choice",
+      "prompt": "What does the Content-Type header tell the server?",
+      "options": [
+        {
+          "id": "a",
+          "label": "The format of the data you send",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "The screen size",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "The keyboard layout",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "The Wi-Fi name",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "Content-Type tells the server the data format, like JSON.",
+        "byOptionId": {
+          "a": "Correct. It describes the data format.",
+          "b": "Not quite. Screen size is unrelated.",
+          "c": "Not quite. Keyboard layout is unrelated.",
+          "d": "Not quite. Wi-Fi name is unrelated."
+        }
+      }
+    },
+    {
+      "id": "q4-fetch",
+      "type": "single-choice",
+      "prompt": "What does `fetch()` do in JavaScript?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Makes an HTTP request",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "Creates a database",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "Draws a chart",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "Formats a hard drive",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "fetch() sends HTTP requests from the browser.",
+        "byOptionId": {
+          "a": "Correct. fetch() makes requests.",
+          "b": "Not quite. It does not create databases.",
+          "c": "Not quite. Charts are unrelated.",
+          "d": "Not quite. Formatting drives is unrelated."
+        }
+      }
+    }
+  ]
+}

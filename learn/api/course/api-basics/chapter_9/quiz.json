@@ -1,0 +1,152 @@
+{
+  "chapterId": "chapter_9",
+  "kind": "assessment",
+  "title": "Chapter 9 - Documentation and Testing Tools",
+  "description": "Quick concept check on docs and tools.",
+  "questions": [
+    {
+      "id": "q1-openapi",
+      "type": "single-choice",
+      "prompt": "What is OpenAPI (Swagger) mainly used for?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Describing and documenting APIs",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "Writing database queries",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "Designing UI layouts",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "Hosting images",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "OpenAPI is a standard for describing APIs.",
+        "byOptionId": {
+          "a": "Correct. OpenAPI documents API endpoints.",
+          "b": "Not quite. That is about databases.",
+          "c": "Not quite. UI design is separate.",
+          "d": "Not quite. Hosting images is unrelated."
+        }
+      }
+    },
+    {
+      "id": "q2-curl",
+      "type": "single-choice",
+      "prompt": "What is `curl` commonly used for?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Making HTTP requests from the command line",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "Editing videos",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "Running CSS animations",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "Creating spreadsheets",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "curl is a command-line tool for HTTP requests.",
+        "byOptionId": {
+          "a": "Correct. curl makes HTTP requests.",
+          "b": "Not quite. That is video editing.",
+          "c": "Not quite. CSS animations are unrelated.",
+          "d": "Not quite. Spreadsheets are unrelated."
+        }
+      }
+    },
+    {
+      "id": "q3-docs",
+      "type": "single-choice",
+      "prompt": "Good API docs should include:",
+      "options": [
+        {
+          "id": "a",
+          "label": "Endpoints and examples",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "Only jokes",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "No base URL",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "Hidden errors",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "Docs should explain how to call the API.",
+        "byOptionId": {
+          "a": "Correct. Endpoints and examples are key.",
+          "b": "Not quite. Jokes do not help usage.",
+          "c": "Not quite. The base URL is required.",
+          "d": "Not quite. Errors should be explained."
+        }
+      }
+    },
+    {
+      "id": "q4-postman",
+      "type": "single-choice",
+      "prompt": "Postman is used to:",
+      "options": [
+        {
+          "id": "a",
+          "label": "Test and save API requests",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "Draw pictures",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "Write CSS",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "Fix hardware",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "Postman helps you test and organize API calls.",
+        "byOptionId": {
+          "a": "Correct. It is a testing tool.",
+          "b": "Not quite. Postman is not a drawing app.",
+          "c": "Not quite. Postman is not for CSS.",
+          "d": "Not quite. Hardware is unrelated."
+        }
+      }
+    }
+  ]
+}

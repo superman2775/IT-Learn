@@ -1,0 +1,152 @@
+{
+  "chapterId": "chapter_7",
+  "kind": "assessment",
+  "title": "Chapter 7 - Pagination, Filtering, and Sorting",
+  "description": "Quick concept check on paging and filters.",
+  "questions": [
+    {
+      "id": "q1-pagination",
+      "type": "single-choice",
+      "prompt": "Why do APIs use pagination?",
+      "options": [
+        {
+          "id": "a",
+          "label": "To make responses smaller and faster",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "To remove authentication",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "To change the HTTP method",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "To hide status codes",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "Pagination keeps responses small and fast.",
+        "byOptionId": {
+          "a": "Correct. Pagination reduces large responses.",
+          "b": "Not quite. Pagination is not about auth.",
+          "c": "Not quite. Methods are separate from paging.",
+          "d": "Not quite. Status codes are always present."
+        }
+      }
+    },
+    {
+      "id": "q2-filter",
+      "type": "single-choice",
+      "prompt": "Which query string shows filtering by status?",
+      "options": [
+        {
+          "id": "a",
+          "label": "?page=2&limit=10",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "label": "?status=paid",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "label": "?sort=created_at",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "?order=desc",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "Filtering uses fields like status to narrow results.",
+        "byOptionId": {
+          "a": "Not quite. That is pagination.",
+          "b": "Correct. status=paid is a filter.",
+          "c": "Not quite. That is sorting.",
+          "d": "Not quite. That is sort order."
+        }
+      }
+    },
+    {
+      "id": "q3-sorting",
+      "type": "single-choice",
+      "prompt": "Which query string shows sorting by a field?",
+      "options": [
+        {
+          "id": "a",
+          "label": "?sort=created_at",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "?status=paid",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "?limit=10",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "?page=3",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "Sorting often uses a sort field.",
+        "byOptionId": {
+          "a": "Correct. sort=created_at sorts by that field.",
+          "b": "Not quite. That is a filter.",
+          "c": "Not quite. That is pagination.",
+          "d": "Not quite. That is pagination."
+        }
+      }
+    },
+    {
+      "id": "q4-cursor",
+      "type": "single-choice",
+      "prompt": "Which paging method is common for infinite scrolling?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Cursor",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "Print",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "Color",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "Title",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "Cursor-based paging works well for infinite lists.",
+        "byOptionId": {
+          "a": "Correct. Cursor paging is common.",
+          "b": "Not quite. Print is unrelated.",
+          "c": "Not quite. Color is unrelated.",
+          "d": "Not quite. Title is unrelated."
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "chapterId": "chapter_5",
+  "kind": "assessment",
+  "title": "Chapter 5 - Data Formats and Status Codes",
+  "description": "Quick concept check on JSON and status codes.",
+  "questions": [
+    {
+      "id": "q1-json",
+      "type": "single-choice",
+      "prompt": "Which data format is most common for APIs today?",
+      "options": [
+        {
+          "id": "a",
+          "label": "JSON",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "CSV",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "PDF",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "PNG",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "JSON is the most common API data format.",
+        "byOptionId": {
+          "a": "Correct. JSON is the standard for most APIs.",
+          "b": "Not quite. CSV is not typical for APIs.",
+          "c": "Not quite. PDF is a document format.",
+          "d": "Not quite. PNG is an image format."
+        }
+      }
+    },
+    {
+      "id": "q2-404",
+      "type": "single-choice",
+      "prompt": "What does a 404 status code mean?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Server crashed",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "label": "Not found",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "label": "Created",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "Unauthorized",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "404 means the resource was not found.",
+        "byOptionId": {
+          "a": "Not quite. Server crash is usually 500.",
+          "b": "Correct. 404 means not found.",
+          "c": "Not quite. Created is 201.",
+          "d": "Not quite. Unauthorized is 401."
+        }
+      }
+    },
+    {
+      "id": "q3-201",
+      "type": "single-choice",
+      "prompt": "Which status code means a new item was created?",
+      "options": [
+        {
+          "id": "a",
+          "label": "201",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "200",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "401",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "500",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "201 Created means a new resource was made.",
+        "byOptionId": {
+          "a": "Correct. 201 means created.",
+          "b": "Not quite. 200 means success without creation.",
+          "c": "Not quite. 401 means unauthorized.",
+          "d": "Not quite. 500 is a server error."
+        }
+      }
+    },
+    {
+      "id": "q4-500",
+      "type": "single-choice",
+      "prompt": "What does a 500 status code mean?",
+      "options": [
+        {
+          "id": "a",
+          "label": "Server error",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "Not found",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "Created",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "Bad request",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "500 is a server-side error.",
+        "byOptionId": {
+          "a": "Correct. 500 means the server failed.",
+          "b": "Not quite. 404 is not found.",
+          "c": "Not quite. 201 is created.",
+          "d": "Not quite. 400 is a bad request."
+        }
+      }
+    }
+  ]
+}

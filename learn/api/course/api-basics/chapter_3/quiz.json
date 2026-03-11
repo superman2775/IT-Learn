@@ -1,0 +1,152 @@
+{
+  "chapterId": "chapter_3",
+  "kind": "assessment",
+  "title": "Chapter 3 - Requests and Responses (HTTP Basics)",
+  "description": "Quick concept check on HTTP methods.",
+  "questions": [
+    {
+      "id": "q1-get",
+      "type": "single-choice",
+      "prompt": "Which HTTP method is used to read data?",
+      "options": [
+        {
+          "id": "a",
+          "label": "GET",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "POST",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "PATCH",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "DELETE",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "GET is the standard method for reading data.",
+        "byOptionId": {
+          "a": "Correct. GET reads data.",
+          "b": "Not quite. POST creates data.",
+          "c": "Not quite. PATCH updates part of data.",
+          "d": "Not quite. DELETE removes data."
+        }
+      }
+    },
+    {
+      "id": "q2-post",
+      "type": "single-choice",
+      "prompt": "Which method is commonly used to create a new resource?",
+      "options": [
+        {
+          "id": "a",
+          "label": "PUT",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "label": "POST",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "label": "GET",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "HEAD",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "POST is commonly used to create resources.",
+        "byOptionId": {
+          "a": "Not quite. PUT replaces a resource.",
+          "b": "Correct. POST creates resources.",
+          "c": "Not quite. GET reads data.",
+          "d": "Not quite. HEAD only returns headers."
+        }
+      }
+    },
+    {
+      "id": "q3-delete",
+      "type": "single-choice",
+      "prompt": "Which method is used to remove data?",
+      "options": [
+        {
+          "id": "a",
+          "label": "DELETE",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "GET",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "PATCH",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "OPTIONS",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "DELETE removes a resource.",
+        "byOptionId": {
+          "a": "Correct. DELETE removes data.",
+          "b": "Not quite. GET only reads.",
+          "c": "Not quite. PATCH updates.",
+          "d": "Not quite. OPTIONS is for capabilities."
+        }
+      }
+    },
+    {
+      "id": "q4-request-response",
+      "type": "single-choice",
+      "prompt": "A response comes back from the:",
+      "options": [
+        {
+          "id": "a",
+          "label": "Server",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "Client only",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "Keyboard",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "Monitor",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "The server sends the response back to the client.",
+        "byOptionId": {
+          "a": "Correct. The server responds.",
+          "b": "Not quite. The client sends requests.",
+          "c": "Not quite. Hardware is unrelated.",
+          "d": "Not quite. Hardware is unrelated."
+        }
+      }
+    }
+  ]
+}

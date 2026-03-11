@@ -1,0 +1,152 @@
+{
+  "chapterId": "chapter_1",
+  "kind": "assessment",
+  "title": "Chapter 1 - What Is an API and Why Use It?",
+  "description": "Quick concept check on what an API is.",
+  "questions": [
+    {
+      "id": "q1-api-meaning",
+      "type": "single-choice",
+      "prompt": "What is an API?",
+      "options": [
+        {
+          "id": "a",
+          "label": "A set of rules for apps to talk to each other",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "A type of database",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "A programming language",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "A web browser setting",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "An API is a set of rules that lets apps communicate.",
+        "byOptionId": {
+          "a": "Correct. APIs define how apps talk.",
+          "b": "Not quite. An API is not a database.",
+          "c": "Not quite. An API is not a language.",
+          "d": "Not quite. An API is not a browser setting."
+        }
+      }
+    },
+    {
+      "id": "q2-api-role",
+      "type": "single-choice",
+      "prompt": "In the restaurant example, the API is like the:",
+      "options": [
+        {
+          "id": "a",
+          "label": "Chef",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "label": "Waiter",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "label": "Menu design",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "Table",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "The API is like the waiter who carries requests and responses.",
+        "byOptionId": {
+          "a": "Not quite. The chef is like the server logic.",
+          "b": "Correct. The waiter is the API connection.",
+          "c": "Not quite. The menu is like documentation.",
+          "d": "Not quite. The table is not part of the request flow."
+        }
+      }
+    },
+    {
+      "id": "q3-api-why",
+      "type": "single-choice",
+      "prompt": "Why do apps use APIs?",
+      "options": [
+        {
+          "id": "a",
+          "label": "To share data or features",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "To replace the internet",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "To remove servers",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "To make images bigger",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "APIs let apps share data and features safely.",
+        "byOptionId": {
+          "a": "Correct. APIs connect systems.",
+          "b": "Not quite. APIs do not replace the internet.",
+          "c": "Not quite. APIs still use servers.",
+          "d": "Not quite. APIs are not about images."
+        }
+      }
+    },
+    {
+      "id": "q4-api-request",
+      "type": "single-choice",
+      "prompt": "When your app asks an API for data, the API sends back:",
+      "options": [
+        {
+          "id": "a",
+          "label": "A response",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "label": "A new keyboard",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "label": "A screen",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "label": "A folder",
+          "isCorrect": false
+        }
+      ],
+      "explanations": {
+        "overview": "APIs answer requests with responses.",
+        "byOptionId": {
+          "a": "Correct. A response comes back.",
+          "b": "Not quite. Hardware is unrelated.",
+          "c": "Not quite. That is not part of API calls.",
+          "d": "Not quite. Folders are unrelated."
+        }
+      }
+    }
+  ]
+}

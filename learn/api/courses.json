@@ -604,6 +604,95 @@
       ]
     },
     {
+      "id": "api-basics",
+      "title": "API Basics for Young Pros",
+      "description": "A beginner-friendly course that explains what APIs are, the most used types, and how to read and use them.",
+      "language": "api",
+      "authors": ["super_man2775"],
+      "chapters": [
+        {
+          "id": "chapter_1",
+          "title": "What Is an API and Why Use It?",
+          "description": "Simple definition, real-world analogy, and why apps use APIs.",
+          "theoryResourceUid": "theory.md",
+          "quizResourceUid": "quiz.json",
+          "practiceResourceUid": "practice.json"
+        },
+        {
+          "id": "chapter_2",
+          "title": "Most Used Kinds of APIs",
+          "description": "REST, GraphQL, SOAP, gRPC, Webhooks, and WebSocket in plain language.",
+          "theoryResourceUid": "theory.md",
+          "quizResourceUid": "quiz.json",
+          "practiceResourceUid": "practice.json"
+        },
+        {
+          "id": "chapter_3",
+          "title": "Requests and Responses (HTTP Basics)",
+          "description": "HTTP methods like GET and POST, and how requests and responses work.",
+          "theoryResourceUid": "theory.md",
+          "quizResourceUid": "quiz.json",
+          "practiceResourceUid": "practice.json"
+        },
+        {
+          "id": "chapter_4",
+          "title": "Endpoints, Paths, and Parameters",
+          "description": "How URLs, path params, and query params shape an API call.",
+          "theoryResourceUid": "theory.md",
+          "quizResourceUid": "quiz.json",
+          "practiceResourceUid": "practice.json"
+        },
+        {
+          "id": "chapter_5",
+          "title": "Data Formats and Status Codes",
+          "description": "JSON vs XML and the most important HTTP status codes.",
+          "theoryResourceUid": "theory.md",
+          "quizResourceUid": "quiz.json",
+          "practiceResourceUid": "practice.json"
+        },
+        {
+          "id": "chapter_6",
+          "title": "Authentication and Authorization",
+          "description": "API keys, bearer tokens, and OAuth in simple terms.",
+          "theoryResourceUid": "theory.md",
+          "quizResourceUid": "quiz.json",
+          "practiceResourceUid": "practice.json"
+        },
+        {
+          "id": "chapter_7",
+          "title": "Pagination, Filtering, and Sorting",
+          "description": "How APIs handle lots of data and help you narrow results.",
+          "theoryResourceUid": "theory.md",
+          "quizResourceUid": "quiz.json",
+          "practiceResourceUid": "practice.json"
+        },
+        {
+          "id": "chapter_8",
+          "title": "Errors and Rate Limits",
+          "description": "Understanding error responses and request limits.",
+          "theoryResourceUid": "theory.md",
+          "quizResourceUid": "quiz.json",
+          "practiceResourceUid": "practice.json"
+        },
+        {
+          "id": "chapter_9",
+          "title": "Documentation and Testing Tools",
+          "description": "How to read API docs and test with tools like curl or Postman.",
+          "theoryResourceUid": "theory.md",
+          "quizResourceUid": "quiz.json",
+          "practiceResourceUid": "practice.json"
+        },
+        {
+          "id": "chapter_10",
+          "title": "Simple API Examples (GET and POST)",
+          "description": "Short real-world API examples using fetch.",
+          "theoryResourceUid": "theory.md",
+          "quizResourceUid": "quiz.json",
+          "practiceResourceUid": "practice.json"
+        }
+      ]
+    },
+    {
       "id": "git-github-vscode-basics",
       "title": "Git, GitHub, and VS Code Basics for Young Students",
       "description": "A beginner-friendly course that teaches the basics of Git version control, GitHub collaboration, and how to use VS Code with Git.",
