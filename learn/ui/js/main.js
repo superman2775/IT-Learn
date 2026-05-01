@@ -19,13 +19,6 @@ let notificationsBadgeCache = {
   pendingPromise: null,
 };
 
-const NOTIFICATIONS_BADGE_CACHE_TTL_MS = 15000;
-let notificationsBadgeCache = {
-  unreadCount: null,
-  expiresAt: 0,
-  pendingPromise: null,
-};
-
 function requiresProfileOnboarding(profile) {
   const username = String(profile?.username || '').trim().toLowerCase();
   const validUsername = /^[a-z0-9_]{3,24}$/.test(username);
@@ -94,8 +87,6 @@ async function bootstrap() {
   setCourseLanguage(storedLanguage || 'en');
   // Ensure course/chapter completion state is loaded from backend for this user.
   await hydrateCourseProgressFromRemote();
-
-  setGlobalStatus('Loading courses...');
 
   setGlobalStatus('Loading courses...');
   try {
