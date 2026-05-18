@@ -52,9 +52,16 @@ function stripInjectedCloudflareAnalytics(content) {
   const injectedScript =
     /<script\b(?=[^>]*\bsrc=(['"])https:\/\/static\.cloudflareinsights\.com\/beacon\.min\.js\1)(?=[^>]*\bdata-cf-beacon=)[^>]*>\s*<\/script>/gi;
 
-  return content
-    .replace(injectedBlock, '')
-    .replace(injectedScript, '');
+  let sanitized = content;
+  let previous;
+  do {
+    previous = sanitized;
+    sanitized = sanitized
+      .replace(injectedBlock, '')
+      .replace(injectedScript, '');
+  } while (sanitized !== previous);
+
+  return sanitized;
 }
 
 /* ── File tree ─────────────────────────────────────────────────────── */
