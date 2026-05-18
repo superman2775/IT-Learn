@@ -96,9 +96,17 @@ function stripInjectedCloudflareAnalytics(content) {
   const injectedScript =
     /<script\b(?=[^>]*\bsrc=(['"])https:\/\/static\.cloudflareinsights\.com\/beacon\.min\.js\1)(?=[^>]*\bdata-cf-beacon=)[^>]*>\s*<\/script>/gi;
 
-  return content
-    .replace(injectedBlock, '')
-    .replace(injectedScript, '');
+  let previous;
+  let sanitized = content;
+
+  do {
+    previous = sanitized;
+    sanitized = sanitized
+      .replace(injectedBlock, '')
+      .replace(injectedScript, '');
+  } while (sanitized !== previous);
+
+  return sanitized;
 }
 
 export async function fetchChapterTheory(courseId, chapter) {
