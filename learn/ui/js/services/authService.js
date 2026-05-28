@@ -1,86 +1,72 @@
 const API_BASE = 'https://itlearn.pythonanywhere.com/api';
+const CLERK_PUBLISHABLE_KEY = 'pk_live_KEY_HERE';
+
+let _clerk = null;
+let _clerkLoading = null;
+
+async function getClerk() {
+    if (_clerk) return _clerk;
+    if (typeof Clerk === 'undefined') {
+        await new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = 'https://unpkg.com/@clerk/clerk-js@latest/dist/clerk.browser.js';
+            script.onload = resolve;
+            script.onerror = () => reject(new Error('Failed to load Clerk JS'));
+            document.head.appendChild(script);
+        });
+    }
+    if (!_clerkLoading) {
+        _clerkLoading = (async () => {
+            _clerk = new Clerk(CLERK_PUBLISHABLE_KEY);
+            await _clerk.load();
+        })();
+    }
+    await _clerkLoading;
+    return _clerk;
+}
+
+async function syncSessionToken() {
+    const clerk = await getClerk();
+    if (!clerk.session) return null;
+    const token = await clerk.session.getToken();
+    const response = await fetch(`${API_BASE}/auth/sync`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ token }),
+    });
+    const data = await response.json();
+    if (!response.ok) throw data;
+    return data;
+}
 
 export async function checkSession() {
     try {
+        const clerk = await getClerk();
+        if (clerk.session) {
+            try { await syncSessionToken(); } catch (e) {}
+        }
         const response = await fetch(`${API_BASE}/session`, {
             method: 'GET',
-            credentials: 'include'
+            credentials: 'include',
         });
         const data = await response.json();
         return data;
     } catch (error) {
-        console.error('Session check failed:', error);
         return { logged_in: false, user_id: null };
-    }
-}
-
-export async function login(email, password, captchaToken) {
-    try {
-        const response = await fetch(`${API_BASE}/login`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            credentials: 'include',
-            body: JSON.stringify({
-                email,
-                password,
-                captcha_token: captchaToken
-            })
-        });
-        
-        const data = await response.json();
-        
-        if (!response.ok) {
-            return { success: false, error: data.error || 'Login failed' };
-        }
-        
-        return { success: true, user_id: data.user_id };
-    } catch (error) {
-        console.error('Login error:', error);
-        return { success: false, error: 'Network error. Please try again.' };
-    }
-}
-
-export async function signup(email, password, captchaToken) {
-    try {
-        const response = await fetch(`${API_BASE}/signup`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            credentials: 'include',
-            body: JSON.stringify({
-                email,
-                password,
-                captcha_token: captchaToken
-            })
-        });
-        
-        const data = await response.json();
-        
-        if (!response.ok) {
-            return { success: false, error: data.error || 'Signup failed' };
-        }
-        
-        return { success: true, user_id: data.user_id };
-    } catch (error) {
-        console.error('Signup error:', error);
-        return { success: false, error: 'Network error. Please try again.' };
     }
 }
 
 export async function logout() {
     try {
-        const response = await fetch(`${API_BASE}/logout`, {
+        await fetch(`${API_BASE}/logout`, {
             method: 'POST',
-            credentials: 'include'
+            credentials: 'include',
         });
-        
-        const data = await response.json();
-        return { success: data.success };
+        const clerk = await getClerk();
+        await clerk.signOut();
+        return { success: true };
     } catch (error) {
-        console.error('Logout error:', error);
         return { success: false };
     }
 }
@@ -89,25 +75,13 @@ export async function loadProgress() {
     try {
         const response = await fetch(`${API_BASE}/progress/load`, {
             method: 'POST',
-            credentials: 'include'
+            credentials: 'include',
         });
-        
-        if (!response.ok) {
-            throw new Error('Failed to load progress');
-        }
-        
+        if (!response.ok) throw new Error('Failed to load progress');
         const data = await response.json();
         return data;
     } catch (error) {
-        console.error('Load progress error:', error);
-        return {
-            progress: {},
-            xp: 0,
-            streak: 0,
-            last_active: null,
-            missions: {},
-            mistakes: []
-        };
+        return { progress: {}, xp: 0, streak: 0, last_active: null, missions: {}, mistakes: [] };
     }
 }
 
@@ -115,19 +89,13 @@ export async function saveProgress(progressData) {
     try {
         const response = await fetch(`${API_BASE}/progress/save`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
-            body: JSON.stringify({
-                progress_data: progressData
-            })
+            body: JSON.stringify({ progress_data: progressData }),
         });
-        
         const data = await response.json();
         return { success: data.success || false };
     } catch (error) {
-        console.error('Save progress error:', error);
         return { success: false };
     }
 }
@@ -136,17 +104,12 @@ export async function loadBadges() {
     try {
         const response = await fetch(`${API_BASE}/badges/load`, {
             method: 'POST',
-            credentials: 'include'
+            credentials: 'include',
         });
-
-        if (!response.ok) {
-            throw new Error(`Failed to load badges (${response.status})`);
-        }
-
+        if (!response.ok) throw new Error(`Failed to load badges (${response.status})`);
         const data = await response.json();
         return data?.badges && typeof data.badges === 'object' ? data.badges : {};
     } catch (error) {
-        console.error('Load badges error:', error);
         throw error;
     }
 }
@@ -155,33 +118,23 @@ export async function saveBadges(badgesData) {
     try {
         const response = await fetch(`${API_BASE}/badges/save`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
-            body: JSON.stringify({
-                badges: badgesData || {}
-            })
+            body: JSON.stringify({ badges: badgesData || {} }),
         });
-
         const data = await response.json();
         return { success: data.success || false };
     } catch (error) {
-        console.error('Save badges error:', error);
         return { success: false };
     }
 }
 
 export async function getUserCount() {
     try {
-        const response = await fetch(`${API_BASE}/user-count`, {
-            method: 'GET'
-        });
-        
+        const response = await fetch(`${API_BASE}/user-count`, { method: 'GET' });
         const data = await response.json();
         return data;
     } catch (error) {
-        console.error('User count error:', error);
         return { totalUsers: '0+' };
     }
 }
@@ -190,48 +143,43 @@ export async function linkTrialProgress(trialData) {
     try {
         const response = await fetch(`${API_BASE}/trial/link`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
-            body: JSON.stringify(trialData)
+            body: JSON.stringify(trialData),
         });
-        
         const data = await response.json();
-        
-        if (!response.ok) {
-            return { success: false, error: data.error || 'Failed to link trial progress' };
-        }
-        
+        if (!response.ok) return { success: false, error: data.error || 'Failed to link trial progress' };
         return { success: true };
     } catch (error) {
-        console.error('Link trial progress error:', error);
         return { success: false, error: 'Network error. Trial progress may not be linked.' };
     }
 }
 
 export async function changePassword(newPassword) {
     try {
+        const clerk = await getClerk();
+        if (clerk.session) {
+            const token = await clerk.session.getToken();
+            const response = await fetch(`${API_BASE}/change-password`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+                credentials: 'include',
+                body: JSON.stringify({ new_password: newPassword }),
+            });
+            const data = await response.json();
+            if (!response.ok) return { success: false, error: data.error || 'Password change failed' };
+            return { success: true };
+        }
         const response = await fetch(`${API_BASE}/change-password`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
-            body: JSON.stringify({
-                new_password: newPassword
-            })
+            body: JSON.stringify({ new_password: newPassword }),
         });
-        
         const data = await response.json();
-        
-        if (!response.ok) {
-            return { success: false, error: data.error || 'Password change failed' };
-        }
-        
+        if (!response.ok) return { success: false, error: data.error || 'Password change failed' };
         return { success: true };
     } catch (error) {
-        console.error('Change password error:', error);
         return { success: false, error: 'Network error. Please try again.' };
     }
 }
@@ -240,18 +188,16 @@ export async function deleteAccount() {
     try {
         const response = await fetch(`${API_BASE}/delete-account`, {
             method: 'POST',
-            credentials: 'include'
+            credentials: 'include',
         });
-        
         const data = await response.json();
-        
-        if (!response.ok) {
-            return { success: false, error: data.error || 'Account deletion failed' };
-        }
-        
+        if (!response.ok) return { success: false, error: data.error || 'Account deletion failed' };
+        try {
+            const clerk = await getClerk();
+            await clerk.signOut();
+        } catch (e) {}
         return { success: true };
     } catch (error) {
-        console.error('Delete account error:', error);
         return { success: false, error: 'Network error. Please try again.' };
     }
 }
@@ -260,17 +206,12 @@ export async function getMyProfile() {
     try {
         const response = await fetch(`${API_BASE}/profile/me`, {
             method: 'GET',
-            credentials: 'include'
+            credentials: 'include',
         });
-
         const data = await response.json();
-        if (!response.ok) {
-            return { success: false, error: data.error || 'Failed to load profile' };
-        }
-
+        if (!response.ok) return { success: false, error: data.error || 'Failed to load profile' };
         return { success: true, profile: data };
     } catch (error) {
-        console.error('Get profile error:', error);
         return { success: false, error: 'Network error. Please try again.' };
     }
 }
@@ -279,26 +220,14 @@ export async function updateProfile({ username, bio, avatarUrl, profileTagline }
     try {
         const response = await fetch(`${API_BASE}/profile/update`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
-            body: JSON.stringify({
-                username,
-                bio,
-                avatar_url: avatarUrl,
-                profile_tagline: profileTagline,
-            })
+            body: JSON.stringify({ username, bio, avatar_url: avatarUrl, profile_tagline: profileTagline }),
         });
-
         const data = await response.json();
-        if (!response.ok) {
-            return { success: false, error: data.error || 'Failed to update profile' };
-        }
-
+        if (!response.ok) return { success: false, error: data.error || 'Failed to update profile' };
         return { success: true, profile: data.profile };
     } catch (error) {
-        console.error('Update profile error:', error);
         return { success: false, error: 'Network error. Please try again.' };
     }
 }
@@ -307,17 +236,12 @@ export async function getPublicProfile(username) {
     try {
         const response = await fetch(`${API_BASE}/profile/${encodeURIComponent(username)}`, {
             method: 'GET',
-            credentials: 'include'
+            credentials: 'include',
         });
-
         const data = await response.json();
-        if (!response.ok) {
-            return { success: false, error: data.error || 'Profile not found' };
-        }
-
+        if (!response.ok) return { success: false, error: data.error || 'Profile not found' };
         return { success: true, profile: data };
     } catch (error) {
-        console.error('Get public profile error:', error);
         return { success: false, error: 'Network error. Please try again.' };
     }
 }
@@ -326,22 +250,14 @@ export async function reportProfileBio({ username, reason, details }) {
     try {
         const response = await fetch(`${API_BASE}/profile/report-bio`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
-            body: JSON.stringify({ username, reason, details })
+            body: JSON.stringify({ username, reason, details }),
         });
-
         if (!response.ok) {
             const statusText = `HTTP ${response.status}${response.statusText ? ` ${response.statusText}` : ''}`;
             let bodyText = '';
-            try {
-                bodyText = await response.text();
-            } catch (readError) {
-                bodyText = '';
-            }
-
+            try { bodyText = await response.text(); } catch (readError) { bodyText = ''; }
             let bodyMessage = '';
             const trimmedBody = bodyText.trim();
             if (trimmedBody) {
@@ -352,25 +268,14 @@ export async function reportProfileBio({ username, reason, details }) {
                     bodyMessage = trimmedBody;
                 }
             }
-
-            return {
-                success: false,
-                error: bodyMessage ? `${statusText}: ${bodyMessage}` : statusText,
-            };
+            return { success: false, error: bodyMessage ? `${statusText}: ${bodyMessage}` : statusText };
         }
-
         const contentType = response.headers.get('content-type') || '';
         if (contentType.includes('application/json')) {
-            try {
-                await response.json();
-            } catch (parseError) {
-                // Success responses do not require a parseable JSON payload here.
-            }
+            try { await response.json(); } catch (parseError) {}
         }
-
         return { success: true };
     } catch (error) {
-        console.error('Report bio error:', error);
         return { success: false, error: 'Network error. Please try again.' };
     }
 }

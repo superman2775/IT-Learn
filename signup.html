@@ -3,43 +3,50 @@
 
 <head>
   <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="8826e809-534e-467a-ab6a-60c51a99fa52" data-blockingmode="auto" type="text/javascript"></script>
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4RL6H7W1C1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-4RL6H7W1C1');
   </script>
   <link rel="canonical" href="https://itlearn.be/signup">
   <link rel="icon" href="/favicon.ico">
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Sign Up | IT Learn</title>
   <meta name="description" content="Create an account on IT Learn.">
   <meta name="robots" content="noindex, nofollow">
-
   <link rel="stylesheet" href="signup.css" />
-
   <meta property="og:title" content="Sign Up | IT Learn">
   <meta property="og:description" content="Join IT Learn today.">
   <meta property="og:image" content="https://files.itlearn.be/images/branding/logo/IT_Learn.png">
   <meta property="og:type" content="website">
-
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"
-    onload="if(window.feather){feather.replace();}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js" onload="if(window.feather){feather.replace();}"></script>
+  <script src="https://unpkg.com/@clerk/clerk-js@latest/dist/clerk.browser.js" type="text/javascript"></script>
   <script src="/translations.js"></script>
   <script src="/custom-dialogs.js" defer></script>
   <script src="/maintenance-mode.js" defer></script>
+  <style>
+    #verify-step { display: none; }
+    #verify-step.visible { display: block; }
+    #signup-form.hidden { display: none; }
+    .verify-hint { font-size: 0.875rem; opacity: 0.75; margin-bottom: 1rem; }
+    #resend-btn {
+      background: none;
+      border: none;
+      color: var(--accent, #6c63ff);
+      cursor: pointer;
+      font-size: 0.875rem;
+      padding: 0;
+      text-decoration: underline;
+      margin-top: 0.5rem;
+    }
+  </style>
 </head>
 
 <body>
 
-<!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
@@ -51,7 +58,6 @@ s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
-<!--End of Tawk.to Script-->
 
 <button class="escape" onclick="window.location.href='index.html'">&#10006</button>
 
@@ -64,7 +70,6 @@ s0.parentNode.insertBefore(s1,s0);
         <label for="email" data-translate="email">Email</label>
         <input type="email" id="email" placeholder="Enter your email" data-translate="enterEmail" required />
       </div>
-
       <div class="input-group password">
         <label for="password" data-translate="password">Password</label>
         <div class="input-row">
@@ -74,7 +79,6 @@ s0.parentNode.insertBefore(s1,s0);
           </button>
         </div>
       </div>
-
       <div class="input-group password">
         <label for="confirm-password" data-translate="confirmPassword">Confirm Password</label>
         <div class="input-row">
@@ -84,46 +88,41 @@ s0.parentNode.insertBefore(s1,s0);
           </button>
         </div>
       </div>
-
-      <!-- Cloudflare Turnstile -->
-      <div class="cf-turnstile" data-sitekey="0x4AAAAAACDEaJSXddDZ6jRf"></div>
-
       <div class="input-group" style="margin-top:.5rem;">
         <label style="display:flex;gap:.5rem;align-items:center;cursor:pointer;">
           <input type="checkbox" id="accept-terms" style="width:16px;height:16px;" />
-          <span data-translate="iAgree">I agree to the</span> 
+          <span data-translate="iAgree">I agree to the</span>
           <a href="/terms/index.html" target="_blank" rel="noopener noreferrer" data-translate="signupTerms">Terms and Conditions</a>
         </label>
       </div>
-
       <button type="submit" class="btn" data-translate="createAccount">Create account</button>
     </form>
+
+    <div id="verify-step">
+      <p class="verify-hint">We sent a 6-digit code to <strong id="verify-email-display"></strong>. Enter it below to confirm your account.</p>
+      <form id="verify-form">
+        <div class="input-group">
+          <label for="verify-code">Verification code</label>
+          <input type="text" id="verify-code" placeholder="123456" maxlength="6" inputmode="numeric" autocomplete="one-time-code" required />
+        </div>
+        <button type="submit" class="btn">Verify &amp; continue</button>
+      </form>
+      <button id="resend-btn" type="button">Resend code</button>
+    </div>
 
     <div class="or-divider"><span data-translate="or">OR</span></div>
 
     <div class="oauth-grid">
-      <!-- OAuth buttons -->
       <button type="button" class="btn-oauth btn-google google" id="google-login" data-connecting="Connecting to Google...">
-        <img
-          src="https://files.itlearn.be/images/branding/icons/Google.png"
-          alt="Google Logo"
-        />
+        <img src="https://files.itlearn.be/images/branding/icons/Google.png" alt="Google Logo" />
         <span class="oauth-label" data-translate="continueGoogle">Continue with Google</span>
       </button>
-
       <button type="button" class="btn-oauth btn-github github" id="github-login" data-connecting="Connecting to GitHub...">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/2/24/Github_logo_svg.svg"
-            alt="GitHub Logo"
-          />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Github_logo_svg.svg" alt="GitHub Logo" />
         <span class="oauth-label" data-translate="continueGitHub">Continue with GitHub</span>
       </button>
-
       <button type="button" class="btn-oauth btn-discord discord" id="discord-login" data-connecting="Connecting to Discord...">
-          <img
-            src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/66e3d7f4ef6498ac018f2c55_Symbol.svg"
-            alt="Discord Logo"
-          />
+        <img src="https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/66e3d7f4ef6498ac018f2c55_Symbol.svg" alt="Discord Logo" />
         <span class="oauth-label" data-translate="continueDiscord">Continue with Discord</span>
       </button>
     </div>
@@ -142,344 +141,258 @@ s0.parentNode.insertBefore(s1,s0);
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', async () => {
-    document.body.setAttribute('data-page', 'signup');
-    const storedLang = localStorage.getItem('language') || 'en';
-    updatePageLanguage(storedLang);
-    updateInputPlaceholders(storedLang);
-    initPasswordToggle();
-    updatePasswordToggleLabels(storedLang);
-    initOAuthButtons();
+const CLERK_PUBLISHABLE_KEY = 'pk_live_KEY_HERE';
+const API_BASE = 'https://itlearn.pythonanywhere.com';
 
-    try {
-      const resp = await fetch('https://itlearn.pythonanywhere.com/api/session', {
-        method: 'GET',
-        credentials: 'include'
-      });
-      const session = await resp.json();
-      if (session.logged_in) {
-        window.location.href = '/learn/index.html';
-        return;
-      }
-    } catch (e) {
-      console.warn('[SIGNUP] Session pre-check failed:', e);
-    }
+function updateInputPlaceholders(lang) {
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('password');
+  const confirmPasswordInput = document.getElementById('confirm-password');
+  if (emailInput) emailInput.placeholder = translations[lang]['enterEmail'] || 'Enter your email';
+  if (passwordInput) passwordInput.placeholder = translations[lang]['createPassword'] || 'Create a password';
+  if (confirmPasswordInput) confirmPasswordInput.placeholder = translations[lang]['reenterPassword'] || 'Re-enter your password';
+}
 
-    setTimeout(() => {
-      try {
-        if (typeof turnstile !== 'undefined') {
-          const oldToken = turnstile.getResponse();
-          console.log('[SIGNUP] Page load - old token (first 20):', oldToken ? oldToken.substring(0, 20) + '...' : 'NONE');
-          turnstile.reset();
-          console.log('[SIGNUP] Turnstile reset on page load');
-        }
-      } catch (e) {
-        console.warn('[SIGNUP] Could not reset Turnstile on load:', e);
-      }
-    }, 1000);
+function updatePasswordToggleLabels(lang) {
+  document.querySelectorAll('.password-toggle').forEach(btn => {
+    const show = (translations[lang] && translations[lang]['showPassword']) ? translations[lang]['showPassword'] : 'Show password';
+    const hide = (translations[lang] && translations[lang]['hidePassword']) ? translations[lang]['hidePassword'] : 'Hide password';
+    btn.dataset.showLabel = show;
+    btn.dataset.hideLabel = hide;
+    const isPressed = btn.getAttribute('aria-pressed') === 'true';
+    btn.setAttribute('aria-label', isPressed ? hide : show);
+    btn.setAttribute('title', isPressed ? hide : show);
   });
-  
-  function updateInputPlaceholders(lang) {
-    const emailInput = document.getElementById('email');
-    const passwordInput = document.getElementById('password');
-    const confirmPasswordInput = document.getElementById('confirm-password');
-    if (emailInput) emailInput.placeholder = translations[lang]['enterEmail'] || 'Enter your email';
-    if (passwordInput) passwordInput.placeholder = translations[lang]['createPassword'] || 'Create a password';
-    if (confirmPasswordInput) confirmPasswordInput.placeholder = translations[lang]['reenterPassword'] || 'Re-enter your password';
-  }
+}
 
-  function updatePasswordToggleLabels(lang) {
-    const btns = document.querySelectorAll('.password-toggle');
-    if (!btns) return;
-    btns.forEach(btn => {
-      const show = translations[lang] && translations[lang]['showPassword'] ? translations[lang]['showPassword'] : 'Show password';
-      const hide = translations[lang] && translations[lang]['hidePassword'] ? translations[lang]['hidePassword'] : 'Hide password';
-      btn.dataset.showLabel = show;
-      btn.dataset.hideLabel = hide;
-      const isPressed = btn.getAttribute('aria-pressed') === 'true';
-      btn.setAttribute('aria-label', isPressed ? hide : show);
-      btn.setAttribute('title', isPressed ? hide : show);
+function initPasswordToggle() {
+  document.querySelectorAll('.password-toggle').forEach(btn => {
+    const row = btn.closest('.input-row');
+    const input = row ? row.querySelector('input') : null;
+    if (!input) return;
+    if (window.feather) feather.replace();
+    btn.addEventListener('click', () => {
+      const showing = input.type === 'text';
+      input.type = showing ? 'password' : 'text';
+      btn.setAttribute('aria-pressed', showing ? 'false' : 'true');
+      const label = showing ? (btn.dataset.showLabel || 'Show password') : (btn.dataset.hideLabel || 'Hide password');
+      btn.setAttribute('aria-label', label);
+      btn.setAttribute('title', label);
+      btn.innerHTML = showing ? '<i data-feather="eye"></i>' : '<i data-feather="eye-off"></i>';
+      if (window.feather) feather.replace();
+      input.focus();
     });
-  }
+  });
+}
 
-  const OAUTH_API_BASE = 'https://itlearn.pythonanywhere.com';
+function showVerifyStep(email) {
+  document.getElementById('signup-form').classList.add('hidden');
+  document.getElementById('verify-step').classList.add('visible');
+  document.getElementById('verify-email-display').textContent = email;
+  document.getElementById('verify-code').focus();
+}
 
-  function providerLabel(provider) {
-    switch (provider) {
-      case 'github': return 'GitHub';
-      case 'discord': return 'Discord';
-      default: return 'Google';
-    }
-  }
+function hideVerifyStep() {
+  document.getElementById('signup-form').classList.remove('hidden');
+  document.getElementById('verify-step').classList.remove('visible');
+}
 
-  function initOAuthButton(provider, buttonId) {
-    const btn = document.getElementById(buttonId);
-    if (!btn) return;
-    const labelEl = btn.querySelector('.oauth-label');
-    const baseLabel = labelEl ? labelEl.textContent : btn.textContent;
-    const connecting = btn.dataset.connecting || `Connecting to ${providerLabel(provider)}...`;
+async function syncWithBackend(clerk) {
+  const token = await clerk.session.getToken();
+  const resp = await fetch(API_BASE + '/api/auth/sync', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+    body: JSON.stringify({ token }),
+  });
+  const data = await resp.json();
+  if (!resp.ok) throw data;
+  return data;
+}
 
-    btn.addEventListener('click', async () => {
-      btn.disabled = true;
-      if (labelEl) {
-        labelEl.textContent = connecting;
-      } else {
-        btn.textContent = connecting;
-      }
-
-      if (provider === 'discord') {
-        const joinCheckbox = document.getElementById('join-discord-server');
-        const shouldJoin = joinCheckbox ? joinCheckbox.checked : false;
-        localStorage.setItem('discord_join_server', shouldJoin ? 'true' : 'false');
-      }
-
-      try {
-        const redirectTo = `${window.location.origin}/oauth-callback.html?provider=${provider}`;
-        const res = await fetch(`${OAUTH_API_BASE}/api/oauth/${provider}/start`, {
+async function finishSignup() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const isFromTrial = urlParams.get('trial') === 'completed';
+  if (isFromTrial) {
+    try {
+      const trialSessionData = localStorage.getItem('itlearn_trial_session');
+      const trialProgressData = localStorage.getItem('itlearn_trial_progress');
+      if (trialSessionData && trialProgressData) {
+        const trialSession = JSON.parse(trialSessionData);
+        const trialProgress = JSON.parse(trialProgressData);
+        await fetch(API_BASE + '/api/trial/link', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           credentials: 'include',
-          body: JSON.stringify({ redirect_to: redirectTo })
+          body: JSON.stringify({
+            sessionId: trialSession.sessionId,
+            courseId: trialSession.courseId,
+            startedAt: trialSession.startedAt,
+            expiresAt: trialSession.expiresAt,
+            chapters: trialProgress.chapters || [],
+          }),
         });
-
-        const data = await res.json();
-        if (!res.ok || !data.url) {
-          const errMsg = data && data.error ? data.error : `Could not start ${providerLabel(provider)} login.`;
-          throw new Error(errMsg);
-        }
-
-        window.location.href = data.url;
-      } catch (err) {
-        console.error(`[OAUTH][${provider}] Start failed:`, err);
-        await showAlert(`Could not start ${providerLabel(provider)} sign-in. Please try again.`, { title: 'Sign-in error' });
-        btn.disabled = false;
-        if (labelEl) {
-          labelEl.textContent = baseLabel;
-        } else {
-          btn.textContent = baseLabel;
-        }
       }
-    });
+    } catch (e) {
+    } finally {
+      localStorage.removeItem('itlearn_trial_session');
+      localStorage.removeItem('itlearn_trial_progress');
+    }
+  }
+  window.location.href = '/learn/index.html';
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  document.body.setAttribute('data-page', 'signup');
+  const storedLang = localStorage.getItem('language') || 'en';
+  updatePageLanguage(storedLang);
+  updateInputPlaceholders(storedLang);
+  initPasswordToggle();
+  updatePasswordToggleLabels(storedLang);
+
+  const clerk = new Clerk(CLERK_PUBLISHABLE_KEY);
+  await clerk.load();
+
+  if (clerk.session) {
+    try { await syncWithBackend(clerk); window.location.href = '/learn/index.html'; } catch (e) {}
+    return;
   }
 
-  function initOAuthButtons() {
-    initOAuthButton('google', 'google-login');
-    initOAuthButton('github', 'github-login');
-    initOAuthButton('discord', 'discord-login');
-  }
+  let activeSignUp = null;
 
-  function initPasswordToggle() {
-    document.querySelectorAll('.password-toggle').forEach(btn => {
-      const row = btn.closest('.input-row');
-      const input = row ? row.querySelector('input') : null;
-      if (!input) return;
-
-      if (window.feather) feather.replace();
-
-      btn.addEventListener('click', () => {
-        const showing = input.type === 'text';
-        if (showing) {
-          input.type = 'password';
-          btn.setAttribute('aria-pressed', 'false');
-          const show = btn.dataset.showLabel || 'Show password';
-          btn.setAttribute('aria-label', show);
-          btn.setAttribute('title', show);
-          btn.innerHTML = '<i data-feather="eye"></i>';
-        } else {
-          input.type = 'text';
-          btn.setAttribute('aria-pressed', 'true');
-          const hide = btn.dataset.hideLabel || 'Hide password';
-          btn.setAttribute('aria-label', hide);
-          btn.setAttribute('title', hide);
-          btn.innerHTML = '<i data-feather="eye-off"></i>';
-        }
-        if (window.feather) feather.replace();
-        input.focus();
-      });
-    });
-  }
-  
-  const originalUpdatePageLanguage = window.updatePageLanguage;
-  window.updatePageLanguage = function(lang) {
-    originalUpdatePageLanguage(lang);
-    updateInputPlaceholders(lang);
-    updatePasswordToggleLabels(lang);
-  };
-  
-  document.getElementById("signup-form").addEventListener("submit", async (e) => {
+  document.getElementById('signup-form').addEventListener('submit', async (e) => {
     e.preventDefault();
-  
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
-    const confirmPassword = document.getElementById("confirm-password").value;
-    const acceptTerms = document.getElementById("accept-terms").checked;
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+    const acceptTerms = document.getElementById('accept-terms').checked;
     const submitBtn = document.querySelector('#signup-form .btn');
     if (submitBtn) submitBtn.disabled = true;
 
     if (!email || !password) {
       await showAlert('Email and password are required.', { title: 'Validation' });
-        if (submitBtn) submitBtn.disabled = false;
-        return;
+      if (submitBtn) submitBtn.disabled = false;
+      return;
     }
-  
     if (password !== confirmPassword) {
       await showAlert('Passwords do not match.', { title: 'Validation' });
-        if (submitBtn) submitBtn.disabled = false;
-        return;
+      if (submitBtn) submitBtn.disabled = false;
+      return;
     }
-  
     if (!acceptTerms) {
       await showAlert('You must accept the terms and conditions.', { title: 'Validation' });
-        if (submitBtn) submitBtn.disabled = false;
-        return;
-    }
-
-    let captchaToken = turnstile.getResponse();
-    let tokenPrefix = captchaToken ? captchaToken.substring(0, 20) : 'NONE';
-    console.log('[SIGNUP] Initial token check:', captchaToken ? 'Token exists' : 'No token');
-    console.log('[SIGNUP] Token prefix:', tokenPrefix);
-
-    const lastToken = sessionStorage.getItem('signup_last_captcha_token');
-    if (lastToken && lastToken === tokenPrefix) {
-      console.error('[SIGNUP] ⚠️ WARNING: REUSING SAME TOKEN!');
-      await showAlert('Please wait for CAPTCHA to reset...', { title: 'CAPTCHA' });
-      try { turnstile.reset(); } catch {}
       if (submitBtn) submitBtn.disabled = false;
       return;
     }
-
-    if (!captchaToken) {
-      console.log('[SIGNUP] Waiting for token to generate...');
-      for (let i = 0; i < 6; i++) {
-        await new Promise(resolve => setTimeout(resolve, 500));
-        captchaToken = turnstile.getResponse();
-        if (captchaToken) {
-          tokenPrefix = captchaToken.substring(0, 20);
-          console.log('[SIGNUP] Token ready after', (i + 1) * 500, 'ms');
-          break;
-        }
-      }
-    }
-
-    if (!captchaToken) {
-      console.error('[SIGNUP] No CAPTCHA token available after waiting');
-      await showAlert('CAPTCHA verification not ready. Please wait a moment and try again.', { title: 'CAPTCHA' });
-      try { turnstile.reset(); } catch {}
-      if (submitBtn) submitBtn.disabled = false;
-      return;
-    }
-
-    sessionStorage.setItem('signup_last_captcha_token', tokenPrefix);
-    console.log('[SIGNUP] Submitting with token (first 20 chars):', tokenPrefix + '...');
 
     try {
-        const requestBody = {
-          email,
-          password,
-          captcha_token: captchaToken
-        };
-        console.log('[SIGNUP] Request body:', { email, captcha_token_length: captchaToken.length });
+      const signUpAttempt = await clerk.client.signUp.create({ emailAddress: email, password });
+      activeSignUp = signUpAttempt;
 
-        const res = await fetch("https://itlearn.pythonanywhere.com/api/signup", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            credentials: "include",
-            body: JSON.stringify(requestBody)
-        });
-  
-        let data = null;
-        try { data = await res.json(); } catch {}
-
-        if (!res.ok) {
-            const msg = (data && data.error) ? data.error : 'Signup failed.';
-            console.error('[SIGNUP] Error details:', { status: res.status, errorMessage: msg, fullErrorData: data });
-            await showAlert('Signup failed: ' + msg, { title: 'Signup failed' });
-            try {
-              turnstile.reset();
-              await new Promise(resolve => setTimeout(resolve, 500));
-            } catch {}
-            if (submitBtn) submitBtn.disabled = false;
-            return;
-        }
-
-        if (data && data.error) {
-            console.error('[SIGNUP] Error details:', data.error);
-          await showAlert('Error: ' + data.error, { title: 'Signup error' });
-            try { turnstile.reset(); } catch {}
-            if (submitBtn) submitBtn.disabled = false;
-            return;
-        }
-
-        console.log('[SIGNUP] Success! Checking for trial data...');
-        
-        const urlParams = new URLSearchParams(window.location.search);
-        const isFromTrial = urlParams.get('trial') === 'completed';
-        
-        if (isFromTrial) {
-          console.log('[SIGNUP] Trial completion detected, linking trial progress...');
-          try {
-            const trialSessionData = localStorage.getItem('itlearn_trial_session');
-            const trialProgressData = localStorage.getItem('itlearn_trial_progress');
-            
-            if (trialSessionData && trialProgressData) {
-              const trialSession = JSON.parse(trialSessionData);
-              const trialProgress = JSON.parse(trialProgressData);
-              
-              const trialDataForLinking = {
-                sessionId: trialSession.sessionId,
-                courseId: trialSession.courseId,
-                startedAt: trialSession.startedAt,
-                expiresAt: trialSession.expiresAt,
-                chapters: trialProgress.chapters || []
-              };
-              
-              console.log('[SIGNUP] Linking trial data with backend...');
-              const linkRes = await fetch('https://itlearn.pythonanywhere.com/api/trial/link', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                credentials: 'include',
-                body: JSON.stringify(trialDataForLinking)
-              });
-              
-              if (linkRes.ok) {
-                const linkData = await linkRes.json();
-                console.log('[SIGNUP] Trial progress linked successfully:', linkData);
-                
-                localStorage.removeItem('itlearn_trial_session');
-                localStorage.removeItem('itlearn_trial_progress');
-                console.log('[SIGNUP] Trial data cleared from localStorage');
-              } else {
-                console.warn('[SIGNUP] Failed to link trial progress, but account created:', linkRes.status);
-                localStorage.removeItem('itlearn_trial_session');
-                localStorage.removeItem('itlearn_trial_progress');
-              }
-            }
-          } catch (trialErr) {
-            console.warn('[SIGNUP] Error linking trial data:', trialErr);
-            localStorage.removeItem('itlearn_trial_session');
-            localStorage.removeItem('itlearn_trial_progress');
-          }
-        }
-        
-        console.log('[SIGNUP] Signup complete, redirecting to /learn/index.html');
-        await showAlert('Signup successful!', { title: 'Success' });
-        window.location.href = '/learn/index.html';
+      if (signUpAttempt.status === 'complete') {
+        await clerk.setActive({ session: signUpAttempt.createdSessionId });
+        await syncWithBackend(clerk);
+        await finishSignup();
+      } else if (signUpAttempt.unverifiedFields.includes('email_address')) {
+        await signUpAttempt.prepareEmailAddressVerification({ strategy: 'email_code' });
+        showVerifyStep(email);
+      } else {
+        await showAlert('Signup needs additional steps (status: ' + signUpAttempt.status + ').', { title: 'Signup' });
+      }
     } catch (err) {
-        console.error('[SIGNUP] Exception:', err);
-        await showAlert('An error occurred while signing up.', { title: 'Signup error' });
-        try {
-          turnstile.reset();
-          await new Promise(resolve => setTimeout(resolve, 500));
-        } catch {}
+      const msg = err?.errors?.[0]?.longMessage || err?.error || 'Signup failed.';
+      await showAlert('Signup failed: ' + msg, { title: 'Signup failed' });
     } finally {
-        if (submitBtn) submitBtn.disabled = false;
+      if (submitBtn) submitBtn.disabled = false;
     }
   });
-  </script>
-  
+
+  document.getElementById('verify-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!activeSignUp) {
+      await showAlert('Session expired. Please sign up again.', { title: 'Error' });
+      hideVerifyStep();
+      return;
+    }
+    const code = document.getElementById('verify-code').value.trim();
+    const submitBtn = document.querySelector('#verify-form .btn');
+    if (submitBtn) submitBtn.disabled = true;
+
+    try {
+      const result = await activeSignUp.attemptEmailAddressVerification({ code });
+      if (result.status === 'complete') {
+        await clerk.setActive({ session: result.createdSessionId });
+        await syncWithBackend(clerk);
+        await finishSignup();
+      } else {
+        await showAlert('Verification failed (status: ' + result.status + '). Please try again.', { title: 'Verification' });
+      }
+    } catch (err) {
+      const msg = err?.errors?.[0]?.longMessage || 'Invalid code. Please try again.';
+      await showAlert(msg, { title: 'Verification failed' });
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
+    }
+  });
+
+  document.getElementById('resend-btn').addEventListener('click', async () => {
+    if (!activeSignUp) return;
+    try {
+      await activeSignUp.prepareEmailAddressVerification({ strategy: 'email_code' });
+      await showAlert('A new code has been sent to your email.', { title: 'Code resent' });
+    } catch (err) {
+      const msg = err?.errors?.[0]?.longMessage || 'Could not resend code.';
+      await showAlert(msg, { title: 'Error' });
+    }
+  });
+
+  function initOAuthButton(provider, buttonId, clerkStrategy) {
+    const btn = document.getElementById(buttonId);
+    if (!btn) return;
+    const labelEl = btn.querySelector('.oauth-label');
+    const baseLabel = labelEl ? labelEl.textContent : btn.textContent;
+    const connecting = btn.dataset.connecting || ('Connecting to ' + provider + '...');
+
+    btn.addEventListener('click', async () => {
+      btn.disabled = true;
+      if (labelEl) labelEl.textContent = connecting;
+      else btn.textContent = connecting;
+
+      if (provider === 'Discord') {
+        const joinCheckbox = document.getElementById('join-discord-server');
+        localStorage.setItem('discord_join_server', joinCheckbox?.checked ? 'true' : 'false');
+      }
+
+      try {
+        await clerk.client.signUp.authenticateWithRedirect({
+          strategy: clerkStrategy,
+          redirectUrl: window.location.origin + '/sso-callback.html',
+          redirectUrlComplete: window.location.origin + '/learn/index.html',
+        });
+      } catch (err) {
+        const msg = err?.errors?.[0]?.longMessage || ('Could not start ' + provider + ' sign-in.');
+        await showAlert(msg, { title: 'Sign-in error' });
+        btn.disabled = false;
+        if (labelEl) labelEl.textContent = baseLabel;
+        else btn.textContent = baseLabel;
+      }
+    });
+  }
+
+  initOAuthButton('Google', 'google-login', 'oauth_google');
+  initOAuthButton('GitHub', 'github-login', 'oauth_github');
+  initOAuthButton('Discord', 'discord-login', 'oauth_discord');
+});
+
+const _origUpdatePageLanguage = window.updatePageLanguage;
+window.updatePageLanguage = function(lang) {
+  _origUpdatePageLanguage(lang);
+  updateInputPlaceholders(lang);
+  updatePasswordToggleLabels(lang);
+};
+</script>
 
 <script>
-// --- Splash text ---
 const variants = [
   { text: "welcomeAboard" },
   { text: "createSomethingCool" },
@@ -512,7 +425,6 @@ const variants = [
   { text: "learningNeverStops" },
   { text: "codingPlusMusic", link: "https://open.spotify.com/track/4tZgM0PdoK8MG5jvMKdJkC" }
 ];
-
 const choice = variants[Math.floor(Math.random() * variants.length)];
 const box = document.querySelector('.form-box');
 if (box) {
