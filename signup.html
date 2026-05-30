@@ -23,7 +23,12 @@
   <meta property="og:image" content="https://files.itlearn.be/images/branding/logo/IT_Learn.png">
   <meta property="og:type" content="website">
   <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js" onload="if(window.feather){feather.replace();}"></script>
-  <script src="https://unpkg.com/@clerk/clerk-js@latest/dist/clerk.browser.js" type="text/javascript"></script>
+  <script
+    data-cookieconsent="ignore"
+    data-clerk-publishable-key="pk_test_a25vd2luZy1yZWRiaXJkLTE4LmNsZXJrLmFjY291bnRzLmRldiQ"
+    src="https://unpkg.com/@clerk/clerk-js@latest/dist/clerk.browser.js"
+    type="text/javascript">
+  </script>
   <script src="/translations.js"></script>
   <script src="/custom-dialogs.js" defer></script>
   <script src="/maintenance-mode.js" defer></script>
@@ -141,7 +146,6 @@ s0.parentNode.insertBefore(s1,s0);
 </div>
 
 <script>
-const CLERK_PUBLISHABLE_KEY = 'pk_live_KEY_HERE';
 const API_BASE = 'https://itlearn.pythonanywhere.com';
 
 function updateInputPlaceholders(lang) {
@@ -250,7 +254,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   initPasswordToggle();
   updatePasswordToggleLabels(storedLang);
 
-  const clerk = new Clerk(CLERK_PUBLISHABLE_KEY);
+  const clerk = window.Clerk;
   await clerk.load();
 
   if (clerk.session) {

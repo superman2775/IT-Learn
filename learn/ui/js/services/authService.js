@@ -1,5 +1,5 @@
 const API_BASE = 'https://itlearn.pythonanywhere.com/api';
-const CLERK_PUBLISHABLE_KEY = 'pk_live_KEY_HERE';
+const CLERK_PUBLISHABLE_KEY = 'pk_test_a25vd2luZy1yZWRiaXJkLTE4LmNsZXJrLmFjY291bnRzLmRldiQ';
 
 let _clerk = null;
 let _clerkLoading = null;
@@ -10,6 +10,8 @@ async function getClerk() {
         await new Promise((resolve, reject) => {
             const script = document.createElement('script');
             script.src = 'https://unpkg.com/@clerk/clerk-js@latest/dist/clerk.browser.js';
+            script.setAttribute('data-cookieconsent', 'ignore');
+            script.setAttribute('data-clerk-publishable-key', CLERK_PUBLISHABLE_KEY);
             script.onload = resolve;
             script.onerror = () => reject(new Error('Failed to load Clerk JS'));
             document.head.appendChild(script);
@@ -17,7 +19,7 @@ async function getClerk() {
     }
     if (!_clerkLoading) {
         _clerkLoading = (async () => {
-            _clerk = new Clerk(CLERK_PUBLISHABLE_KEY);
+            _clerk = window.Clerk;
             await _clerk.load();
         })();
     }
