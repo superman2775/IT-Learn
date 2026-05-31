@@ -6,23 +6,27 @@ let _clerkLoading = null;
 
 async function getClerk() {
     if (_clerk) return _clerk;
-    if (typeof Clerk === 'undefined') {
-        await new Promise((resolve, reject) => {
-            const script = document.createElement('script');
-            script.src = 'https://unpkg.com/@clerk/clerk-js@latest/dist/clerk.browser.js';
-            script.setAttribute('data-cookieconsent', 'ignore');
-            script.setAttribute('data-clerk-publishable-key', CLERK_PUBLISHABLE_KEY);
-            script.onload = resolve;
-            script.onerror = () => reject(new Error('Failed to load Clerk JS'));
-            document.head.appendChild(script);
-        });
-    }
+    
+    // Establish a single shared loading promise before any async operations
+    // to prevent race conditions where multiple callers both start initialization
     if (!_clerkLoading) {
         _clerkLoading = (async () => {
+            if (typeof Clerk === 'undefined') {
+                await new Promise((resolve, reject) => {
+                    const script = document.createElement('script');
+                    script.src = 'https://unpkg.com/@clerk/clerk-js@6.7.7/dist/clerk.browser.js';
+                    script.setAttribute('data-cookieconsent', 'ignore');
+                    script.setAttribute('data-clerk-publishable-key', CLERK_PUBLISHABLE_KEY);
+                    script.onload = resolve;
+                    script.onerror = () => reject(new Error('Failed to load Clerk JS'));
+                    document.head.appendChild(script);
+                });
+            }
             _clerk = window.Clerk;
             await _clerk.load();
         })();
     }
+    
     await _clerkLoading;
     return _clerk;
 }

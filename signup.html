@@ -26,7 +26,7 @@
   <script
     data-cookieconsent="ignore"
     data-clerk-publishable-key="pk_test_a25vd2luZy1yZWRiaXJkLTE4LmNsZXJrLmFjY291bnRzLmRldiQ"
-    src="https://unpkg.com/@clerk/clerk-js@latest/dist/clerk.browser.js"
+    src="https://unpkg.com/@clerk/clerk-js@6.7.7/dist/clerk.browser.js"
     type="text/javascript">
   </script>
   <script src="/translations.js"></script>
@@ -224,7 +224,7 @@ async function finishSignup() {
       if (trialSessionData && trialProgressData) {
         const trialSession = JSON.parse(trialSessionData);
         const trialProgress = JSON.parse(trialProgressData);
-        await fetch(API_BASE + '/api/trial/link', {
+        const response = await fetch(API_BASE + '/api/trial/link', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           credentials: 'include',
@@ -236,8 +236,13 @@ async function finishSignup() {
             chapters: trialProgress.chapters || [],
           }),
         });
+        if (!response.ok) {
+          const errorDetails = await response.text().catch(() => 'Unknown error');
+          console.warn('Trial linking failed:', response.status, errorDetails);
+        }
       }
     } catch (e) {
+      console.warn('Trial linking error:', e);
     } finally {
       localStorage.removeItem('itlearn_trial_session');
       localStorage.removeItem('itlearn_trial_progress');
@@ -255,10 +260,22 @@ document.addEventListener('DOMContentLoaded', async () => {
   updatePasswordToggleLabels(storedLang);
 
   const clerk = window.Clerk;
-  await clerk.load();
+  try {
+    await clerk.load();
+  } catch (e) {
+    console.error('Failed to load Clerk:', e);
+    await showAlert('Unable to initialize authentication. Please refresh the page.', { title: 'Authentication Error' });
+    return;
+  }
 
   if (clerk.session) {
-    try { await syncWithBackend(clerk); window.location.href = '/learn/index.html'; } catch (e) {}
+    try {
+      const syncData = await syncWithBackend(clerk);
+      window.location.href = '/learn/index.html';
+    } catch (e) {
+      console.error('Failed to sync with backend:', e);
+      await showAlert('Unable to sync account. Please refresh and try again.', { title: 'Sync Error' });
+    }
     return;
   }
 
